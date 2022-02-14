@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav"
+    app:startDestination="@id/start2Fragment">
+    <fragment
+        android:id="@+id/start2Fragment"
+        android:name="com.android.r.Start2Fragment"
+        android:label="fragment_start2"
+        tools:layout="@layout/fragment_start2" >
+        <action
+            android:id="@+id/action_start2Fragment_to_myReservFragment"
+            app:destination="@id/myReservFragment" />
+        <action
+            android:id="@+id/action_start2Fragment_to_myCarFragment"
+            app:destination="@id/myCarFragment" />
+        <action
+            android:id="@+id/action_start2Fragment_to_usageDetailFragment"
+            app:destination="@id/usageDetailFragment" />
+        <action
+            android:id="@+id/action_start2Fragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myReservFragment"
+        android:name="com.android.r.MyReservFragment"
+        android:label="fragment_my_reserv"
+        tools:layout="@layout/fragment_my_reserv" />
+    <fragment
+        android:id="@+id/myCarFragment"
+        android:name="com.android.r.MyCarFragment"
+        android:label="fragment_my_car"
+        tools:layout="@layout/fragment_my_car" />
+    <fragment
+        android:id="@+id/usageDetailFragment"
+        android:name="com.android.r.UsageDetailFragment"
+        android:label="fragment_usage_detail"
+        tools:layout="@layout/fragment_usage_detail" />
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.android.r.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" /><action android:id="@+id/action_global_myReservFragment" app:destination="@id/myReservFragment"/>
+</navigation>
