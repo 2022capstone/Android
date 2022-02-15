@@ -23,7 +23,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/iv_car"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginStart="8dp"
@@ -32,49 +32,48 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/car_front"
-            app:tint="#FAFAFA" />
+            app:srcCompat="@drawable/car_front"/>
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/tv_model"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:text="차종"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
-            app:layout_constraintTop_toTopOf="@+id/imageView2" />
+            app:layout_constraintStart_toEndOf="@+id/iv_car"
+            app:layout_constraintTop_toTopOf="@+id/iv_car" />
 
         <TextView
             android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="•"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textSize="16sp"
-            app:layout_constraintStart_toEndOf="@+id/textView5"
-            app:layout_constraintTop_toTopOf="@+id/textView5" />
+            app:layout_constraintStart_toEndOf="@+id/tv_model"
+            app:layout_constraintTop_toTopOf="@+id/tv_model" />
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/tv_owner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="차주"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/textView6"
             app:layout_constraintTop_toTopOf="@+id/textView6" />
 
         <TextView
-            android:id="@+id/textView15"
+            android:id="@+id/tv_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="대여가능날짜"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-            app:layout_constraintStart_toStartOf="@+id/textView5" />
+            app:layout_constraintBottom_toBottomOf="@+id/iv_car"
+            app:layout_constraintStart_toStartOf="@+id/tv_model" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

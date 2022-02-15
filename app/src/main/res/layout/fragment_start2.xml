@@ -33,6 +33,7 @@
             app:layout_constraintTop_toTopOf="@+id/btn_menu" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_car_rent_before"
             android:layout_width="409dp"
             android:layout_height="638dp"
             android:layout_marginStart="1dp"

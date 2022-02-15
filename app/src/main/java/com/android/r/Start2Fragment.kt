@@ -1,11 +1,13 @@
 package com.android.r
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.GravityCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.r.base.BaseFragment
 import com.android.r.databinding.FragmentStart2Binding
 import com.google.android.material.navigation.NavigationView
@@ -16,6 +18,16 @@ class Start2Fragment : BaseFragment<FragmentStart2Binding>(R.layout.fragment_sta
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val carList = arrayListOf(//model, owner, date
+            CarList(R.drawable.car_front, "모델", "id", "2022.02.15"),
+            CarList(R.drawable.car_front, "모델2", "id2", "2022.02.15"),
+            CarList(R.drawable.car_front, "모델3", "id3", "2022.02.15")
+        )
+
+        /*binding.rvCarRentBefore.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+        binding.rvCarRentBefore.setHasFixedSize(true)
+
+        binding.rvCarRentBefore.adapter = CarListAdapter(carList)*/
     }
 
     override fun onCreateView(
@@ -48,11 +60,6 @@ class Start2Fragment : BaseFragment<FragmentStart2Binding>(R.layout.fragment_sta
         //binding.layoutDrawer.closeDrawers() //네이게이션 뷰 닫기
         return false
     }
-
-
-
-
-
 
 
 
