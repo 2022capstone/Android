@@ -5,9 +5,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 
-class CarListAdapter(val carList: ArrayList<CarList>) : RecyclerView.Adapter<CarListAdapter.CustomViewHolder>(){
+class CarListAdapter(val carList: ArrayList<CarList>, navController: NavController, start2Fragment: Start2Fragment) : RecyclerView.Adapter<CarListAdapter.CustomViewHolder>(){
+
+    val start2Fragment = start2Fragment
+    val navController : NavController = navController
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarListAdapter.CustomViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_car, parent, false)
@@ -25,11 +29,13 @@ class CarListAdapter(val carList: ArrayList<CarList>) : RecyclerView.Adapter<Car
         return carList.size
     }
 
-    class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        val image = itemView.findViewById<ImageView>(R.id.iv_car)//사진
-        val model = itemView.findViewById<TextView>(R.id.tv_model)
-        val owner = itemView.findViewById<TextView>(R.id.tv_owner)
-        val date = itemView.findViewById<TextView>(R.id.tv_date)
+    class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val image = itemView.findViewById<ImageView>(R.id.iv_car) //차 사진
+        val model = itemView.findViewById<TextView>(R.id.tv_model)  //모델
+        val owner = itemView.findViewById<TextView>(R.id.tv_owner) //차주
+        val date = itemView.findViewById<TextView>(R.id.tv_date) //날짜
     }
 
 }
+
+

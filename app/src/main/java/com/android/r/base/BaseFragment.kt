@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewbinding.ViewBinding
 
 abstract class BaseFragment <B : ViewBinding>(@LayoutRes private val layoutResId: Int) : Fragment(), LifecycleOwner{
@@ -52,4 +53,5 @@ abstract class BaseFragment <B : ViewBinding>(@LayoutRes private val layoutResId
         super.onDestroyView()
 
     }
+
 }
