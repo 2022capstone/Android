@@ -8,10 +8,8 @@ import android.widget.TextView
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 
-class CarListAdapter(val carList: ArrayList<CarList>, navController: NavController, start2Fragment: Start2Fragment) : RecyclerView.Adapter<CarListAdapter.CustomViewHolder>(){
+class CarListAdapter(val carList: ArrayList<CarList>, start2Fragment: Start2Fragment) : RecyclerView.Adapter<CarListAdapter.CustomViewHolder>(){
 
-    val start2Fragment = start2Fragment
-    val navController : NavController = navController
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CarListAdapter.CustomViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_car, parent, false)

@@ -15,6 +15,7 @@ import androidx.viewbinding.ViewBinding
 
 abstract class BaseFragment <B : ViewBinding>(@LayoutRes private val layoutResId: Int) : Fragment(), LifecycleOwner{
 
+
     //추상클래스 이거 상속받으면 프래그먼트에서 따로 지정안해도 binding 할 수 있음
     // <> 안에는 viewbinding ex: FragmentJoinBinding, ()안에는 R.layout.~
     //abstract val viewModel : VM

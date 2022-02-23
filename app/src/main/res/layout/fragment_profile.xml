@@ -16,6 +16,7 @@
         android:layout_marginEnd="32dp"
         android:background="#00ff0000"
         android:text="수정하기"
+        android:fontFamily="@font/koddi"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -26,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:text="내정보"
+        android:fontFamily="@font/koddi"
         android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -39,6 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         android:text="이름"
+        android:fontFamily="@font/koddi"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/textView38"
@@ -52,6 +55,7 @@
         android:text="아이디"
         android:textColor="#000000"
         android:textSize="20sp"
+        android:fontFamily="@font/koddi"
         app:layout_constraintStart_toStartOf="@+id/textView39"
         app:layout_constraintTop_toBottomOf="@+id/textView39" />
 
@@ -63,6 +67,7 @@
         android:text="전화번호"
         android:textColor="#000000"
         android:textSize="20sp"
+        android:fontFamily="@font/koddi"
         app:layout_constraintStart_toStartOf="@+id/textView40"
         app:layout_constraintTop_toBottomOf="@+id/textView40" />
 
@@ -72,6 +77,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="지역"
+        android:fontFamily="@font/koddi"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/textView41"
@@ -85,6 +91,7 @@
         android:text="운전면허증번호"
         android:textColor="#000000"
         android:textSize="20sp"
+        android:fontFamily="@font/koddi"
         app:layout_constraintStart_toStartOf="@+id/textView42"
         app:layout_constraintTop_toBottomOf="@+id/textView42" />
 
@@ -94,6 +101,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="평균평점"
+        android:fontFamily="@font/koddi"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/textView43"

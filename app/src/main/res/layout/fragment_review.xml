@@ -12,7 +12,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/koddi"
         android:text="name"
         android:textColor="#000000"
         android:textSize="20sp"
@@ -25,6 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="★5.0"
+        android:fontFamily="@font/koddi"
         android:textColor="#000000"
         android:textSize="16sp"
         app:layout_constraintStart_toStartOf="@+id/textView28"
@@ -37,6 +39,7 @@
         android:layout_marginTop="8dp"
         android:text="2022.02.15~2022.02.16"
         android:textColor="#737373"
+        android:fontFamily="@font/koddi"
         app:layout_constraintStart_toStartOf="@+id/textView29"
         app:layout_constraintTop_toBottomOf="@+id/textView29" />
 
@@ -55,6 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="차종-차번호"
+        android:fontFamily="@font/koddi"
         app:layout_constraintBottom_toBottomOf="@+id/textView30"
         app:layout_constraintEnd_toEndOf="@+id/imageView21"
         app:layout_constraintStart_toStartOf="@+id/imageView21"
@@ -67,6 +71,7 @@
         android:layout_marginTop="16dp"
         android:backgroundTint="#000000"
         android:text="메시지"
+        android:fontFamily="@font/koddi"
         app:layout_constraintStart_toStartOf="@+id/textView30"
         app:layout_constraintTop_toBottomOf="@+id/textView30" />
 
@@ -76,6 +81,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="#000000"
         android:text="전화걸기"
+        android:fontFamily="@font/koddi"
         app:layout_constraintBottom_toBottomOf="@+id/button13"
         app:layout_constraintEnd_toEndOf="@+id/imageView21"
         app:layout_constraintTop_toTopOf="@+id/button13" />
@@ -84,7 +90,8 @@
         android:id="@+id/textView32"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/koddi"
         android:text="평점"
         android:textColor="#000000"
         android:textSize="24sp"
@@ -111,7 +118,8 @@
         android:id="@+id/textView33"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/koddi"
         android:text="한줄평 남기기"
         android:textColor="#000000"
         android:textSize="24sp"
@@ -120,16 +128,17 @@
 
     <EditText
         android:id="@+id/editTextTextPersonName2"
-        android:layout_width="380dp"
+        android:layout_width="350dp"
         android:layout_height="204dp"
         android:layout_marginTop="8dp"
+        android:background="@drawable/shape_line2"
         android:ems="10"
         android:gravity="top"
         android:hint="한줄평 남기기"
+        android:fontFamily="@font/koddi"
         android:inputType="text|textMultiLine"
         android:minHeight="48dp"
         android:scrollbars="vertical"
-        android:background="@drawable/shape_line2"
         app:layout_constraintStart_toStartOf="@+id/textView33"
         app:layout_constraintTop_toBottomOf="@+id/textView33" />
 
@@ -137,11 +146,11 @@
         android:id="@+id/button15"
         android:layout_width="380dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginBottom="24dp"
         android:backgroundTint="#000000"
         android:text="반납승인하기"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

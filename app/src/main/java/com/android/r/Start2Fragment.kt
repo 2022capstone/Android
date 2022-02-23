@@ -44,10 +44,10 @@ class Start2Fragment : BaseFragment<FragmentStart2Binding>(R.layout.fragment_sta
             CarList(R.drawable.car_front, "model5", "owner5", "2022.02.25~2022.02.26")
         )
 
-        binding.rvCarRentBefore.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+        binding.rvCarRentBefore.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.rvCarRentBefore.setHasFixedSize(true)
 
-        binding.rvCarRentBefore.adapter = CarListAdapter(carList, navController, this)
+        binding.rvCarRentBefore.adapter = CarListAdapter(carList, this)
 
         return binding.root
     }

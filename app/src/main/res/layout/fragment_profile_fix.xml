@@ -16,6 +16,7 @@
         android:background="#00ff0000"
         android:text="수정완료"
         android:textColor="#000000"
+        android:fontFamily="@font/koddi"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,6 +29,7 @@
         android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold"
+        android:fontFamily="@font/koddi"
         app:layout_constraintBottom_toBottomOf="@+id/button20"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/button20" />
@@ -40,6 +42,7 @@
         android:text="이름"
         android:textColor="#000000"
         android:textSize="20sp"
+        android:fontFamily="@font/koddi"
         app:layout_constraintStart_toStartOf="@+id/textView38"
         app:layout_constraintTop_toBottomOf="@+id/textView38" />
 
@@ -51,6 +54,7 @@
         android:text="아이디"
         android:textColor="#000000"
         android:textSize="20sp"
+        android:fontFamily="@font/koddi"
         app:layout_constraintStart_toStartOf="@+id/textView39"
         app:layout_constraintTop_toBottomOf="@+id/textView39" />
 
@@ -62,6 +66,7 @@
         android:text="전화번호"
         android:textColor="#000000"
         android:textSize="20sp"
+        android:fontFamily="@font/koddi"
         app:layout_constraintStart_toStartOf="@+id/textView40"
         app:layout_constraintTop_toBottomOf="@+id/textView40" />
 
@@ -71,6 +76,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="지역"
+        android:fontFamily="@font/koddi"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/textView41"
@@ -82,6 +88,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="운전면허증번호"
+        android:fontFamily="@font/koddi"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/textView42"
@@ -93,6 +100,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="평균평점"
+        android:fontFamily="@font/koddi"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/textView43"
@@ -127,6 +135,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="이름"
+        android:fontFamily="@font/koddi"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView39"
@@ -140,6 +149,8 @@
         android:ems="10"
         android:inputType="phone"
         android:minHeight="48dp"
+        android:hint="000-0000-0000"
+        android:fontFamily="@font/koddi"
         app:layout_constraintBottom_toBottomOf="@+id/textView41"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="@+id/textView41"
@@ -151,6 +162,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="지역"
+        android:fontFamily="@font/koddi"
         android:inputType="textPersonName"
         android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView42"
