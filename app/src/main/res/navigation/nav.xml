@@ -24,9 +24,9 @@
     </fragment>
     <fragment
         android:id="@+id/myReservFragment"
-        android:name="com.android.r.MyReservFragment"
+        android:name="com.android.r.MyReserveFragment"
         android:label="fragment_my_reserv"
-        tools:layout="@layout/fragment_my_reserv" />
+        tools:layout="@layout/fragment_my_reserve" />
     <fragment
         android:id="@+id/myCarFragment"
         android:name="com.android.r.MyCarFragment"

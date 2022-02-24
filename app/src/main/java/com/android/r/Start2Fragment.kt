@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.addCallback
 import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.ListAdapter
@@ -41,13 +43,21 @@ class Start2Fragment : BaseFragment<FragmentStart2Binding>(R.layout.fragment_sta
             CarList(R.drawable.car_front, "model2", "owner2", "2022.02.22~2022.02.23"),
             CarList(R.drawable.car_front, "model3", "owner3", "2022.02.23~2022.02.24"),
             CarList(R.drawable.car_front, "model4", "owner4", "2022.02.24~2022.02.25"),
-            CarList(R.drawable.car_front, "model5", "owner5", "2022.02.25~2022.02.26")
+            CarList(R.drawable.car_front, "model5", "owner5", "2022.02.25~2022.02.26"),
+            CarList(R.drawable.car_front, "model6", "owner6", "2022.02.26~2022.02.27"),
+            CarList(R.drawable.car_front, "model7", "owner7", "2022.02.27~2022.02.28")
         )
 
         binding.rvCarRentBefore.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.rvCarRentBefore.setHasFixedSize(true)
 
         binding.rvCarRentBefore.adapter = CarListAdapter(carList, this)
+
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(this){
+            if(binding.layoutDrawer.isDrawerOpen(GravityCompat.START)){
+                binding.layoutDrawer.closeDrawers()
+            }
+        }
 
         return binding.root
     }
@@ -62,13 +72,12 @@ class Start2Fragment : BaseFragment<FragmentStart2Binding>(R.layout.fragment_sta
             R.id.usagedetail -> navController.navigate(R.id.action_start2Fragment_to_usageDetailFragment)
             R.id.chat -> navController.navigate(R.id.action_start2Fragment_to_chatFragment)
         }
-        //binding.layoutDrawer.closeDrawers() //네이게이션 뷰 닫기
+
         return false
     }
 
-
-
-
 }
+
+
 
 

@@ -16,13 +16,14 @@
         <entry key="..\:/Users/rlatn/R/app/src/main/res/font/font.xml" value="0.16944444444444445" />
         <entry key="..\:/Users/rlatn/R/app/src/main/res/layout/activity_home.xml" value="0.264" />
         <entry key="..\:/Users/rlatn/R/app/src/main/res/layout/activity_main.xml" value="0.264" />
-        <entry key="..\:/Users/rlatn/R/app/src/main/res/layout/fragment_car_register.xml" value="0.6" />
+        <entry key="..\:/Users/rlatn/R/app/src/main/res/layout/fragment_car_register.xml" value="0.2" />
         <entry key="..\:/Users/rlatn/R/app/src/main/res/layout/fragment_car_select.xml" value="0.264" />
         <entry key="..\:/Users/rlatn/R/app/src/main/res/layout/fragment_chat.xml" value="0.16032608695652173" />
         <entry key="..\:/Users/rlatn/R/app/src/main/res/layout/fragment_home2.xml" value="0.25885416666666666" />
         <entry key="..\:/Users/rlatn/R/app/src/main/res/layout/fragment_login.xml" value="0.16799999999999998" />
         <entry key="..\:/Users/rlatn/R/app/src/main/res/layout/fragment_my_car.xml" value="0.264" />
         <entry key="..\:/Users/rlatn/R/app/src/main/res/layout/fragment_my_reserv.xml" value="0.264" />
+        <entry key="..\:/Users/rlatn/R/app/src/main/res/layout/fragment_my_reserve.xml" value="0.25885416666666666" />
         <entry key="..\:/Users/rlatn/R/app/src/main/res/layout/fragment_pic_check.xml" value="0.25885416666666666" />
         <entry key="..\:/Users/rlatn/R/app/src/main/res/layout/fragment_pic_check_after.xml" value="0.2" />
         <entry key="..\:/Users/rlatn/R/app/src/main/res/layout/fragment_pictures_check.xml" value="0.25885416666666666" />
@@ -32,14 +33,14 @@
         <entry key="..\:/Users/rlatn/R/app/src/main/res/layout/fragment_review.xml" value="0.264" />
         <entry key="..\:/Users/rlatn/R/app/src/main/res/layout/fragment_sign_up.xml" value="0.25885416666666666" />
         <entry key="..\:/Users/rlatn/R/app/src/main/res/layout/fragment_start.xml" value="0.264" />
-        <entry key="..\:/Users/rlatn/R/app/src/main/res/layout/fragment_start2.xml" value="0.264" />
+        <entry key="..\:/Users/rlatn/R/app/src/main/res/layout/fragment_start2.xml" value="0.25885416666666666" />
         <entry key="..\:/Users/rlatn/R/app/src/main/res/layout/fragment_take_pictures.xml" value="0.264" />
         <entry key="..\:/Users/rlatn/R/app/src/main/res/layout/fragment_usage_detail.xml" value="0.264" />
         <entry key="..\:/Users/rlatn/R/app/src/main/res/layout/list_car.xml" value="0.25885416666666666" />
         <entry key="..\:/Users/rlatn/R/app/src/main/res/layout/list_car_rent_before.xml" value="0.264" />
         <entry key="..\:/Users/rlatn/R/app/src/main/res/layout/nav_header_main.xml" value="0.25885416666666666" />
         <entry key="..\:/Users/rlatn/R/app/src/main/res/menu/activity_home.xml" value="0.25885416666666666" />
-        <entry key="..\:/Users/rlatn/R/app/src/main/res/menu/nav_menu.xml" value="0.16" />
+        <entry key="..\:/Users/rlatn/R/app/src/main/res/menu/nav_menu.xml" value="0.25885416666666666" />
         <entry key="..\:/Users/rlatn/R/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.15625" />
         <entry key="..\:/Users/rlatn/R/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.15625" />
       </map>

@@ -2,18 +2,18 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_car"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#FFFFFF"
-    android:backgroundTint="#FFFFFF"
-    android:id="@+id/card_car">
+    android:backgroundTint="#FFFFFF">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
         android:background="@drawable/shape"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -40,11 +40,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
-            android:text="차종"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/koddi"
+            android:text="차종"
             android:textColor="#000000"
-            android:textSize="16sp"
+            android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@+id/iv_car"
             app:layout_constraintTop_toTopOf="@+id/iv_car" />
 
@@ -53,8 +53,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="•"
             android:fontFamily="@font/koddi"
+            android:text="•"
             android:textColor="#000000"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/tv_model"
@@ -65,10 +65,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="차주"
             android:fontFamily="@font/koddi"
+            android:text="차주"
             android:textColor="#000000"
-            android:textSize="16sp"
+            android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@+id/textView6"
             app:layout_constraintTop_toTopOf="@+id/textView6" />
 
@@ -76,11 +76,11 @@
             android:id="@+id/tv_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:text="대여가능날짜"
+            android:layout_marginBottom="8dp"
             android:fontFamily="@font/koddi"
+            android:text="대여가능날짜"
             android:textColor="#000000"
-            android:textSize="20sp"
+            android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="@+id/iv_car"
             app:layout_constraintStart_toStartOf="@+id/tv_model" />
 
