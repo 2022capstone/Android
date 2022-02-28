@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:backgroundTint="#FFFFFF"
     android:foregroundTint="#FFFFFF"
-    tools:context=".CarSelectFragment">
+    tools:context=".ui.CarSelectFragment">
 
 
     <ImageView
@@ -110,12 +110,13 @@
         app:layout_constraintTop_toTopOf="@+id/imageButton2" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_book"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:backgroundTint="#000000"
         android:text="BOOK NOW"
+        android:textColor="@color/white"
         android:textSize="14sp"
         android:fontFamily="@font/koddi"
         app:layout_constraintEnd_toEndOf="parent"

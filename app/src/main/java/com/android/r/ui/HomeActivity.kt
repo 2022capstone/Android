@@ -1,8 +1,9 @@
-package com.android.r
+package com.android.r.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
+import com.android.r.R
 
 
 open class HomeActivity : AppCompatActivity() {

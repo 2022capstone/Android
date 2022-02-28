@@ -84,5 +84,17 @@
             app:layout_constraintBottom_toBottomOf="@+id/iv_car"
             app:layout_constraintStart_toStartOf="@+id/tv_model" />
 
+        <Button
+            android:id="@+id/btn_state"
+            android:layout_width="100dp"
+            android:layout_height="65dp"
+            android:layout_marginEnd="8dp"
+            android:backgroundTint="@color/gray2"
+            android:fontFamily="@font/koddi"
+            android:text="대여상태"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

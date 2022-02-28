@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TakePicturesFragment">
+    tools:context=".ui.TakePicturesFragment">
 
 
     <Button
@@ -89,12 +89,13 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/btn_take_finish"
         android:layout_width="310dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:backgroundTint="#000000"
         android:text="촬영 완료"
+        android:textColor="@color/white"
         android:fontFamily="@font/koddi"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -5,7 +5,7 @@
     android:id="@+id/layout_drawer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Start2Fragment"
+    tools:context=".ui.Start2Fragment"
     android:background="@color/white">
 
     <androidx.constraintlayout.widget.ConstraintLayout

@@ -1,22 +1,23 @@
-package com.android.r
+package com.android.r.ui.menu
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
+import com.android.r.R
+import com.android.r.ui.CarList
 
-class UsedCarAdapter(val carList: ArrayList<CarList>, myReserveFragment: MyReserveFragment) : RecyclerView.Adapter<UsedCarAdapter.CustomViewHolder>(){
+class ReservationAdapter(val carList: ArrayList<CarList>, myReserveFragment: MyReserveFragment) : RecyclerView.Adapter<ReservationAdapter.CustomViewHolder>(){
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsedCarAdapter.CustomViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_car, parent, false)
         return CustomViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: UsedCarAdapter.CustomViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
         holder.image.setImageResource(carList.get(position).image)
         holder.model.text = carList.get(position).model
         holder.owner.text = carList.get(position).owner
