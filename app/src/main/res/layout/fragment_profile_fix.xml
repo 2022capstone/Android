@@ -8,12 +8,12 @@
     tools:context=".ui.ProfileFixFragment">
 
     <Button
-        android:id="@+id/button20"
+        android:id="@+id/btn_fix_done"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="35dp"
         android:layout_marginEnd="32dp"
-        android:background="#00ff0000"
+        android:backgroundTint="#00ff0000"
         android:text="수정완료"
         android:textColor="#000000"
         android:fontFamily="@font/koddi"
@@ -30,9 +30,9 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:fontFamily="@font/koddi"
-        app:layout_constraintBottom_toBottomOf="@+id/button20"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_fix_done"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button20" />
+        app:layout_constraintTop_toTopOf="@+id/btn_fix_done" />
 
     <TextView
         android:id="@+id/textView39"
@@ -99,28 +99,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="평균평점"
         android:fontFamily="@font/koddi"
+        android:text="평균평점"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/textView43"
-        app:layout_constraintTop_toBottomOf="@+id/textView43" />
-
-    <RatingBar
-        android:id="@+id/ratingBar2"
-        style="@android:style/Widget.DeviceDefault.Light.RatingBar.Indicator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:isIndicator="false"
-        android:max="5"
-        android:numStars="5"
-        android:progressTint="@color/black"
-        android:rating="4"
-        app:layout_constraintBottom_toBottomOf="@+id/textView44"
-        app:layout_constraintStart_toEndOf="@+id/textView44"
-        app:layout_constraintTop_toTopOf="@+id/textView44"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintTop_toBottomOf="@+id/textView56" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
@@ -168,5 +152,41 @@
         app:layout_constraintBottom_toBottomOf="@+id/textView42"
         app:layout_constraintStart_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="@+id/textView42" />
+
+    <TextView
+        android:id="@+id/textView55"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="아이디"
+        android:fontFamily="@font/koddi"
+        android:textSize="17dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/textView40"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="@+id/textView40" />
+
+    <TextView
+        android:id="@+id/textView56"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="00-00-000000-00"
+        android:textColor="@color/black"
+        android:textSize="17dp"
+        app:layout_constraintStart_toStartOf="@+id/textView43"
+        app:layout_constraintTop_toBottomOf="@+id/textView43" />
+
+    <TextView
+        android:id="@+id/textView57"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="4.0"
+        android:textSize="17dp"
+        android:fontFamily="@font/koddi"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/textView44"
+        app:layout_constraintStart_toStartOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="@+id/textView44"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

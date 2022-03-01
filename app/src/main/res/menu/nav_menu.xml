@@ -3,6 +3,9 @@
 
     <group android:checkableBehavior="single">
 
+        <item android:id="@+id/myinformation"
+            android:title="내정보"></item>
+
         <item android:id="@+id/myreservation"
             android:title="내예약현황" />
 

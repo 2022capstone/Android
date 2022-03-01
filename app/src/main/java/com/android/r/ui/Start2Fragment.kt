@@ -73,7 +73,8 @@ class Start2Fragment : BaseFragment<FragmentStart2Binding>(R.layout.fragment_sta
 
         //네비게이션 메뉴 아이템 클릭 시 수행
         when(item.itemId){
-            R.id.myreservation -> navController.navigate(R.id.action_global_myReservFragment)
+            R.id.myinformation -> navController.navigate(R.id.action_start2Fragment_to_profileFragment)
+            R.id.myreservation -> navController.navigate(R.id.action_start2Fragment_to_myReservFragment)
             R.id.mycar -> navController.navigate(R.id.action_start2Fragment_to_myCarFragment)
             R.id.usagedetail -> navController.navigate(R.id.action_start2Fragment_to_usageDetailFragment)
             R.id.chat -> navController.navigate(R.id.action_start2Fragment_to_chatFragment)

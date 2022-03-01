@@ -1,16 +1,19 @@
 package com.android.r.ui.menu
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.android.r.R
 import com.android.r.ui.CarList
 
 class RequestRentalAdapter(val carList: ArrayList<CarList>, myCarFragment: MyCarFragment) : RecyclerView.Adapter<RequestRentalAdapter.CustomViewHolder>(){
+
 
     private lateinit var mListener: onItemClickListener
 
@@ -48,6 +51,10 @@ class RequestRentalAdapter(val carList: ArrayList<CarList>, myCarFragment: MyCar
 
         init {
             itemView.setOnClickListener {
+                listener.onItemClick(adapterPosition)
+            }
+            itemView.findViewById<Button>(R.id.btn_state).setOnClickListener {
+                Log.d("test","click")
                 listener.onItemClick(adapterPosition)
             }
         }

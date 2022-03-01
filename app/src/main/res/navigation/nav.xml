@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_start2Fragment_to_chatFragment"
             app:destination="@id/chatFragment" />
+        <action
+            android:id="@+id/action_start2Fragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
     <fragment
         android:id="@+id/myReservFragment"
@@ -41,6 +44,12 @@
         <action
             android:id="@+id/action_myCarFragment_to_picCheckFragment"
             app:destination="@id/picCheckFragment" />
+        <action
+            android:id="@+id/action_myCarFragment_to_picCheckAfterFragment"
+            app:destination="@id/picCheckAfterFragment" />
+        <action
+            android:id="@+id/action_myCarFragment_to_profileCheckFragment"
+            app:destination="@id/profileCheckFragment" />
     </fragment>
     <fragment
         android:id="@+id/usageDetailFragment"
@@ -85,4 +94,41 @@
         android:name="com.android.r.ui.PicCheckFragment"
         android:label="fragment_pic_check"
         tools:layout="@layout/fragment_pic_check" />
+    <fragment
+        android:id="@+id/picCheckAfterFragment"
+        android:name="com.android.r.ui.PicCheckAfterFragment"
+        android:label="fragment_pic_check_after"
+        tools:layout="@layout/fragment_pic_check_after" >
+        <action
+            android:id="@+id/action_picCheckAfterFragment_to_reviewFragment"
+            app:destination="@id/reviewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.android.r.ui.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_profileFixFragment"
+            app:destination="@id/profileFixFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileCheckFragment"
+        android:name="com.android.r.ui.ProfileCheckFragment"
+        android:label="fragment_profile_check"
+        tools:layout="@layout/fragment_profile_check" />
+    <fragment
+        android:id="@+id/profileFixFragment"
+        android:name="com.android.r.ui.ProfileFixFragment"
+        android:label="fragment_profile_fix"
+        tools:layout="@layout/fragment_profile_fix" >
+        <action
+            android:id="@+id/action_profileFixFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/reviewFragment"
+        android:name="com.android.r.ui.ReviewFragment"
+        android:label="fragment_review"
+        tools:layout="@layout/fragment_review" />
 </navigation>
