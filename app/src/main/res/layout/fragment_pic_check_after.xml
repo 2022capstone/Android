@@ -300,7 +300,7 @@
             app:layout_constraintTop_toBottomOf="@+id/imageView20" />
 
         <Button
-            android:id="@+id/button12"
+            android:id="@+id/btn_review"
             android:layout_width="330dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"

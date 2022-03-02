@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ReviewFragment">
+    tools:context=".ui.ReviewFragment"
+    android:background="@color/white">
 
 
     <TextView
@@ -65,26 +66,28 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView21" />
 
     <Button
-        android:id="@+id/button13"
+        android:id="@+id/btn_message"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:backgroundTint="#000000"
         android:text="메시지"
+        android:textColor="@color/white"
         android:fontFamily="@font/koddi"
         app:layout_constraintStart_toStartOf="@+id/textView30"
         app:layout_constraintTop_toBottomOf="@+id/textView30" />
 
     <Button
-        android:id="@+id/button14"
+        android:id="@+id/btn_call"
         android:layout_width="130dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#000000"
         android:text="전화걸기"
+        android:textColor="@color/white"
         android:fontFamily="@font/koddi"
-        app:layout_constraintBottom_toBottomOf="@+id/button13"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_message"
         app:layout_constraintEnd_toEndOf="@+id/imageView21"
-        app:layout_constraintTop_toTopOf="@+id/button13" />
+        app:layout_constraintTop_toTopOf="@+id/btn_message" />
 
     <TextView
         android:id="@+id/textView32"
@@ -95,8 +98,8 @@
         android:text="평점"
         android:textColor="#000000"
         android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="@+id/button13"
-        app:layout_constraintTop_toBottomOf="@+id/button13" />
+        app:layout_constraintStart_toStartOf="@+id/btn_message"
+        app:layout_constraintTop_toBottomOf="@+id/btn_message" />
 
     <RatingBar
         android:id="@+id/ratingBar"
@@ -128,27 +131,29 @@
 
     <EditText
         android:id="@+id/editTextTextPersonName2"
-        android:layout_width="350dp"
+        android:layout_width="345dp"
         android:layout_height="204dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/shape_line2"
         android:ems="10"
+        android:fontFamily="@font/koddi"
         android:gravity="top"
         android:hint="한줄평 남기기"
-        android:fontFamily="@font/koddi"
         android:inputType="text|textMultiLine"
         android:minHeight="48dp"
         android:scrollbars="vertical"
-        app:layout_constraintStart_toStartOf="@+id/textView33"
+        app:layout_constraintEnd_toEndOf="@+id/btn_return_approval"
+        app:layout_constraintStart_toStartOf="@+id/btn_return_approval"
         app:layout_constraintTop_toBottomOf="@+id/textView33" />
 
     <Button
-        android:id="@+id/button15"
+        android:id="@+id/btn_return_approval"
         android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:backgroundTint="#000000"
         android:text="반납승인하기"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

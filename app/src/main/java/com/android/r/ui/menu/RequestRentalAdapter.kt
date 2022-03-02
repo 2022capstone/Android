@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.android.r.R
 import com.android.r.ui.CarList
@@ -18,7 +17,7 @@ class RequestRentalAdapter(val carList: ArrayList<CarList>, myCarFragment: MyCar
     private lateinit var mListener: onItemClickListener
 
     interface onItemClickListener{
-        fun onItemClick(position: Int)
+        fun onItemClick(position: Button)
     }
 
     fun setOnItemClickListener(listener: onItemClickListener){
@@ -50,12 +49,12 @@ class RequestRentalAdapter(val carList: ArrayList<CarList>, myCarFragment: MyCar
         val state = itemView.findViewById<Button>(R.id.btn_state) //대여상태
 
         init {
-            itemView.setOnClickListener {
+            /*itemView.setOnClickListener {
                 listener.onItemClick(adapterPosition)
-            }
+            }*/
             itemView.findViewById<Button>(R.id.btn_state).setOnClickListener {
                 Log.d("test","click")
-                listener.onItemClick(adapterPosition)
+                listener.onItemClick(state)
             }
         }
     }

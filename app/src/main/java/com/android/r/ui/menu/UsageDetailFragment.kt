@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.r.R
 import com.android.r.base.BaseFragment
@@ -35,8 +36,10 @@ class UsageDetailFragment : BaseFragment<FragmentUsageDetailBinding>(R.layout.fr
         var adapter = CurrentCarAdapter(currentcarList, this)
         binding.rvCurrentCar.adapter = adapter
         adapter.setOnItemClickListener(object : CurrentCarAdapter.onItemClickListener{
-            override fun onItemClick(position: Int){
+            override fun onItemClick(position: Button){
+                if(position.text == "대여준비"){
                 navController.navigate(R.id.action_usageDetailFragment_to_takePicturesFragment)
+                }
             }
         })
 

@@ -6,11 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.android.r.R
 import com.android.r.base.BaseFragment
 import com.android.r.databinding.FragmentMyCarBinding
-import com.android.r.databinding.ListCarBtnBinding
 import com.android.r.ui.CarList
 
 
@@ -41,10 +39,16 @@ class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_ca
         var adapter = RequestRentalAdapter(requestlentalList, this)
         binding.rvRequestRental.adapter = adapter
         adapter.setOnItemClickListener(object : RequestRentalAdapter.onItemClickListener{
-            override fun onItemClick(position: Int) {
-                navController.navigate(R.id.action_myCarFragment_to_profileCheckFragment)//예약대기
-                //navController.navigate(R.id.action_myCarFragment_to_picCheckFragment)//예약승인
-                //navController.navigate(R.id.action_myCarFragment_to_picCheckAfterFragment)//반납대기
+            override fun onItemClick(position: Button) {
+                if(position.text == "예약대기") {
+                    navController.navigate(R.id.action_myCarFragment_to_profileCheckFragment)
+                }//예약대기
+                if(position.text == "예약승인"){
+                    navController.navigate(R.id.action_myCarFragment_to_picCheckFragment)//예약승인
+                }
+                if(position.text == "반납대기"){
+                    navController.navigate(R.id.action_myCarFragment_to_picCheckAfterFragment)//반납대기
+                }
             }
         })
 

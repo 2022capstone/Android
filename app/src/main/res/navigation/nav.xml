@@ -65,7 +65,11 @@
         android:id="@+id/carRegisterFragment"
         android:name="com.android.r.ui.CarRegisterFragment"
         android:label="fragment_car_register"
-        tools:layout="@layout/fragment_car_register" />
+        tools:layout="@layout/fragment_car_register" >
+        <action
+            android:id="@+id/action_carRegisterFragment_to_myCarFragment"
+            app:destination="@id/myCarFragment" />
+    </fragment>
     <fragment
         android:id="@+id/carSelectFragment"
         android:name="com.android.r.ui.CarSelectFragment"
@@ -93,7 +97,11 @@
         android:id="@+id/picCheckFragment"
         android:name="com.android.r.ui.PicCheckFragment"
         android:label="fragment_pic_check"
-        tools:layout="@layout/fragment_pic_check" />
+        tools:layout="@layout/fragment_pic_check" >
+        <action
+            android:id="@+id/action_picCheckFragment_to_myCarFragment"
+            app:destination="@id/myCarFragment" />
+    </fragment>
     <fragment
         android:id="@+id/picCheckAfterFragment"
         android:name="com.android.r.ui.PicCheckAfterFragment"
@@ -116,7 +124,11 @@
         android:id="@+id/profileCheckFragment"
         android:name="com.android.r.ui.ProfileCheckFragment"
         android:label="fragment_profile_check"
-        tools:layout="@layout/fragment_profile_check" />
+        tools:layout="@layout/fragment_profile_check" >
+        <action
+            android:id="@+id/action_profileCheckFragment_to_myCarFragment"
+            app:destination="@id/myCarFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileFixFragment"
         android:name="com.android.r.ui.ProfileFixFragment"
@@ -130,5 +142,9 @@
         android:id="@+id/reviewFragment"
         android:name="com.android.r.ui.ReviewFragment"
         android:label="fragment_review"
-        tools:layout="@layout/fragment_review" />
+        tools:layout="@layout/fragment_review" >
+        <action
+            android:id="@+id/action_reviewFragment_to_myCarFragment"
+            app:destination="@id/myCarFragment" />
+    </fragment>
 </navigation>

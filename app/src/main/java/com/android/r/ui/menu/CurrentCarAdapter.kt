@@ -1,5 +1,6 @@
 package com.android.r.ui.menu
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,7 +16,7 @@ class CurrentCarAdapter(val carList: ArrayList<CarList>, usageDetailFragment: Us
     private lateinit var mListener : onItemClickListener
 
     interface onItemClickListener{
-        fun onItemClick(position: Int)
+        fun onItemClick(position: Button)
     }
 
     fun setOnItemClickListener(listener: onItemClickListener){
@@ -48,8 +49,9 @@ class CurrentCarAdapter(val carList: ArrayList<CarList>, usageDetailFragment: Us
         val state = itemView.findViewById<Button>(R.id.btn_state) //대여상태
 
         init {
-            itemView.setOnClickListener {
-                listener.onItemClick(adapterPosition)
+            itemView.findViewById<Button>(R.id.btn_state).setOnClickListener {
+                Log.d("test","click")
+                listener.onItemClick(state)
             }
         }
 
