@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
+import androidx.core.view.GravityCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.r.R
 import com.android.r.base.BaseFragment
@@ -33,7 +35,20 @@ class MyReserveFragment : BaseFragment<FragmentMyReserveBinding>(R.layout.fragme
         binding.rvReserve.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.rvReserve.setHasFixedSize(true)
 
-        binding.rvReserve.adapter = ReservationAdapter(reserveList, this)
+        //binding.rvReserve.adapter = ReservationAdapter(reserveList, this)
+        var adapter = ReservationAdapter(reserveList, this)
+        binding.rvReserve.adapter = adapter
+        adapter.setOnItemClickListener(object : ReservationAdapter.onItemClickListener{
+            override fun onItemClick(position: Int) {
+                navController.navigate(R.id.action_myReservFragment_to_carDetailFragment)
+            }
+
+        })
+
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(this){
+            navController.navigate(R.id.action_myReservFragment_to_start2Fragment)
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
 
         return binding.root
     }

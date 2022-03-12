@@ -1,4 +1,4 @@
-package com.android.r.ui
+package com.android.r.ui.menu
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.android.r.R
 import com.android.r.base.BaseFragment
-import com.android.r.databinding.FragmentProfileBinding
+import com.android.r.databinding.FragmentProfileFixBinding
 
-class ProfileFragment : BaseFragment<FragmentProfileBinding>(R.layout.fragment_profile) {
+class ProfileFixFragment : BaseFragment<FragmentProfileFixBinding>(R.layout.fragment_profile_fix) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,12 +19,13 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(R.layout.fragment_p
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentProfileBinding.inflate(inflater, container, false)
+        val binding = FragmentProfileFixBinding.inflate(inflater, container, false)
 
-        binding.btnFix.setOnClickListener {
-            navController.navigate(R.id.action_profileFragment_to_profileFixFragment)
+        binding.btnFixDone.setOnClickListener {
+            navController.navigate(R.id.action_profileFixFragment_to_profileFragment)
         }
 
         return binding.root
     }
+
 }

@@ -11,10 +11,19 @@ import com.android.r.ui.CarList
 
 class UsedCarAdapter(val carList: ArrayList<CarList>, usageDetailFragment: UsageDetailFragment) : RecyclerView.Adapter<UsedCarAdapter.CustomViewHolder>(){
 
+    private lateinit var mListener: UsedCarAdapter.onItemClickListener
+
+    interface  onItemClickListener{
+        fun onItemClick(position: Int)
+    }
+
+    fun setOnItemClickListener(listener: onItemClickListener){
+        mListener = listener
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.list_car, parent, false)
-        return CustomViewHolder(view)
+        return CustomViewHolder(view, mListener)
     }
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
@@ -28,11 +37,18 @@ class UsedCarAdapter(val carList: ArrayList<CarList>, usageDetailFragment: Usage
         return carList.size
     }
 
-    class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class CustomViewHolder(itemView: View, listener: onItemClickListener) : RecyclerView.ViewHolder(itemView) {
         val image = itemView.findViewById<ImageView>(R.id.iv_car) //차 사진
         val model = itemView.findViewById<TextView>(R.id.tv_model)  //모델
         val owner = itemView.findViewById<TextView>(R.id.tv_owner) //차주
         val date = itemView.findViewById<TextView>(R.id.tv_date) //날짜
+
+        init {
+            itemView.setOnClickListener{
+                listener.onItemClick(adapterPosition)
+            }
+        }
+
     }
 
 }

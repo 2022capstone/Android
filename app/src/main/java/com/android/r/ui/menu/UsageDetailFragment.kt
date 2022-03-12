@@ -5,12 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.activity.addCallback
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.r.R
 import com.android.r.base.BaseFragment
 import com.android.r.databinding.FragmentUsageDetailBinding
 import com.android.r.ui.CarList
-
 
 class UsageDetailFragment : BaseFragment<FragmentUsageDetailBinding>(R.layout.fragment_usage_detail) {
 
@@ -33,16 +33,15 @@ class UsageDetailFragment : BaseFragment<FragmentUsageDetailBinding>(R.layout.fr
         binding.rvCurrentCar.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.rvCurrentCar.setHasFixedSize(true)
 
-        var adapter = CurrentCarAdapter(currentcarList, this)
-        binding.rvCurrentCar.adapter = adapter
-        adapter.setOnItemClickListener(object : CurrentCarAdapter.onItemClickListener{
+        var currenrcaradapter = CurrentCarAdapter(currentcarList, this)
+        binding.rvCurrentCar.adapter = currenrcaradapter
+        currenrcaradapter.setOnItemClickListener(object : CurrentCarAdapter.onItemClickListener{
             override fun onItemClick(position: Button){
                 if(position.text == "대여준비"){
                 navController.navigate(R.id.action_usageDetailFragment_to_takePicturesFragment)
                 }
             }
         })
-
 
 
         //과거이용했던차량
@@ -56,7 +55,22 @@ class UsageDetailFragment : BaseFragment<FragmentUsageDetailBinding>(R.layout.fr
         binding.rvUsedCar.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.rvUsedCar.setHasFixedSize(true)
 
-        binding.rvUsedCar.adapter = UsedCarAdapter(usedcarList, this)
+        //binding.rvUsedCar.adapter = UsedCarAdapter(usedcarList, this)
+        var usedcaradapter = UsedCarAdapter(usedcarList, this)
+        binding.rvUsedCar.adapter = usedcaradapter
+        usedcaradapter.setOnItemClickListener(object : UsedCarAdapter.onItemClickListener{
+            override fun onItemClick(position: Int) {
+                navController.navigate(R.id.action_usageDetailFragment_to_carDetailFragment)
+            }
+
+        })
+
+
+        //뒤로가기
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(this){
+            navController.navigate(R.id.action_usageDetailFragment_to_start2Fragment)
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
 
         return binding.root
     }

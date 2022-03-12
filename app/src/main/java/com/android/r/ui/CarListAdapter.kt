@@ -39,6 +39,7 @@ class CarListAdapter(val carList: ArrayList<CarList>, start2Fragment: Start2Frag
         return carList.size
     }
 
+
     class CustomViewHolder(itemView: View, listener: onItemClickListener) : RecyclerView.ViewHolder(itemView) {
         val image = itemView.findViewById<ImageView>(R.id.iv_car) //차 사진
         val model = itemView.findViewById<TextView>(R.id.tv_model)  //모델

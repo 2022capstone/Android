@@ -7,9 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import com.android.r.R
 import com.android.r.base.BaseFragment
-import com.android.r.databinding.FragmentProfileFixBinding
+import com.android.r.databinding.FragmentCarDetailBinding
 
-class ProfileFixFragment : BaseFragment<FragmentProfileFixBinding>(R.layout.fragment_profile_fix) {
+class CarDetailFragment : BaseFragment<FragmentCarDetailBinding>(R.layout.fragment_car_detail) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,11 +19,9 @@ class ProfileFixFragment : BaseFragment<FragmentProfileFixBinding>(R.layout.frag
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentProfileFixBinding.inflate(inflater, container, false)
+        val binding = FragmentCarDetailBinding.inflate(inflater, container, false)
 
-        binding.btnFixDone.setOnClickListener {
-            navController.navigate(R.id.action_profileFixFragment_to_profileFragment)
-        }
+
 
         return binding.root
     }

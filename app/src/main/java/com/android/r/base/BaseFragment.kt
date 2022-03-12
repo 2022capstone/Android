@@ -55,4 +55,5 @@ abstract class BaseFragment <B : ViewBinding>(@LayoutRes private val layoutResId
 
     }
 
+
 }

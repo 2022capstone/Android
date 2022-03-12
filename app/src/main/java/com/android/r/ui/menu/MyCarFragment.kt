@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.activity.addCallback
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.r.R
 import com.android.r.base.BaseFragment
@@ -73,6 +74,13 @@ class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_ca
         binding.btnCarRegistration.setOnClickListener {
             navController.navigate(R.id.action_myCarFragment_to_carRegisterFragment)
         }
+
+
+        //뒤로가기
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(this){
+            navController.navigate(R.id.action_myCarFragment_to_start2Fragment)
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
 
 
         return binding.root

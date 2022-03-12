@@ -1,10 +1,7 @@
 package com.android.r.ui
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.MenuItem
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.core.view.GravityCompat
@@ -57,12 +54,12 @@ class Start2Fragment : BaseFragment<FragmentStart2Binding>(R.layout.fragment_sta
         })
 
 
-
         val callback = requireActivity().onBackPressedDispatcher.addCallback(this){
             if(binding.layoutDrawer.isDrawerOpen(GravityCompat.START)){
                 binding.layoutDrawer.closeDrawers()
             }
         }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
 
         return binding.root
     }

@@ -32,7 +32,14 @@
         android:id="@+id/myReservFragment"
         android:name="com.android.r.ui.menu.MyReserveFragment"
         android:label="fragment_my_reserv"
-        tools:layout="@layout/fragment_my_reserve" />
+        tools:layout="@layout/fragment_my_reserve" >
+        <action
+            android:id="@+id/action_myReservFragment_to_carDetailFragment"
+            app:destination="@id/carDetailFragment" />
+        <action
+            android:id="@+id/action_myReservFragment_to_start2Fragment"
+            app:destination="@id/start2Fragment" />
+    </fragment>
     <fragment
         android:id="@+id/myCarFragment"
         android:name="com.android.r.ui.menu.MyCarFragment"
@@ -50,6 +57,9 @@
         <action
             android:id="@+id/action_myCarFragment_to_profileCheckFragment"
             app:destination="@id/profileCheckFragment" />
+        <action
+            android:id="@+id/action_myCarFragment_to_start2Fragment"
+            app:destination="@id/start2Fragment" />
     </fragment>
     <fragment
         android:id="@+id/usageDetailFragment"
@@ -59,8 +69,13 @@
         <action
             android:id="@+id/action_usageDetailFragment_to_takePicturesFragment"
             app:destination="@id/takePicturesFragment" />
+        <action
+            android:id="@+id/action_usageDetailFragment_to_carDetailFragment"
+            app:destination="@id/carDetailFragment" />
+        <action
+            android:id="@+id/action_usageDetailFragment_to_start2Fragment"
+            app:destination="@id/start2Fragment" />
     </fragment>
-    <action android:id="@+id/action_global_myReservFragment" app:destination="@id/myReservFragment"/>
     <fragment
         android:id="@+id/carRegisterFragment"
         android:name="com.android.r.ui.CarRegisterFragment"
@@ -113,12 +128,15 @@
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.android.r.ui.ProfileFragment"
+        android:name="com.android.r.ui.menu.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
             android:id="@+id/action_profileFragment_to_profileFixFragment"
             app:destination="@id/profileFixFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_start2Fragment"
+            app:destination="@id/start2Fragment" />
     </fragment>
     <fragment
         android:id="@+id/profileCheckFragment"
@@ -131,7 +149,7 @@
     </fragment>
     <fragment
         android:id="@+id/profileFixFragment"
-        android:name="com.android.r.ui.ProfileFixFragment"
+        android:name="com.android.r.ui.menu.ProfileFixFragment"
         android:label="fragment_profile_fix"
         tools:layout="@layout/fragment_profile_fix" >
         <action
@@ -147,4 +165,9 @@
             android:id="@+id/action_reviewFragment_to_myCarFragment"
             app:destination="@id/myCarFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/carDetailFragment"
+        android:name="com.android.r.ui.CarDetailFragment"
+        android:label="fragment_car_detail"
+        tools:layout="@layout/fragment_car_detail" />
 </navigation>
