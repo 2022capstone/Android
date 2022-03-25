@@ -15,16 +15,12 @@ class PicCheckAfterFragment : BaseFragment<FragmentPicCheckAfterBinding>(R.layou
         super.onCreate(savedInstanceState)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val binding = FragmentPicCheckAfterBinding.inflate(inflater, container, false)
+    override fun initStartView() {
+        super.initStartView()
 
         binding.btnReview.setOnClickListener {
             navController.navigate(R.id.action_picCheckAfterFragment_to_reviewFragment)
         }
-
-        return binding.root
     }
+
 }

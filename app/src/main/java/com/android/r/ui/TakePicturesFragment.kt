@@ -1,27 +1,22 @@
 package com.android.r.ui
 
+import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.ImageDecoder
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.util.Log
+import android.view.*
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.app.AppCompatDialogFragment
-import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
 import com.android.r.R
 import com.android.r.base.BaseFragment
-import com.android.r.databinding.FragmentStart2Binding
 import com.android.r.databinding.FragmentTakePicturesBinding
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
@@ -33,84 +28,96 @@ import java.util.*
 
 class TakePicturesFragment : BaseFragment<FragmentTakePicturesBinding>(R.layout.fragment_take_pictures) {
 
-    val REQUEST_IMAGE_CAPTURE = 1 //카메라 사진 촬영 요청코드
-    var REQUEST = 0
-    lateinit var curPhotoPaht: String //문자열형태 사진 경로 값
+    var REQUEST_IMAGE_CAPTURE = 1 //카메라 사진 촬영 요청코드
+    //var REQUEST = 0
+    lateinit var imagePath : File
+    lateinit var curPhotoPath: String //문자열형태 사진 경로 값
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun initStartView() {
+        super.initStartView()
 
         setPermission()
-
-        val binding = FragmentTakePicturesBinding.inflate(inflater, container, false)
 
         binding.btnTakeFinish.setOnClickListener {
             navController.navigate(R.id.action_takePicturesFragment_to_usageDetailFragment)
         }
 
+
         binding.btnTakepicF.setOnClickListener{
-            REQUEST = 1
+            REQUEST_IMAGE_CAPTURE = 1
+            Log.d("test","click")
             takeCapture() //기본 카메라 앱을 실행하여 사진 촬영
         }
-        binding.btnTakepicB.setOnClickListener {
-            REQUEST = 2
-            takeCapture()
+        /*binding.btnTakepicB.setOnClickListener {
+            REQUEST_IMAGE_CAPTURE = 2
+            takeCapture("image2.jpeg")
         }
         binding.btnTakepicD.setOnClickListener {
-            REQUEST = 3
-            takeCapture()
+            REQUEST_IMAGE_CAPTURE = 3
+            takeCapture("image3.jpeg")
         }
         binding.btnTakepicDback.setOnClickListener {
-            REQUEST = 4
-            takeCapture()
+            REQUEST_IMAGE_CAPTURE = 4
+            takeCapture("image4.jpeg")
         }
         binding.btnTakepicP.setOnClickListener {
-            REQUEST = 5
-            takeCapture()
+            REQUEST_IMAGE_CAPTURE = 5
+            takeCapture("image5.jpeg")
         }
         binding.btnTakepicPback.setOnClickListener {
-            REQUEST = 6
-            takeCapture()
-        }
-
-        return binding.root
+            REQUEST_IMAGE_CAPTURE = 6
+            takeCapture("image6.jpeg")
+        }*/
     }
-
     //카메라 촬영
     private fun takeCapture() {
         //기본 카메라 앱 실행
+        Log.d("test","takecapture")
         Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
-            takePictureIntent.resolveActivity(requireActivity().packageManager)?.also {
-                val photoFile: File? = try {
+            takePictureIntent.resolveActivity(requireActivity().packageManager).also {
+                Log.d("test", "takeCapture : 2")
+                val photoFile: File? = try{
                     createImageFile()
-                }catch (ex: IOException){
+                }catch(ex:IOException){
+                    Log.d("test","error")
                     null
                 }
                 photoFile?.also {
                     val photoURI: Uri = FileProvider.getUriForFile(
                         this.requireContext(),
-                        "com.android.r.fileporvider",
+                        "com.android.r.fileprovider",
                         it
                     )
+                    Log.d("test", "takeCapture : 3")
                     takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
                     startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
                 }
             }
+            Log.d("test", "takeCapture : 4")
         }
     }
 
     //이미지파일 생성
     private fun createImageFile(): File {
-        val timestamp: String = SimpleDateFormat("yyyyMMdd").format(Date())
+        Log.d("test", "createImageFile")
+        /*var file = File(Environment.getExternalStorageDirectory(), "/path/")
+        if (!file.exists()) file.mkdir()
+
+        var imageFile = File("${Environment.getExternalStorageDirectory().absoluteFile}/path/", "$fileName")
+        imagePath = imageFile.absoluteFile
+        return imageFile*/
+
+        val timestamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+
         val storageDir: File? = requireActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-        return File.createTempFile("JPEG_${timestamp}_",".jpg", storageDir)
-            .apply { curPhotoPaht = absolutePath }
+        return File.createTempFile("JPEG_${timestamp}_", ".jpg", storageDir)
+            .apply { curPhotoPath = absolutePath }
+
     }
 
     //권한설정
@@ -138,36 +145,65 @@ class TakePicturesFragment : BaseFragment<FragmentTakePicturesBinding>(R.layout.
         //startActivityForResult를 통해서 기본 카메라 앱으로 부터 받아온 사진 결과 값
         super.onActivityResult(requestCode, resultCode, data)
 
-        if(requestCode == REQUEST_IMAGE_CAPTURE && requestCode == Activity.RESULT_OK){
-            //이미를 성공적으로 가져왔다면
-            val bitmap: Bitmap
-            val file = File(curPhotoPaht)
+        if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK){
+            //이미지를 성공적으로 가져왔다면
+            val file = File(curPhotoPath)
             if(Build.VERSION.SDK_INT < 28){
-                bitmap = MediaStore.Images.Media.getBitmap(requireActivity().contentResolver, Uri.fromFile(file))
-                when(REQUEST){
-                    1 -> binding.btnTakepicF.setImageBitmap(bitmap)
-                    2 -> binding.btnTakepicB.setImageBitmap(bitmap)
-                    3 -> binding.btnTakepicD.setImageBitmap(bitmap)
-                    4 -> binding.btnTakepicDback.setImageBitmap(bitmap)
-                    5 -> binding.btnTakepicP.setImageBitmap(bitmap)
-                    6 -> binding.btnTakepicPback.setImageBitmap(bitmap)
-                }
+                val bitmap = MediaStore.Images.Media
+                    .getBitmap(requireActivity().contentResolver, Uri.fromFile(file))
+                binding.ivF.setImageBitmap(bitmap)
+                /*when(REQUEST_IMAGE_CAPTURE){
+                    1 ->  imagePath?.apply {
+                        binding.ivF.visibility = View.VISIBLE
+                    }
+                    2 ->  imagePath?.apply {
+                        binding.ivB.visibility = View.VISIBLE
+                    }
+                    3 ->  imagePath?.apply {
+                        binding.ivDriver.visibility = View.VISIBLE
+                    }
+                    4 ->  imagePath?.apply {
+                        binding.ivDriverB.visibility = View.VISIBLE
+                    }
+                    5 ->  imagePath?.apply {
+                        binding.ivPassenger.visibility = View.VISIBLE
+                    }
+                    6 ->  imagePath?.apply {
+                        binding.ivPassengerB.visibility = View.VISIBLE
+                    }
+                }*/
             }else { //안드로이드 9.0버전보다 높을 경우
                 val decode = ImageDecoder.createSource(
-                    requireActivity().contentResolver,
+                    this.requireActivity().contentResolver,
                     Uri.fromFile(file)
                 )
-                bitmap = ImageDecoder.decodeBitmap(decode)
-                when(REQUEST){
-                    1 -> binding.btnTakepicF.setImageBitmap(bitmap)
-                    2 -> binding.btnTakepicB.setImageBitmap(bitmap)
-                    3 -> binding.btnTakepicD.setImageBitmap(bitmap)
-                    4 -> binding.btnTakepicDback.setImageBitmap(bitmap)
-                    5 -> binding.btnTakepicP.setImageBitmap(bitmap)
-                    6 -> binding.btnTakepicPback.setImageBitmap(bitmap)
-                }
+                val bitmap = ImageDecoder.decodeBitmap(decode)
+
+                binding.ivF.setImageBitmap(bitmap)
+
+                //binding.ivF.setImageBitmap(bitmap)
+                /*when(REQUEST_IMAGE_CAPTURE){
+                    1 ->  imagePath?.apply {
+                        binding.ivF.visibility = View.VISIBLE
+                    }
+                    2 ->  imagePath?.apply {
+                        binding.ivB.visibility = View.VISIBLE
+                    }
+                    3 ->  imagePath?.apply {
+                        binding.ivDriver.visibility = View.VISIBLE
+                    }
+                    4 ->  imagePath?.apply {
+                        binding.ivDriverB.visibility = View.VISIBLE
+                    }
+                    5 ->  imagePath?.apply {
+                        binding.ivPassenger.visibility = View.VISIBLE
+                    }
+                    6 ->  imagePath?.apply {
+                        binding.ivPassengerB.visibility = View.VISIBLE
+                    }
+                }*/
             }
-            savePhoto(bitmap)
+            //savePhoto(bitmap)
         }
     }
 

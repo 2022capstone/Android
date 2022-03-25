@@ -20,11 +20,8 @@ class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_ca
         super.onCreate(savedInstanceState)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val binding = FragmentMyCarBinding.inflate(inflater, container, false)
+    override fun initStartView() {
+        super.initStartView()
 
         //대여요청현황
         val requestlentalList = arrayListOf(
@@ -42,8 +39,8 @@ class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_ca
         adapter.setOnItemClickListener(object : RequestRentalAdapter.onItemClickListener{
             override fun onItemClick(position: Button) {
                 if(position.text == "예약대기") {
-                    navController.navigate(R.id.action_myCarFragment_to_profileCheckFragment)
-                }//예약대기
+                    navController.navigate(R.id.action_myCarFragment_to_profileCheckFragment)//예약대기
+                }
                 if(position.text == "예약승인"){
                     navController.navigate(R.id.action_myCarFragment_to_picCheckFragment)//예약승인
                 }
@@ -81,9 +78,6 @@ class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_ca
             navController.navigate(R.id.action_myCarFragment_to_start2Fragment)
         }
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)
-
-
-        return binding.root
     }
 
 }

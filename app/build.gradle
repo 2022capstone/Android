@@ -53,4 +53,12 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation 'gun0912.ted:tedpermission:2.2.3'
 
+    //레트로핏
+    implementation 'com.squareup.retrofit2:retrofit:2.8.1'
+    //gson
+    implementation 'com.squareup.retrofit2:converter-gson:2.8.1'
+    //레트로핏 로컬 인터셉터
+    implementation "com.squareup.okhttp3:logging-interceptor:4.9.3"
+
+
 }

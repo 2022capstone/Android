@@ -16,11 +16,8 @@ class PicCheckFragment : BaseFragment<FragmentPicCheckBinding>(R.layout.fragment
         super.onCreate(savedInstanceState)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val binding = FragmentPicCheckBinding.inflate(inflater, container, false)
+    override fun initStartView() {
+        super.initStartView()
 
         binding.btnApprove.setOnClickListener {
             navController.navigate(R.id.action_picCheckFragment_to_myCarFragment)
@@ -28,8 +25,7 @@ class PicCheckFragment : BaseFragment<FragmentPicCheckBinding>(R.layout.fragment
         binding.btnRefuse.setOnClickListener {
             navController.navigate(R.id.action_picCheckFragment_to_myCarFragment)
         }
-
-        return binding.root
     }
+
 
 }

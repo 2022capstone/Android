@@ -14,19 +14,15 @@ class CarSelectFragment : BaseFragment<FragmentCarSelectBinding>(R.layout.fragme
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val binding = FragmentCarSelectBinding.inflate(inflater, container, false)
+    override fun initStartView() {
+        super.initStartView()
 
         binding.btnBook.setOnClickListener {
             navController.navigate(R.id.action_carSelectFragment_to_start2Fragment)
         }
-
-        return binding.root
     }
 
 }

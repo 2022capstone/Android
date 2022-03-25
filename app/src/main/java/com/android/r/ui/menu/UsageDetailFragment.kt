@@ -17,13 +17,11 @@ class UsageDetailFragment : BaseFragment<FragmentUsageDetailBinding>(R.layout.fr
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val binding = FragmentUsageDetailBinding.inflate(inflater, container, false)
+    override fun initStartView() {
+        super.initStartView()
 
         //현재이용중인차량
         val currentcarList = arrayListOf(
@@ -38,7 +36,7 @@ class UsageDetailFragment : BaseFragment<FragmentUsageDetailBinding>(R.layout.fr
         currenrcaradapter.setOnItemClickListener(object : CurrentCarAdapter.onItemClickListener{
             override fun onItemClick(position: Button){
                 if(position.text == "대여준비"){
-                navController.navigate(R.id.action_usageDetailFragment_to_takePicturesFragment)
+                    navController.navigate(R.id.action_usageDetailFragment_to_takePicturesFragment)
                 }
             }
         })
@@ -71,8 +69,6 @@ class UsageDetailFragment : BaseFragment<FragmentUsageDetailBinding>(R.layout.fr
             navController.navigate(R.id.action_usageDetailFragment_to_start2Fragment)
         }
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)
-
-        return binding.root
     }
 
 

@@ -15,15 +15,4 @@ class CarDetailFragment : BaseFragment<FragmentCarDetailBinding>(R.layout.fragme
         super.onCreate(savedInstanceState)
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val binding = FragmentCarDetailBinding.inflate(inflater, container, false)
-
-
-
-        return binding.root
-    }
-
 }

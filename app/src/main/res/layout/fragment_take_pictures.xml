@@ -1,81 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.TakePicturesFragment">
 
 
-    <ImageButton
+    <Button
         android:id="@+id/btn_takepic_f"
         android:layout_width="130dp"
-        android:layout_height="130dp"
+        android:layout_height="45dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="@color/gray"
+        android:fontFamily="@font/koddi"
+        android:text="차량 앞"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_f"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
-    <ImageButton
+    <Button
         android:id="@+id/btn_takepic_b"
         android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_marginEnd="50dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="@color/gray"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_takepic_f"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btn_takepic_f"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="SpeakableTextPresentCheck" />
+        android:fontFamily="@font/koddi"
+        android:text="차량 뒤"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/iv_b"
+        app:layout_constraintTop_toBottomOf="@+id/iv_b"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
-    <ImageButton
+    <Button
         android:id="@+id/btn_takepic_d"
         android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_marginTop="50dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="@color/gray"
+        android:fontFamily="@font/koddi"
+        android:text="운전석"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@+id/btn_takepic_f"
-        app:layout_constraintTop_toBottomOf="@+id/btn_takepic_f"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_driver"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
-    <ImageButton
+    <Button
         android:id="@+id/btn_takepic_dback"
         android:layout_width="130dp"
-        android:layout_height="130dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="@color/gray"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_takepic_d"
-        app:layout_constraintEnd_toEndOf="@+id/btn_takepic_b"
-        app:layout_constraintTop_toTopOf="@+id/btn_takepic_d"
-        tools:ignore="SpeakableTextPresentCheck" />
+        android:fontFamily="@font/koddi"
+        android:text="운전석 뒤"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/iv_driver_b"
+        app:layout_constraintTop_toBottomOf="@+id/iv_driver_b"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
-    <ImageButton
+    <Button
         android:id="@+id/btn_takepic_p"
         android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_marginTop="50dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="@color/gray"
-        app:layout_constraintStart_toStartOf="@+id/btn_takepic_d"
-        app:layout_constraintTop_toBottomOf="@+id/btn_takepic_d"
-        tools:ignore="SpeakableTextPresentCheck" />
+        android:fontFamily="@font/koddi"
+        android:text="조수석"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/iv_passenger"
+        app:layout_constraintTop_toBottomOf="@+id/iv_passenger"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
-    <ImageButton
+    <Button
         android:id="@+id/btn_takepic_pback"
         android:layout_width="130dp"
-        android:layout_height="130dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="@color/gray"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_takepic_p"
-        app:layout_constraintEnd_toEndOf="@+id/btn_takepic_dback"
-        app:layout_constraintTop_toTopOf="@+id/btn_takepic_p"
-        app:layout_constraintVertical_bias="0.0"
-        tools:ignore="SpeakableTextPresentCheck" />
+        android:fontFamily="@font/koddi"
+        android:text="조수석 뒤"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/iv_passenger_b"
+        app:layout_constraintTop_toBottomOf="@+id/iv_passenger_b"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <Button
         android:id="@+id/btn_take_finish"
         android:layout_width="310dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="30dp"
         android:backgroundTint="#000000"
         android:fontFamily="@font/koddi"
         android:text="촬영 완료"
@@ -84,77 +100,60 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/textView63"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="차랑 앞"
-        android:textColor="#000000"
-        android:textSize="14sp"
-        android:fontFamily="@font/koddi"
-        app:layout_constraintBottom_toTopOf="@+id/btn_takepic_f"
-        app:layout_constraintEnd_toEndOf="@+id/btn_takepic_f"
-        app:layout_constraintStart_toStartOf="@+id/btn_takepic_f" />
+    <ImageView
+        android:id="@+id/iv_f"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/car_front"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/textView64"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="차량 뒤"
-        android:textColor="#000000"
-        android:fontFamily="@font/koddi"
-        app:layout_constraintBottom_toTopOf="@+id/btn_takepic_b"
-        app:layout_constraintEnd_toEndOf="@+id/btn_takepic_b"
-        app:layout_constraintStart_toStartOf="@+id/btn_takepic_b" />
+    <ImageView
+        android:id="@+id/iv_b"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginEnd="50dp"
+        android:src="@drawable/car_front"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/iv_f" />
 
-    <TextView
-        android:id="@+id/textView65"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="운전석"
-        android:textColor="#000000"
-        android:fontFamily="@font/koddi"
-        app:layout_constraintBottom_toTopOf="@+id/btn_takepic_d"
-        app:layout_constraintEnd_toEndOf="@+id/btn_takepic_d"
-        app:layout_constraintStart_toStartOf="@+id/btn_takepic_d" />
+    <ImageView
+        android:id="@+id/iv_driver"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/car_front"
+        app:layout_constraintStart_toStartOf="@+id/iv_f"
+        app:layout_constraintTop_toBottomOf="@+id/btn_takepic_f" />
 
-    <TextView
-        android:id="@+id/textView66"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="운전석 뒤"
-        android:textColor="#000000"
-        android:fontFamily="@font/koddi"
-        app:layout_constraintBottom_toTopOf="@+id/btn_takepic_dback"
-        app:layout_constraintEnd_toEndOf="@+id/btn_takepic_dback"
-        app:layout_constraintStart_toStartOf="@+id/btn_takepic_dback" />
+    <ImageView
+        android:id="@+id/iv_driver_b"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/car_front"
+        app:layout_constraintStart_toStartOf="@+id/iv_b"
+        app:layout_constraintTop_toBottomOf="@+id/btn_takepic_b" />
 
-    <TextView
-        android:id="@+id/textView67"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="9dp"
-        android:text="조수석"
-        android:textColor="#000000"
-        android:fontFamily="@font/koddi"
-        app:layout_constraintBottom_toTopOf="@+id/btn_takepic_p"
-        app:layout_constraintEnd_toEndOf="@+id/btn_takepic_p"
-        app:layout_constraintStart_toStartOf="@+id/btn_takepic_p" />
+    <ImageView
+        android:id="@+id/iv_passenger"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/car_front"
+        app:layout_constraintStart_toStartOf="@+id/iv_driver"
+        app:layout_constraintTop_toBottomOf="@+id/btn_takepic_d" />
 
-    <TextView
-        android:id="@+id/textView68"
-        android:layout_width="67dp"
-        android:layout_height="19dp"
-        android:layout_marginBottom="8dp"
-        android:text="조수석 뒤"
-        android:textColor="#000000"
-        android:fontFamily="@font/koddi"
-        app:layout_constraintBottom_toTopOf="@+id/btn_takepic_pback"
-        app:layout_constraintEnd_toEndOf="@+id/btn_takepic_pback"
-        app:layout_constraintStart_toStartOf="@+id/btn_takepic_pback" />
+    <ImageView
+        android:id="@+id/iv_passenger_b"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_marginTop="24dp"
+        android:src="@drawable/car_front"
+        app:layout_constraintEnd_toEndOf="@+id/iv_driver_b"
+        app:layout_constraintTop_toBottomOf="@+id/btn_takepic_dback" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

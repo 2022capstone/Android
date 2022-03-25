@@ -13,19 +13,15 @@ class ProfileFixFragment : BaseFragment<FragmentProfileFixBinding>(R.layout.frag
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val binding = FragmentProfileFixBinding.inflate(inflater, container, false)
+    override fun initStartView() {
+        super.initStartView()
 
         binding.btnFixDone.setOnClickListener {
             navController.navigate(R.id.action_profileFixFragment_to_profileFragment)
         }
-
-        return binding.root
     }
 
 }

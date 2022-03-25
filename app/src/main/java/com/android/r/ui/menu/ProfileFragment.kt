@@ -16,13 +16,11 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(R.layout.fragment_p
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val binding = FragmentProfileBinding.inflate(inflater, container, false)
+    override fun initStartView() {
+        super.initStartView()
 
         binding.btnFix.setOnClickListener {
             navController.navigate(R.id.action_profileFragment_to_profileFixFragment)
@@ -32,8 +30,6 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(R.layout.fragment_p
             navController.navigate(R.id.action_profileFragment_to_start2Fragment)
         }
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)
-
-
-        return binding.root
     }
+
 }

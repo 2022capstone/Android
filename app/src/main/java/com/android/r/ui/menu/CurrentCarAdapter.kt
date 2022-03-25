@@ -50,7 +50,7 @@ class CurrentCarAdapter(val carList: ArrayList<CarList>, usageDetailFragment: Us
 
         init {
             itemView.findViewById<Button>(R.id.btn_state).setOnClickListener {
-                Log.d("test","click")
+                //Log.d("test","click")
                 listener.onItemClick(state)
             }
         }

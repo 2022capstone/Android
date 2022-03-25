@@ -13,19 +13,15 @@ class CarRegisterFragment : BaseFragment<FragmentCarRegisterBinding>(R.layout.fr
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val binding = FragmentCarRegisterBinding.inflate(inflater, container, false)
+    override fun initStartView() {
+        super.initStartView()
 
         binding.btnCarRegister.setOnClickListener {
             navController.navigate(R.id.action_carRegisterFragment_to_myCarFragment)
         }
-
-        return binding.root
     }
 
 }

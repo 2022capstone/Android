@@ -19,9 +19,8 @@ class MyReserveFragment : BaseFragment<FragmentMyReserveBinding>(R.layout.fragme
         super.onCreate(savedInstanceState)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-
-        val binding = FragmentMyReserveBinding.inflate(inflater, container, false)
+    override fun initStartView() {
+        super.initStartView()
 
         //예약내역
         val reserveList = arrayListOf(
@@ -49,8 +48,7 @@ class MyReserveFragment : BaseFragment<FragmentMyReserveBinding>(R.layout.fragme
             navController.navigate(R.id.action_myReservFragment_to_start2Fragment)
         }
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)
-
-        return binding.root
     }
+
 
 }

@@ -13,13 +13,11 @@ class ProfileCheckFragment : BaseFragment<FragmentProfileCheckBinding>(R.layout.
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        val binding = FragmentProfileCheckBinding.inflate(inflater, container, false)
+    override fun initStartView() {
+        super.initStartView()
 
         binding.btnReserveApproval.setOnClickListener {
             navController.navigate(R.id.action_profileCheckFragment_to_myCarFragment)
@@ -27,7 +25,7 @@ class ProfileCheckFragment : BaseFragment<FragmentProfileCheckBinding>(R.layout.
         binding.btnReserveRefuse.setOnClickListener {
             navController.navigate(R.id.action_profileCheckFragment_to_myCarFragment)
         }
-
-        return binding.root
     }
+
+
 }
