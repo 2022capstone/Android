@@ -29,7 +29,7 @@ import java.util.*
 class TakePicturesFragment : BaseFragment<FragmentTakePicturesBinding>(R.layout.fragment_take_pictures) {
 
     var REQUEST_IMAGE_CAPTURE = 1 //카메라 사진 촬영 요청코드
-    //var REQUEST = 0
+    var REQUEST = 0
     lateinit var imagePath : File
     lateinit var curPhotoPath: String //문자열형태 사진 경로 값
 
@@ -53,26 +53,26 @@ class TakePicturesFragment : BaseFragment<FragmentTakePicturesBinding>(R.layout.
             Log.d("test","click")
             takeCapture() //기본 카메라 앱을 실행하여 사진 촬영
         }
-        /*binding.btnTakepicB.setOnClickListener {
+        binding.btnTakepicB.setOnClickListener {
             REQUEST_IMAGE_CAPTURE = 2
-            takeCapture("image2.jpeg")
+            takeCapture()
         }
         binding.btnTakepicD.setOnClickListener {
             REQUEST_IMAGE_CAPTURE = 3
-            takeCapture("image3.jpeg")
+            takeCapture()
         }
         binding.btnTakepicDback.setOnClickListener {
             REQUEST_IMAGE_CAPTURE = 4
-            takeCapture("image4.jpeg")
+            takeCapture()
         }
         binding.btnTakepicP.setOnClickListener {
             REQUEST_IMAGE_CAPTURE = 5
-            takeCapture("image5.jpeg")
+            takeCapture()
         }
         binding.btnTakepicPback.setOnClickListener {
             REQUEST_IMAGE_CAPTURE = 6
-            takeCapture("image6.jpeg")
-        }*/
+            takeCapture()
+        }
     }
     //카메라 촬영
     private fun takeCapture() {
@@ -104,18 +104,18 @@ class TakePicturesFragment : BaseFragment<FragmentTakePicturesBinding>(R.layout.
 
     //이미지파일 생성
     private fun createImageFile(): File {
-        Log.d("test", "createImageFile")
-        /*var file = File(Environment.getExternalStorageDirectory(), "/path/")
+        /*Log.d("test", "createImageFile")
+        var file = File(Environment.getExternalStorageDirectory(), "/path/")
         if (!file.exists()) file.mkdir()
 
-        var imageFile = File("${Environment.getExternalStorageDirectory().absoluteFile}/path/", "$fileName")
+        var imageFile = File("${Environment.getExternalStorageDirectory().absoluteFile}/path/", "${fileName}")
         imagePath = imageFile.absoluteFile
         return imageFile*/
 
-        val timestamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
+        //val timestamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
 
         val storageDir: File? = requireActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-        return File.createTempFile("JPEG_${timestamp}_", ".jpg", storageDir)
+        return File.createTempFile("JPEG_${REQUEST_IMAGE_CAPTURE}", ".jpg", storageDir)
             .apply { curPhotoPath = absolutePath }
 
     }
@@ -147,63 +147,37 @@ class TakePicturesFragment : BaseFragment<FragmentTakePicturesBinding>(R.layout.
 
         if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK){
             //이미지를 성공적으로 가져왔다면
+                val bitmap: Bitmap
             val file = File(curPhotoPath)
             if(Build.VERSION.SDK_INT < 28){
-                val bitmap = MediaStore.Images.Media
+                bitmap = MediaStore.Images.Media
                     .getBitmap(requireActivity().contentResolver, Uri.fromFile(file))
-                binding.ivF.setImageBitmap(bitmap)
-                /*when(REQUEST_IMAGE_CAPTURE){
-                    1 ->  imagePath?.apply {
-                        binding.ivF.visibility = View.VISIBLE
-                    }
-                    2 ->  imagePath?.apply {
-                        binding.ivB.visibility = View.VISIBLE
-                    }
-                    3 ->  imagePath?.apply {
-                        binding.ivDriver.visibility = View.VISIBLE
-                    }
-                    4 ->  imagePath?.apply {
-                        binding.ivDriverB.visibility = View.VISIBLE
-                    }
-                    5 ->  imagePath?.apply {
-                        binding.ivPassenger.visibility = View.VISIBLE
-                    }
-                    6 ->  imagePath?.apply {
-                        binding.ivPassengerB.visibility = View.VISIBLE
-                    }
-                }*/
+
+                when(REQUEST_IMAGE_CAPTURE){
+                    1 ->  binding.ivF.setImageBitmap(bitmap)
+                    2 ->  binding.ivB.setImageBitmap(bitmap)
+                    3 ->  binding.ivDriver.setImageBitmap(bitmap)
+                    4 ->  binding.ivDriverB.setImageBitmap(bitmap)
+                    5 ->  binding.ivPassenger.setImageBitmap(bitmap)
+                    6 ->  binding.ivPassengerB.setImageBitmap(bitmap)
+                }
             }else { //안드로이드 9.0버전보다 높을 경우
                 val decode = ImageDecoder.createSource(
                     this.requireActivity().contentResolver,
                     Uri.fromFile(file)
                 )
-                val bitmap = ImageDecoder.decodeBitmap(decode)
+                bitmap = ImageDecoder.decodeBitmap(decode)
 
-                binding.ivF.setImageBitmap(bitmap)
-
-                //binding.ivF.setImageBitmap(bitmap)
-                /*when(REQUEST_IMAGE_CAPTURE){
-                    1 ->  imagePath?.apply {
-                        binding.ivF.visibility = View.VISIBLE
-                    }
-                    2 ->  imagePath?.apply {
-                        binding.ivB.visibility = View.VISIBLE
-                    }
-                    3 ->  imagePath?.apply {
-                        binding.ivDriver.visibility = View.VISIBLE
-                    }
-                    4 ->  imagePath?.apply {
-                        binding.ivDriverB.visibility = View.VISIBLE
-                    }
-                    5 ->  imagePath?.apply {
-                        binding.ivPassenger.visibility = View.VISIBLE
-                    }
-                    6 ->  imagePath?.apply {
-                        binding.ivPassengerB.visibility = View.VISIBLE
-                    }
-                }*/
+                when(REQUEST_IMAGE_CAPTURE){
+                    1 ->  binding.ivF.setImageBitmap(bitmap)
+                    2 ->  binding.ivB.setImageBitmap(bitmap)
+                    3 ->  binding.ivDriver.setImageBitmap(bitmap)
+                    4 ->  binding.ivDriverB.setImageBitmap(bitmap)
+                    5 ->  binding.ivPassenger.setImageBitmap(bitmap)
+                    6 ->  binding.ivPassengerB.setImageBitmap(bitmap)
+                }
             }
-            //savePhoto(bitmap)
+            savePhoto(bitmap)
         }
     }
 
