@@ -35,11 +35,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/koddi"
         android:text="차량번호"
         android:textColor="#000000"
         android:textSize="20sp"
-        android:fontFamily="@font/koddi"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button21" />
 
@@ -115,23 +115,11 @@
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/textView47" />
 
-    <TextView
-        android:id="@+id/textView48"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="사용가능기간"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        android:fontFamily="@font/koddi"
-        app:layout_constraintStart_toStartOf="@+id/textView47"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNumberSigned" />
-
     <EditText
         android:id="@+id/editTextTime"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:ems="10"
         android:fontFamily="@font/koddi"
         android:hint="00.00.00~00.00.00"
@@ -139,6 +127,18 @@
         android:minHeight="48dp"
         app:layout_constraintStart_toStartOf="@+id/textView48"
         app:layout_constraintTop_toBottomOf="@+id/textView48" />
+
+    <TextView
+        android:id="@+id/textView48"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/koddi"
+        android:text="사용가능기간"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/textView47"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName6" />
 
     <Button
         android:id="@+id/btn_car_register"
@@ -152,6 +152,31 @@
         android:fontFamily="@font/koddi"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView63"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="위치"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:fontFamily="@font/koddi"
+        app:layout_constraintStart_toStartOf="@+id/textView47"
+        app:layout_constraintTop_toBottomOf="@+id/editTextNumberSigned" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonName6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:fontFamily="@font/koddi"
+        android:hint="ㅇㅇ시 ㅇㅇ구 ㅇㅇ동"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView63"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/textView63" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
