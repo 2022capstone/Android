@@ -19,7 +19,9 @@ data class Car(
     @SerializedName("imageURL")
     val carImage : String,
 
-    val availableTime : LocalDateTime,
+    val availableTime : String,
+
+    val availableStatus : String,
 
     val ownerId : String
 )
