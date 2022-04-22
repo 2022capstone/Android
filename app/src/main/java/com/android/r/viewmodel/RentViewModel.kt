@@ -62,6 +62,8 @@ class RentViewModel(private val rentRepository: RentRepository) : BaseViewModel(
 
 
 
+
+
     private fun handleError(exception: Throwable){
         val message = exception.message ?: ""
         _error.value = Event(message)

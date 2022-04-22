@@ -41,8 +41,6 @@ class MyCarListAdapter(carList: List<Car>, context : Context) : RecyclerView.Ada
     }
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
-        Log.d("carrr", carList.toString())
-        Log.d("carrr", position.toString())
         Glide.with(context)
             .load(carList.get(position).carImage)
             .into(holder.image)

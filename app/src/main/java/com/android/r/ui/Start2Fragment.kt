@@ -1,6 +1,7 @@
 package com.android.r.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.activity.addCallback
@@ -9,10 +10,16 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.r.R
 import com.android.r.base.BaseFragment
 import com.android.r.databinding.FragmentStart2Binding
+import com.android.r.viewmodel.CarViewModel
 import com.google.android.material.navigation.NavigationView
+import org.koin.android.viewmodel.ext.android.viewModel
 
 
 class Start2Fragment : BaseFragment<FragmentStart2Binding>(R.layout.fragment_start2), NavigationView.OnNavigationItemSelectedListener {
+
+    val carViewModel : CarViewModel by viewModel()
+
+    private lateinit var carListAdapter : CarListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,22 +35,19 @@ class Start2Fragment : BaseFragment<FragmentStart2Binding>(R.layout.fragment_sta
 
         binding.navView.setNavigationItemSelectedListener(this)//네비게이션 메뉴 아이템에 클릭 속성 부여
 
-        val carList = arrayListOf(
-            CarList(R.drawable.car_front, "model1", "owner1", "2022.02.21~2022.02.22",""),
-            CarList(R.drawable.car_front, "model2", "owner2", "2022.02.22~2022.02.23",""),
-            CarList(R.drawable.car_front, "model3", "owner3", "2022.02.23~2022.02.24",""),
-            CarList(R.drawable.car_front, "model4", "owner4", "2022.02.24~2022.02.25",""),
-            CarList(R.drawable.car_front, "model5", "owner5", "2022.02.25~2022.02.26",""),
-            CarList(R.drawable.car_front, "model6", "owner6", "2022.02.26~2022.02.27",""),
-            CarList(R.drawable.car_front, "model7", "owner7", "2022.02.27~2022.02.28",""),
-        )
+        carListAdapter = CarListAdapter(ArrayList(), this.context!!)
+
+        carViewModel.getMainList("nyh710")
+
+        carViewModel.myCarLiveData.observe(this, { itemList ->
+            carListAdapter.carList = itemList
+        })
 
         binding.rvCarRentBefore.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.rvCarRentBefore.setHasFixedSize(true)
 
-        var adapter = CarListAdapter(carList, this)
-        binding.rvCarRentBefore.adapter = adapter
-        adapter.setOnItemClickListener(object : CarListAdapter.onItemClickListener{
+        binding.rvCarRentBefore.adapter = carListAdapter
+        carListAdapter.setOnItemClickListener(object : CarListAdapter.onItemClickListener{
             override fun onItemClick(position: Int) {
                 navController.navigate(R.id.action_start2Fragment_to_carSelectFragment)
             }

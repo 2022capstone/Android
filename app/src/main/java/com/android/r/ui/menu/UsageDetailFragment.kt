@@ -1,6 +1,7 @@
 package com.android.r.ui.menu
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +12,16 @@ import com.android.r.R
 import com.android.r.base.BaseFragment
 import com.android.r.databinding.FragmentUsageDetailBinding
 import com.android.r.ui.CarList
+import com.android.r.viewmodel.CarViewModel
+import com.android.r.viewmodel.RentViewModel
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class UsageDetailFragment : BaseFragment<FragmentUsageDetailBinding>(R.layout.fragment_usage_detail) {
 
+    val rentViewModel : RentViewModel by viewModel()
+
+    private lateinit var usedCarAdapter : UsedCarAdapter
+    private lateinit var currentCarAdapter : CurrentCarAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,16 +32,20 @@ class UsageDetailFragment : BaseFragment<FragmentUsageDetailBinding>(R.layout.fr
         super.initStartView()
 
         //현재이용중인차량
-        val currentcarList = arrayListOf(
-            CarList(R.drawable.car_front, "model1", "owner1", "2022.02.21~2022.02.22", "대여준비")
-        )
+        currentCarAdapter = CurrentCarAdapter(ArrayList(), this.context!!)
+
+        rentViewModel.getRentByRenterId("nyh710")
+
+        rentViewModel.rentInfoLiveData.observe(this, { itemList ->
+            currentCarAdapter.rentList = itemList
+            Log.d("rentt", itemList.toString())
+        })
 
         binding.rvCurrentCar.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.rvCurrentCar.setHasFixedSize(true)
 
-        var currenrcaradapter = CurrentCarAdapter(currentcarList, this)
-        binding.rvCurrentCar.adapter = currenrcaradapter
-        currenrcaradapter.setOnItemClickListener(object : CurrentCarAdapter.onItemClickListener{
+        binding.rvCurrentCar.adapter = currentCarAdapter
+        currentCarAdapter.setOnItemClickListener(object : CurrentCarAdapter.onItemClickListener{
             override fun onItemClick(position: Button){
                 if(position.text == "대여준비"){
                     navController.navigate(R.id.action_usageDetailFragment_to_takePicturesFragment)
@@ -42,26 +54,28 @@ class UsageDetailFragment : BaseFragment<FragmentUsageDetailBinding>(R.layout.fr
         })
 
 
+
         //과거이용했던차량
-        val usedcarList = arrayListOf(
-            CarList(R.drawable.car_front, "model1", "owner1", "2022.02.21~2022.02.22","반납완료"),
-            CarList(R.drawable.car_front, "model2", "owner2", "2022.02.22~2022.02.23","반납완료"),
-            CarList(R.drawable.car_front, "model3", "owner3", "2022.02.23~2022.02.24","반납완료"),
-            CarList(R.drawable.car_front, "model4", "owner4", "2022.02.24~2022.02.25","반납완료")
-        )
+        usedCarAdapter = UsedCarAdapter(ArrayList(), this.context!!)
+        binding.rvUsedCar.adapter = usedCarAdapter
 
         binding.rvUsedCar.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.rvUsedCar.setHasFixedSize(true)
 
-        //binding.rvUsedCar.adapter = UsedCarAdapter(usedcarList, this)
-        var usedcaradapter = UsedCarAdapter(usedcarList, this)
-        binding.rvUsedCar.adapter = usedcaradapter
-        usedcaradapter.setOnItemClickListener(object : UsedCarAdapter.onItemClickListener{
+        binding.rvUsedCar.adapter = usedCarAdapter
+        rentViewModel.getRentByRenterId("nyh710")
+        rentViewModel.rentInfoLiveData.observe(this, { itemList ->
+            usedCarAdapter.rentList = itemList
+            Log.d("Rentt", itemList.toString())
+        })
+
+        usedCarAdapter.setOnItemClickListener(object : UsedCarAdapter.onItemClickListener{
             override fun onItemClick(position: Int) {
                 navController.navigate(R.id.action_usageDetailFragment_to_carDetailFragment)
             }
 
         })
+
 
 
         //뒤로가기

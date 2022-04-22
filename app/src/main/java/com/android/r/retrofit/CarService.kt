@@ -12,10 +12,10 @@ import retrofit2.http.Query
 
 interface CarService {
     @GET("carlist/car-loaction") //검색창에 입력된 위치 기반으로 차 검색
-    fun getCarInfoByLocation(@Query("location")location : String) : Single<APIResponse<CarInfoResponse<Car>>> //사용자가 검색창에 입력한 위치 넣어줘야함
+    fun getCarInfoByLocation(@Query("location")location : String) : Single<APIResponse<CarInfoResponse<List<Car>>>> //사용자가 검색창에 입력한 위치 넣어줘야함
 
-    @GET("carlist/car-userloaction") //처음 메인화면 로딩시 실행해서 사용자 위치 기반으로 차량 검색해줌
-    fun getCarInfoByUserLocation(@Query("location")location : String) : Single<APIResponse<CarInfoResponse<Car>>> //사용자의 위치 넣어줘야함
+    @GET("carlist/car-userlocation") //처음 메인화면 로딩시 실행해서 사용자 위치 기반으로 차량 검색해줌
+    fun getCarInfoByUserLocation(@Query("id")id : String) : Single<APIResponse<CarInfoResponse<List<Car>>>> //사용자의 위치 넣어줘야함
 
     @GET("carlist/car-rent-status") //대여 상태에 따른 차량 검색
     //id는 빌리는 사람 아이디(차주 아님), status는 현재 대여 상태

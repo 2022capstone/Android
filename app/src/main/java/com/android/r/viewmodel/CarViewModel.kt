@@ -42,16 +42,16 @@ class CarViewModel(private val carRepository: CarRepository) : BaseViewModel(){
         )
     }
 
-    /*fun getMainList(location: String){
+    fun getMainList(id: String){
         addDisposable(
-            carRepository.getCarInfoByUserLocation(location)
+            carRepository.getCarInfoByUserLocation(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     it.run{
                         Log.d("Carr", "test")
                         if(resultMsg == "SUCCESS"){
-                            _myCarLiveData.setValue()
+                            _myCarLiveData.setValue(this.list.carInfo)
                         }
                     }
                 },{
@@ -59,7 +59,9 @@ class CarViewModel(private val carRepository: CarRepository) : BaseViewModel(){
                     handleError(it)
                 })
         )
-    }*/
+    }
+
+
 
 
 
