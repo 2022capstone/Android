@@ -2,6 +2,7 @@ package com.android.r.di
 
 import com.android.r.BuildConfig
 import com.android.r.retrofit.CarService
+import com.android.r.retrofit.CustomerService
 import com.android.r.retrofit.RentService
 import org.koin.dsl.module.module
 
@@ -26,5 +27,14 @@ val apiModules = module{
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(RentService::class.java)
+    }
+
+    single<CustomerService>{
+        Retrofit.Builder()
+            .baseUrl(BuildConfig.BASE_URL)
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(CustomerService::class.java)
     }
 }

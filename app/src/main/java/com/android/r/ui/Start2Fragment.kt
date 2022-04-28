@@ -49,7 +49,14 @@ class Start2Fragment : BaseFragment<FragmentStart2Binding>(R.layout.fragment_sta
         binding.rvCarRentBefore.adapter = carListAdapter
         carListAdapter.setOnItemClickListener(object : CarListAdapter.onItemClickListener{
             override fun onItemClick(position: Int) {
-                navController.navigate(R.id.action_start2Fragment_to_carSelectFragment)
+                val bundle = Bundle()
+                bundle.putString("model", "${carViewModel.myCarLiveData.value?.get(position)?.carModel}")
+                bundle.putString("image", "${carViewModel.myCarLiveData.value?.get(position)?.carImage}")
+                bundle.putString("seater", "${carViewModel.myCarLiveData.value?.get(position)?.seater}")
+                bundle.putString("number", "${carViewModel.myCarLiveData.value?.get(position)?.carNumber}")
+
+                navController.navigate(R.id.action_start2Fragment_to_carSelectFragment, bundle)
+
             }
         })
 
@@ -77,7 +84,6 @@ class Start2Fragment : BaseFragment<FragmentStart2Binding>(R.layout.fragment_sta
 
         return false
     }
-
 }
 
 

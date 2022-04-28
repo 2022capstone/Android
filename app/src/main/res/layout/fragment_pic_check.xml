@@ -75,7 +75,7 @@
         android:backgroundTint="#000000"
         android:text="대여승인하기"
         android:textColor="@color/white"
-        android:fontFamily="@font/koddi"
+        android:fontFamily="@font/nanum"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView7" />
@@ -88,7 +88,7 @@
         android:backgroundTint="#000000"
         android:text="대여거절하기"
         android:textColor="@color/white"
-        android:fontFamily="@font/koddi"
+        android:fontFamily="@font/nanum"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_approve" />

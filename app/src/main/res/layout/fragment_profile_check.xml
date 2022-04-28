@@ -18,7 +18,7 @@
         android:text="아이디"
         android:textColor="#000000"
         android:textSize="24sp"
-        android:fontFamily="@font/koddi"
+        android:fontFamily="@font/nanum"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,7 +30,7 @@
         android:text="평균평점"
         android:textColor="#000000"
         android:textSize="24sp"
-        android:fontFamily="@font/koddi"
+        android:fontFamily="@font/nanum"
         app:layout_constraintStart_toStartOf="@+id/textView34"
         app:layout_constraintTop_toBottomOf="@+id/textView34" />
 
@@ -42,7 +42,7 @@
         android:text="전화번호"
         android:textColor="#000000"
         android:textSize="24sp"
-        android:fontFamily="@font/koddi"
+        android:fontFamily="@font/nanum"
         app:layout_constraintStart_toStartOf="@+id/textView35"
         app:layout_constraintTop_toBottomOf="@+id/textView35" />
 
@@ -54,7 +54,7 @@
         android:text="지역"
         android:textColor="#000000"
         android:textSize="24sp"
-        android:fontFamily="@font/koddi"
+        android:fontFamily="@font/nanum"
         app:layout_constraintStart_toStartOf="@+id/textView36"
         app:layout_constraintTop_toBottomOf="@+id/textView36" />
 
@@ -64,7 +64,7 @@
         android:layout_height="60dp"
         android:layout_marginTop="32dp"
         android:backgroundTint="@color/gray"
-        android:fontFamily="@font/koddi"
+        android:fontFamily="@font/nanum"
         android:text="메시지"
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="@+id/textView37"
@@ -76,7 +76,7 @@
         android:layout_height="60dp"
         android:layout_marginEnd="50dp"
         android:backgroundTint="@color/gray"
-        android:fontFamily="@font/koddi"
+        android:fontFamily="@font/nanum"
         android:text="전화"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
@@ -89,7 +89,7 @@
         android:layout_marginStart="50dp"
         android:layout_marginBottom="32dp"
         android:backgroundTint="#000000"
-        android:fontFamily="@font/koddi"
+        android:fontFamily="@font/nanum"
         android:text="예약승인하기"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -102,7 +102,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="50dp"
         android:backgroundTint="#000000"
-        android:fontFamily="@font/koddi"
+        android:fontFamily="@font/nanum"
         android:text="예약거절하기"
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"

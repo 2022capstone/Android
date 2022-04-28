@@ -59,7 +59,8 @@ class CurrentCarAdapter(rentList: List<Rent>, context : Context) : RecyclerView.
                 .into(holder.image)
             holder.model.text = rentList.get(position).carInfo.carModel
             holder.owner.text = rentList.get(position).carInfo.ownerId
-            holder.date.text = rentList.get(position).carInfo.availableTime
+            holder.startdate.text = rentList.get(position).carInfo.availableStartTime
+            holder.enddate.text = rentList.get(position).carInfo.availableEndTime
             //1 -> 예약함, 2 -> 예약 승인 받고 대여 대기중, 3 -> 사진 저장 후 대여 대기중, 4 -> 대여중, 5 -> 반납 대기중, 6 -> 사진 저장후 반납 대기중, 7 -> 반납 완료
         }
         else if (rentList.get(position).status.equals("3")){
@@ -71,7 +72,8 @@ class CurrentCarAdapter(rentList: List<Rent>, context : Context) : RecyclerView.
                 .into(holder.image)
             holder.model.text = rentList.get(position).carInfo.carModel
             holder.owner.text = rentList.get(position).carInfo.ownerId
-            holder.date.text = rentList.get(position).carInfo.availableTime
+            holder.startdate.text = rentList.get(position).carInfo.availableStartTime
+            holder.enddate.text = rentList.get(position).carInfo.availableEndTime
             //1 -> 예약함, 2 -> 예약 승인 받고 대여 대기중, 3 -> 사진 저장 후 대여 대기중, 4 -> 대여중, 5 -> 반납 대기중, 6 -> 사진 저장후 반납 대기중, 7 -> 반납 완료
         }
         else if (rentList.get(position).status.equals("4")){
@@ -83,7 +85,8 @@ class CurrentCarAdapter(rentList: List<Rent>, context : Context) : RecyclerView.
                 .into(holder.image)
             holder.model.text = rentList.get(position).carInfo.carModel
             holder.owner.text = rentList.get(position).carInfo.ownerId
-            holder.date.text = rentList.get(position).carInfo.availableTime
+            holder.startdate.text = rentList.get(position).carInfo.availableStartTime
+            holder.enddate.text = rentList.get(position).carInfo.availableEndTime
             //1 -> 예약함, 2 -> 예약 승인 받고 대여 대기중, 3 -> 사진 저장 후 대여 대기중, 4 -> 대여중, 5 -> 반납 대기중, 6 -> 사진 저장후 반납 대기중, 7 -> 반납 완료
         }
         else if (rentList.get(position).status.equals("5")){
@@ -95,7 +98,8 @@ class CurrentCarAdapter(rentList: List<Rent>, context : Context) : RecyclerView.
                 .into(holder.image)
             holder.model.text = rentList.get(position).carInfo.carModel
             holder.owner.text = rentList.get(position).carInfo.ownerId
-            holder.date.text = rentList.get(position).carInfo.availableTime
+            holder.startdate.text = rentList.get(position).carInfo.availableStartTime
+            holder.enddate.text = rentList.get(position).carInfo.availableEndTime
             //1 -> 예약함, 2 -> 예약 승인 받고 대여 대기중, 3 -> 사진 저장 후 대여 대기중, 4 -> 대여중, 5 -> 반납 대기중, 6 -> 사진 저장후 반납 대기중, 7 -> 반납 완료
         }
         else if (rentList.get(position).status.equals("6")){
@@ -107,7 +111,8 @@ class CurrentCarAdapter(rentList: List<Rent>, context : Context) : RecyclerView.
                 .into(holder.image)
             holder.model.text = rentList.get(position).carInfo.carModel
             holder.owner.text = rentList.get(position).carInfo.ownerId
-            holder.date.text = rentList.get(position).carInfo.availableTime
+            holder.startdate.text = rentList.get(position).carInfo.availableStartTime
+            holder.enddate.text = rentList.get(position).carInfo.availableEndTime
             //1 -> 예약함, 2 -> 예약 승인 받고 대여 대기중, 3 -> 사진 저장 후 대여 대기중, 4 -> 대여중, 5 -> 반납 대기중, 6 -> 사진 저장후 반납 대기중, 7 -> 반납 완료
         }
         else{
@@ -123,7 +128,8 @@ class CurrentCarAdapter(rentList: List<Rent>, context : Context) : RecyclerView.
         val image = itemView.ivCar //차 사진
         val model = itemView.tvModel  //모델
         val owner = itemView.tvOwner //차주
-        val date = itemView.tvDate //날짜
+        val startdate = itemView.tvStarttime //날짜
+        val enddate = itemView.tvEndtime
         val state = itemView.btnState //대여상태
         val rentView = itemView.clCarlist
 

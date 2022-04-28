@@ -46,7 +46,8 @@ class MyCarListAdapter(carList: List<Car>, context : Context) : RecyclerView.Ada
             .into(holder.image)
         holder.model.text = carList.get(position).carModel
         holder.owner.text = carList.get(position).ownerId
-        holder.date.text = carList.get(position).availableTime
+        holder.startdate.text = carList.get(position).availableStartTime
+        holder.enddate.text = carList.get(position).availableEndTime
 
         if(carList.get(position).availableStatus.equals("y")){
             holder.state.text = "대여 가능"
@@ -65,7 +66,8 @@ class MyCarListAdapter(carList: List<Car>, context : Context) : RecyclerView.Ada
         val image = itemView.ivCar //차 사진
         val model = itemView.tvModel //모델
         val owner = itemView.tvOwner //차주
-        val date = itemView.tvDate //날짜
+        val startdate = itemView.tvStarttime //날짜
+        val enddate = itemView.tvEndtime
         val state = itemView.btnState //대여상태
     }
 

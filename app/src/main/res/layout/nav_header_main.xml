@@ -16,7 +16,7 @@
         android:id="@+id/tv_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/koddi"
+        android:fontFamily="@font/nanum_bold"
         android:paddingTop="10dp"
         android:text="NAME"
         android:textColor="@color/black"
@@ -29,6 +29,6 @@
         android:textColor="@color/black"
         android:text="email"
         android:textSize="14sp"
-        android:fontFamily="@font/koddi"/>
+        android:fontFamily="@font/nanum"/>
 </LinearLayout>
 </layout>

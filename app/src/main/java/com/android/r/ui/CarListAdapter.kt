@@ -49,7 +49,8 @@ class CarListAdapter(carList: List<Car>, context : Context) : RecyclerView.Adapt
             .into(holder.image)
         holder.model.text = carList.get(position).carModel
         holder.owner.text = carList.get(position).ownerId
-        holder.date.text = carList.get(position).availableTime
+        holder.startdate.text = carList.get(position).availableStartTime
+        holder.enddate.text = carList.get(position).availableEndTime
         holder.location.text = carList.get(position).carLocation
     }
 
@@ -62,7 +63,8 @@ class CarListAdapter(carList: List<Car>, context : Context) : RecyclerView.Adapt
         val image = itemView.ivCar //차 사진
         val model = itemView.tvModel  //모델
         val owner = itemView.tvOwner //차주
-        val date = itemView.tvDate //날짜
+        val startdate = itemView.tvStarttime //날짜
+        val enddate = itemView.tvEndtime
         val location = itemView.tvLocation //위치
 
         init {
