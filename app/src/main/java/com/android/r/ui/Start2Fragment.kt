@@ -6,11 +6,14 @@ import android.view.*
 import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.core.view.GravityCompat
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.r.R
 import com.android.r.base.BaseFragment
 import com.android.r.databinding.FragmentStart2Binding
+import com.android.r.databinding.NavHeaderMainBinding
 import com.android.r.viewmodel.CarViewModel
+import com.android.r.viewmodel.CustomerViewModel
 import com.google.android.material.navigation.NavigationView
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -18,12 +21,11 @@ import org.koin.android.viewmodel.ext.android.viewModel
 class Start2Fragment : BaseFragment<FragmentStart2Binding>(R.layout.fragment_start2), NavigationView.OnNavigationItemSelectedListener {
 
     val carViewModel : CarViewModel by viewModel()
-
+    val customerViewModel : CustomerViewModel by viewModel()
     private lateinit var carListAdapter : CarListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun initStartView() {
@@ -67,6 +69,7 @@ class Start2Fragment : BaseFragment<FragmentStart2Binding>(R.layout.fragment_sta
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+
     }
 
 

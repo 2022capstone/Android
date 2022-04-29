@@ -15,7 +15,6 @@ class CarSelectFragment : BaseFragment<FragmentCarSelectBinding>(R.layout.fragme
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun initStartView() {
@@ -30,9 +29,16 @@ class CarSelectFragment : BaseFragment<FragmentCarSelectBinding>(R.layout.fragme
 
 
         binding.btnBook.setOnClickListener {
-
-
             navController.navigate(R.id.action_carSelectFragment_to_start2Fragment)
+        }
+
+        //calendar
+        binding.btnStarttime.setOnClickListener {
+
+        }
+
+        binding.btnEndtime.setOnClickListener {
+
         }
     }
 

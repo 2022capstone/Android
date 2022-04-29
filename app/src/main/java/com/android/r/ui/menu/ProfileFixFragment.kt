@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import com.android.r.R
 import com.android.r.base.BaseFragment
 import com.android.r.databinding.FragmentProfileFixBinding
+import com.android.r.model.Customer
 import com.android.r.viewmodel.CustomerViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -34,6 +35,16 @@ class ProfileFixFragment : BaseFragment<FragmentProfileFixBinding>(R.layout.frag
         })
 
         binding.btnFixDone.setOnClickListener {
+            customerViewModel.updateCustomer(
+                Customer(
+                binding.tvProfilefixId.text.toString(),
+                binding.etvProfilefixName.text.toString(),
+                binding.etpProfilefixPhone.text.toString(),
+                binding.etvProfilefixRegion.text.toString(),
+                binding.tvProfilefixLicense.text.toString(),
+                binding.tvProfilefixGrade.text.toString().toFloat()
+                )
+            )
             navController.navigate(R.id.action_profileFixFragment_to_profileFragment)
         }
     }

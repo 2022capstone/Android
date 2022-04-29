@@ -57,7 +57,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/btn_starttime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -79,12 +79,12 @@
         android:textColor="#000000"
         android:textSize="20sp"
         android:fontFamily="@font/nanum"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton"
-        app:layout_constraintStart_toEndOf="@+id/imageButton"
-        app:layout_constraintTop_toTopOf="@+id/imageButton" />
+        app:layout_constraintBottom_toBottomOf="@+id/btn_starttime"
+        app:layout_constraintStart_toEndOf="@+id/btn_starttime"
+        app:layout_constraintTop_toTopOf="@+id/btn_starttime" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/btn_endtime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -92,8 +92,8 @@
         android:minWidth="40dp"
         android:minHeight="40dp"
         android:src="@drawable/ic_calendar"
-        app:layout_constraintStart_toStartOf="@+id/imageButton"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton"
+        app:layout_constraintStart_toStartOf="@+id/btn_starttime"
+        app:layout_constraintTop_toBottomOf="@+id/btn_starttime"
         app:tint="#000000"
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
@@ -106,9 +106,9 @@
         android:textColor="#000000"
         android:textSize="20sp"
         android:fontFamily="@font/nanum"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton2"
-        app:layout_constraintStart_toEndOf="@+id/imageButton2"
-        app:layout_constraintTop_toTopOf="@+id/imageButton2" />
+        app:layout_constraintBottom_toBottomOf="@+id/btn_endtime"
+        app:layout_constraintStart_toEndOf="@+id/btn_endtime"
+        app:layout_constraintTop_toTopOf="@+id/btn_endtime" />
 
     <Button
         android:id="@+id/btn_book"
@@ -122,7 +122,7 @@
         android:fontFamily="@font/nanum"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton2" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_endtime" />
 
     <TextView
         android:id="@+id/tv_carnum"
