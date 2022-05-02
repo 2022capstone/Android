@@ -70,6 +70,7 @@ class Start2Fragment : BaseFragment<FragmentStart2Binding>(R.layout.fragment_sta
         }
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)
 
+
     }
 
 
@@ -87,6 +88,7 @@ class Start2Fragment : BaseFragment<FragmentStart2Binding>(R.layout.fragment_sta
 
         return false
     }
+
 }
 
 
