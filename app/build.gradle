@@ -16,7 +16,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField "String", "BASE_URL", "\"http://223.194.134.76:90/carsharing/\""
+        buildConfigField "String", "BASE_URL", "\"http://192.168.0.9:90/carsharing/\""
     }
 
     buildTypes {
@@ -88,4 +88,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:4.9.0'
 
     implementation 'com.google.code.gson:gson:2.8.9'
+
+    implementation 'com.jakewharton.threetenabp:threetenabp:1.3.0'
+
 }

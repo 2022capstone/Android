@@ -11,12 +11,20 @@ import android.view.ViewGroup
 import com.android.r.R
 import com.android.r.base.BaseFragment
 import com.android.r.databinding.FragmentCarSelectBinding
-import com.android.r.databinding.FragmentStart2Binding
+import com.android.r.model.Customer
+import com.android.r.model.Rent
+import com.android.r.model.RentInfo
+import com.android.r.viewmodel.RentViewModel
 import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.Snackbar
+import org.koin.android.viewmodel.ext.android.viewModel
+import org.threeten.bp.LocalDateTime
 import java.text.SimpleDateFormat
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 class CarSelectFragment : BaseFragment<FragmentCarSelectBinding>(R.layout.fragment_car_select) {
+    private val rentViewModel : RentViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +42,26 @@ class CarSelectFragment : BaseFragment<FragmentCarSelectBinding>(R.layout.fragme
 
 
         binding.btnBook.setOnClickListener {
-            navController.navigate(R.id.action_carSelectFragment_to_start2Fragment)
+
+
+            if(binding.tvStartTime.text.equals("2022/00/00 00:00") && binding.tvEndTime.text.equals("2022/00/00 00:00")){
+                Snackbar.make(this.view!!, "날짜를 선택해주세요.", 1000)
+            }else{
+                rentViewModel.insertRentInfo(
+                    RentInfo(
+                        "nyh710",
+                        binding.tvCarnum.text.toString(),
+                        LocalDateTime.parse(binding.tvStartTime.text.toString(), org.threeten.bp.format.DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm")),
+                        LocalDateTime.parse(binding.tvEndTime.text.toString(), org.threeten.bp.format.DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm")),
+                        "1",
+                        "0.0".toFloat(),
+                        ""
+                    )
+                )
+                navController.navigate(R.id.action_carSelectFragment_to_start2Fragment)
+
+            }
+
         }
 
         //calendar
@@ -55,8 +82,24 @@ class CarSelectFragment : BaseFragment<FragmentCarSelectBinding>(R.layout.fragme
                     val timeSetListener = TimePickerDialog.OnTimeSetListener { _, hour, min ->
                             datepickercalendar.set(Calendar.HOUR_OF_DAY, hour)
                             datepickercalendar.set(Calendar.MINUTE, min)
+                        var fomattedHour : String = hour.toString()
+                        var fomattedMonth : String = month.toString()
+                        var fomattedMinute : String = min.toString()
+                        var fomattedDay : String = day.toString()
 
-                            binding.tvStartTime.text = "$year/$month/$dayOfMonth $hour:$min"
+                        if (hour < 10){
+                            fomattedHour = "0" + hour.toString()
+                        }
+                        if (month < 10){
+                            fomattedMonth = "0" + month.toString()
+                        }
+                        if (min < 10){
+                            fomattedMinute = "0" + min.toString()
+                        }
+                        if (dayOfMonth < 10){
+                            fomattedDay = "0" + dayOfMonth.toString()
+                        }
+                            binding.tvStartTime.text = "$year/$fomattedMonth/$fomattedDay $fomattedHour:$fomattedMinute"
                         }
 
                     TimePickerDialog(context, R.style.MySpinnerDatePickerStyle, timeSetListener, datepickercalendar.get(Calendar.HOUR_OF_DAY), datepickercalendar.get(Calendar.MINUTE), true).show()
@@ -76,10 +119,6 @@ class CarSelectFragment : BaseFragment<FragmentCarSelectBinding>(R.layout.fragme
             val year = datepickercalendar.get(Calendar.YEAR)
             val month = datepickercalendar.get(Calendar.MONTH)
             val day = datepickercalendar.get(Calendar.DAY_OF_MONTH)
-            //시간
-            val hour = datepickercalendar.get(Calendar.HOUR_OF_DAY)
-            val min = datepickercalendar.get(Calendar.MINUTE)
-            val sec = datepickercalendar.get(Calendar.SECOND)
 
             val dpd = DatePickerDialog(
                 requireContext(),
@@ -89,7 +128,31 @@ class CarSelectFragment : BaseFragment<FragmentCarSelectBinding>(R.layout.fragme
                     val calendar = Calendar.getInstance()
                     calendar.set(year, monthOfYear, dayOfMonth)
 
-                    binding.tvEndTime.text = "$year/$month/$dayOfMonth $hour:$min:$sec"
+                    val timeSetListener = TimePickerDialog.OnTimeSetListener { _, hour, min ->
+                        datepickercalendar.set(Calendar.HOUR_OF_DAY, hour)
+                        datepickercalendar.set(Calendar.MINUTE, min)
+
+                        var fomattedHour : String = hour.toString()
+                        var fomattedMonth : String = month.toString()
+                        var fomattedMinute : String = min.toString()
+                        var fomattedDay : String = day.toString()
+
+                        if (hour < 10){
+                            fomattedHour = "0" + hour.toString()
+                        }
+                        if (month < 10){
+                            fomattedMonth = "0" + month.toString()
+                        }
+                        if (min < 10){
+                            fomattedMinute = "0" + min.toString()
+                        }
+                        if (dayOfMonth < 10){
+                            fomattedDay = "0" + dayOfMonth.toString()
+                        }
+                        binding.tvEndTime.text = "$year/$fomattedMonth/$fomattedDay $fomattedHour:$fomattedMinute"
+                    }
+
+                    TimePickerDialog(context, R.style.MySpinnerDatePickerStyle, timeSetListener, datepickercalendar.get(Calendar.HOUR_OF_DAY), datepickercalendar.get(Calendar.MINUTE), true).show()
 
                 },
                 year,

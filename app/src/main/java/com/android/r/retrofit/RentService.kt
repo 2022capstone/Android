@@ -2,7 +2,12 @@ package com.android.r.retrofit
 
 import com.android.r.model.*
 import io.reactivex.Single
+import okhttp3.RequestBody
+import okhttp3.ResponseBody
+import retrofit2.Response
+import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Query
 
 interface RentService {
@@ -18,5 +23,8 @@ interface RentService {
     @GET("carlist/car-rent-status") //대여 상태에 따른 차량 검색
     //id는 빌리는 사람 아이디(차주 아님), status는 현재 대여 상태
     fun getCarsByUserAndRentStatus(@Query("id")id: String, @Query("status")status: String) : Single<APIResponse<CarInfoResponse<List<Car>>>>
+
+    @POST("rentlist/rent")
+    suspend fun insertRentInfo(@Body request : RequestBody) : Response<ResponseBody>
 
 }

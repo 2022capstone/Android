@@ -5,6 +5,7 @@ import com.android.r.model.Car
 import com.android.r.model.CarInfoResponse
 import com.android.r.retrofit.RentService
 import io.reactivex.Single
+import okhttp3.RequestBody
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -14,5 +15,5 @@ class RentRepository(val rentService: RentService) {
 
     fun getRentByRenterId(id : String) = rentService.getRentByRenterId(id)
 
-
+    suspend fun insertRentInfo(request : RequestBody) = rentService.insertRentInfo(request)
 }

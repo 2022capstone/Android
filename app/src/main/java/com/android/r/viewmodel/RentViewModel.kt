@@ -4,14 +4,20 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.android.r.base.BaseViewModel
-import com.android.r.model.Car
-import com.android.r.model.CarInfoResponse
-import com.android.r.model.Rent
+import com.android.r.model.*
 import com.android.r.repository.CarRepository
 import com.android.r.repository.RentRepository
 import com.android.r.util.Event
+import com.google.gson.GsonBuilder
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONObject
 
 class RentViewModel(private val rentRepository: RentRepository) : BaseViewModel(){
     private val _rentInfoLiveData : MutableLiveData<List<Rent>> = MutableLiveData()
@@ -60,7 +66,42 @@ class RentViewModel(private val rentRepository: RentRepository) : BaseViewModel(
         )
     }
 
+    fun insertRentInfo(rent : RentInfo){
 
+        val jsonObject = JSONObject()
+        jsonObject.put("renterId", rent.renterId)
+        jsonObject.put("startTime", rent.startTime)
+        jsonObject.put("returnTime", rent.endTime)
+        jsonObject.put("status", rent.status)
+        jsonObject.put("grade", rent.grade)
+        jsonObject.put("comment", rent.comment)
+        jsonObject.put("carNum", rent.carNum)
+
+        Log.d("rentt", jsonObject.toString())
+
+        val jsonObjectString = jsonObject.toString()
+
+        val requestBody = jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
+
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = rentRepository.insertRentInfo(requestBody)
+            Log.d("rentt", requestBody.toString())
+            withContext(Dispatchers.Main){
+                if (response.isSuccessful){
+                    val gson = GsonBuilder().setPrettyPrinting().create()
+                    val prettyJson = gson.toJson(
+                        response.body()?.string()
+                    )
+                    Log.d("Insert rentInfo : ", prettyJson)
+
+                }else{
+                    Log.e("Retorfit_Error", response.code().toString())
+                }
+
+            }
+
+        }
+    }
 
 
 

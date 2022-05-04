@@ -9,7 +9,7 @@
 
 
     <ImageView
-        android:id="@+id/imageView23"
+        android:id="@+id/iv_detail_image"
         android:layout_width="300dp"
         android:layout_height="200dp"
         android:layout_marginTop="90dp"
@@ -19,19 +19,19 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView58"
+        android:id="@+id/tv_detail_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="60dp"
         android:fontFamily="@font/nanum"
         android:text="차량번호"
         android:textColor="#000000"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/imageView23"
-        app:layout_constraintTop_toBottomOf="@+id/imageView23" />
+        app:layout_constraintStart_toStartOf="@+id/iv_detail_image"
+        app:layout_constraintTop_toBottomOf="@+id/iv_detail_image" />
 
     <TextView
-        android:id="@+id/textView59"
+        android:id="@+id/tv_detail_model"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -39,11 +39,11 @@
         android:textColor="#000000"
         android:textSize="20sp"
         android:fontFamily="@font/nanum"
-        app:layout_constraintStart_toStartOf="@+id/textView58"
-        app:layout_constraintTop_toBottomOf="@+id/textView58" />
+        app:layout_constraintStart_toStartOf="@+id/tv_detail_number"
+        app:layout_constraintTop_toBottomOf="@+id/tv_detail_number" />
 
     <TextView
-        android:id="@+id/textView60"
+        android:id="@+id/tv_detail_seater"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -51,11 +51,11 @@
         android:textColor="#000000"
         android:textSize="20sp"
         android:fontFamily="@font/nanum"
-        app:layout_constraintStart_toStartOf="@+id/textView59"
-        app:layout_constraintTop_toBottomOf="@+id/textView59" />
+        app:layout_constraintStart_toStartOf="@+id/tv_detail_model"
+        app:layout_constraintTop_toBottomOf="@+id/tv_detail_model" />
 
     <TextView
-        android:id="@+id/textView61"
+        android:id="@+id/tv_detail_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -63,19 +63,31 @@
         android:textColor="#000000"
         android:textSize="20sp"
         android:fontFamily="@font/nanum"
-        app:layout_constraintStart_toStartOf="@+id/textView60"
-        app:layout_constraintTop_toBottomOf="@+id/textView60" />
+        app:layout_constraintStart_toStartOf="@+id/tv_detail_seater"
+        app:layout_constraintTop_toBottomOf="@+id/tv_detail_seater" />
 
     <TextView
-        android:id="@+id/textView62"
+        android:id="@+id/tv_detail_starttime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="대여가능기간"
+        android:text="대여시작시간"
         android:textColor="#000000"
         android:textSize="20sp"
         android:fontFamily="@font/nanum"
-        app:layout_constraintStart_toStartOf="@+id/textView61"
-        app:layout_constraintTop_toBottomOf="@+id/textView61" />
+        app:layout_constraintStart_toStartOf="@+id/tv_detail_location"
+        app:layout_constraintTop_toBottomOf="@+id/tv_detail_location" />
+
+    <TextView
+        android:id="@+id/tv_detail_endtime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="반납예정시간"
+        android:fontFamily="@font/nanum"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/tv_detail_starttime"
+        app:layout_constraintTop_toBottomOf="@+id/tv_detail_starttime" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

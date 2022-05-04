@@ -45,7 +45,16 @@ class MyReserveFragment : BaseFragment<FragmentMyReserveBinding>(R.layout.fragme
         binding.rvReserve.adapter = reservationAdapter
         reservationAdapter.setOnItemClickListener(object : ReservationAdapter.onItemClickListener{
             override fun onItemClick(position: Int) {
-                navController.navigate(R.id.action_myReservFragment_to_carDetailFragment)
+                val bundle = Bundle()
+                bundle.putString("model", "${rentViewModel.rentInfoLiveData.value?.get(position)?.carInfo?.carModel}")
+                bundle.putString("image", "${rentViewModel.rentInfoLiveData.value?.get(position)?.carInfo?.carImage}")
+                bundle.putString("seater", "${rentViewModel.rentInfoLiveData.value?.get(position)?.carInfo?.seater}")
+                bundle.putString("number", "${rentViewModel.rentInfoLiveData.value?.get(position)?.carInfo?.carNumber}")
+                bundle.putString("location", "${rentViewModel.rentInfoLiveData.value?.get(position)?.carInfo?.carLocation}")
+                bundle.putString("starttime", "${rentViewModel.rentInfoLiveData.value?.get(position)?.startTime}")
+                bundle.putString("endtime", "${rentViewModel.rentInfoLiveData.value?.get(position)?.endTime}")
+
+                navController.navigate(R.id.action_myReservFragment_to_carDetailFragment, bundle)
             }
 
         })
