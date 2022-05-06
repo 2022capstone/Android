@@ -49,7 +49,6 @@ class CurrentCarAdapter(rentList: List<Rent>, context : Context) : RecyclerView.
     }
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
-        //1 -> 예약함, 2 -> 예약 승인 받고 대여 대기중, 3 -> 사진 저장 후 대여 대기중, 4 -> 대여중, 5 -> 반납 대기중, 6 -> 사진 저장후 반납 대기중, 7 -> 반납 완료
         if (rentList.get(position).status.equals("2")){
             holder.rentView.visibility = View.VISIBLE
 

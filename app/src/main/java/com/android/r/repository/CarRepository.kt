@@ -1,6 +1,8 @@
 package com.android.r.repository
 
 import com.android.r.retrofit.CarService
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 
 class CarRepository(private val carService: CarService) {
     fun getCarInfoByLocation(location : String) = carService.getCarInfoByLocation(location)
@@ -10,5 +12,7 @@ class CarRepository(private val carService: CarService) {
     fun getCarsByUserAndRentStatus(id : String, status : String) = carService.getCarsByUserAndRentStatus(id, status)
 
     fun getMyCars(id: String) = carService.getMyCars(id)
+
+    suspend fun insertCarInfo(data : RequestBody) = carService.registMyCar(data)
 
 }

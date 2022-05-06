@@ -5,10 +5,11 @@ import com.android.r.model.Car
 import com.android.r.model.CarInfoResponse
 import com.android.r.model.Rent
 import io.reactivex.Single
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Path
-import retrofit2.http.Query
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.ResponseBody
+import retrofit2.Response
+import retrofit2.http.*
 
 interface CarService {
     @GET("carlist/car-loaction") //검색창에 입력된 위치 기반으로 차 검색
@@ -24,8 +25,7 @@ interface CarService {
     @GET("carlist/my-car-list/{id}") //내 차량 정보 받아오기
     fun getMyCars(@Path("id")id: String) : Single<APIResponse<CarInfoResponse<List<Car>>>> //현재 로그인 되어 있는 사람 아이디
 
-    /*@POST("carlist/car")
-    fun registMyCar() */
-
+    @POST("carlist/car")
+    suspend fun registMyCar(@Body data : RequestBody) : Response<ResponseBody>
 
 }

@@ -2,95 +2,181 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.PicCheckFragment">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="SpeakableTextPresentCheck" >
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="70dp"
-        android:src="@drawable/car_front"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_marginEnd="50dp"
-        android:src="@drawable/car_front"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView2"
-        app:layout_constraintVertical_bias="0.0" />
+            <ImageView
+                android:id="@+id/iv_front_car"
+                android:layout_width="300dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView8"
+                app:srcCompat="@drawable/car_front" />
 
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_marginTop="32dp"
-        android:src="@drawable/car_front"
-        app:layout_constraintStart_toStartOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+            <ImageView
+                android:id="@+id/iv_back_car"
+                android:layout_width="300dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/iv_front_car"
+                app:layout_constraintStart_toStartOf="@+id/iv_front_car"
+                app:layout_constraintTop_toBottomOf="@+id/textView49"
+                app:srcCompat="@drawable/car_front" />
 
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_marginEnd="50dp"
-        android:src="@drawable/car_front"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView5" />
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/nanum"
+                android:text="차량 앞"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/iv_front_car"
+                app:layout_constraintStart_toStartOf="@+id/iv_front_car"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView7"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_marginTop="32dp"
-        android:src="@drawable/car_front"
-        app:layout_constraintStart_toStartOf="@+id/imageView5"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+            <TextView
+                android:id="@+id/textView49"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="차량 뒤"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/nanum"
+                app:layout_constraintEnd_toEndOf="@+id/iv_front_car"
+                app:layout_constraintStart_toStartOf="@+id/iv_front_car"
+                app:layout_constraintTop_toBottomOf="@+id/iv_front_car" />
 
-    <ImageView
-        android:id="@+id/imageView8"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        android:layout_marginEnd="50dp"
-        android:src="@drawable/car_front"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView7" />
+            <TextView
+                android:id="@+id/textView50"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/nanum"
+                android:text="운전석"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/iv_back_car"
+                app:layout_constraintStart_toStartOf="@+id/iv_back_car"
+                app:layout_constraintTop_toBottomOf="@+id/iv_back_car" />
 
-    <Button
-        android:id="@+id/btn_approve"
-        android:layout_width="310dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:backgroundTint="#000000"
-        android:text="대여승인하기"
-        android:textColor="@color/white"
-        android:fontFamily="@font/nanum"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView7" />
+            <ImageView
+                android:id="@+id/iv_dirver"
+                android:layout_width="300dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/iv_back_car"
+                app:layout_constraintStart_toStartOf="@+id/iv_back_car"
+                app:layout_constraintTop_toBottomOf="@+id/textView50"
+                app:srcCompat="@drawable/car_front" />
 
-    <Button
-        android:id="@+id/btn_refuse"
-        android:layout_width="310dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:backgroundTint="#000000"
-        android:text="대여거절하기"
-        android:textColor="@color/white"
-        android:fontFamily="@font/nanum"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_approve" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:id="@+id/textView51"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/nanum"
+                android:text="운전석 뒤"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/iv_dirver"
+                app:layout_constraintStart_toStartOf="@+id/iv_dirver"
+                app:layout_constraintTop_toBottomOf="@+id/iv_dirver" />
+
+            <ImageView
+                android:id="@+id/iv_back_dirver"
+                android:layout_width="300dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/iv_dirver"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/iv_dirver"
+                app:layout_constraintTop_toBottomOf="@+id/textView51"
+                app:srcCompat="@drawable/car_front" />
+
+            <TextView
+                android:id="@+id/textView53"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/nanum"
+                android:text="조수석"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/iv_back_dirver"
+                app:layout_constraintStart_toStartOf="@+id/iv_back_dirver"
+                app:layout_constraintTop_toBottomOf="@+id/iv_back_dirver" />
+
+            <ImageView
+                android:id="@+id/iv_passenser"
+                android:layout_width="300dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/iv_back_dirver"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/iv_back_dirver"
+                app:layout_constraintTop_toBottomOf="@+id/textView53"
+                app:srcCompat="@drawable/car_front" />
+
+            <TextView
+                android:id="@+id/textView54"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="조수석 뒤"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/nanum"
+                app:layout_constraintEnd_toEndOf="@+id/iv_passenser"
+                app:layout_constraintStart_toStartOf="@+id/iv_passenser"
+                app:layout_constraintTop_toBottomOf="@+id/iv_passenser" />
+
+            <ImageView
+                android:id="@+id/iv_back_passenser"
+                android:layout_width="300dp"
+                android:layout_height="200dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="@+id/iv_passenser"
+                app:layout_constraintStart_toStartOf="@+id/iv_passenser"
+                app:layout_constraintTop_toBottomOf="@+id/textView54"
+                app:srcCompat="@drawable/car_front" />
+
+            <Button
+                android:id="@+id/btn_approve"
+                android:layout_width="134dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="32dp"
+                android:text="예약승인하기"
+                android:backgroundTint="@color/black"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/iv_back_passenser"
+                app:layout_constraintTop_toBottomOf="@+id/iv_back_passenser" />
+
+            <Button
+                android:id="@+id/btn_refuse"
+                android:layout_width="134dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:text="예약거절하기"
+                android:backgroundTint="@color/black"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toEndOf="@+id/btn_approve"
+                app:layout_constraintTop_toTopOf="@+id/btn_approve" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

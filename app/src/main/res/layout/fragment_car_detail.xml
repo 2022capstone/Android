@@ -22,72 +22,149 @@
         android:id="@+id/tv_detail_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="8dp"
         android:fontFamily="@font/nanum"
         android:text="차량번호"
         android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/iv_detail_image"
-        app:layout_constraintTop_toBottomOf="@+id/iv_detail_image" />
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/textView52"
+        app:layout_constraintTop_toTopOf="@+id/textView52" />
 
     <TextView
         android:id="@+id/tv_detail_model"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
+        android:fontFamily="@font/nanum"
         android:text="차량모델"
         android:textColor="#000000"
-        android:textSize="20sp"
-        android:fontFamily="@font/nanum"
-        app:layout_constraintStart_toStartOf="@+id/tv_detail_number"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/textView55"
         app:layout_constraintTop_toBottomOf="@+id/tv_detail_number" />
 
     <TextView
         android:id="@+id/tv_detail_seater"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
+        android:fontFamily="@font/nanum"
         android:text="인승"
         android:textColor="#000000"
-        android:textSize="20sp"
-        android:fontFamily="@font/nanum"
-        app:layout_constraintStart_toStartOf="@+id/tv_detail_model"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/textView56"
         app:layout_constraintTop_toBottomOf="@+id/tv_detail_model" />
 
     <TextView
         android:id="@+id/tv_detail_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
+        android:fontFamily="@font/nanum"
         android:text="차량위치"
         android:textColor="#000000"
-        android:textSize="20sp"
-        android:fontFamily="@font/nanum"
-        app:layout_constraintStart_toStartOf="@+id/tv_detail_seater"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/textView57"
         app:layout_constraintTop_toBottomOf="@+id/tv_detail_seater" />
 
     <TextView
         android:id="@+id/tv_detail_starttime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
+        android:fontFamily="@font/nanum"
         android:text="대여시작시간"
         android:textColor="#000000"
-        android:textSize="20sp"
-        android:fontFamily="@font/nanum"
-        app:layout_constraintStart_toStartOf="@+id/tv_detail_location"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/textView58"
         app:layout_constraintTop_toBottomOf="@+id/tv_detail_location" />
 
     <TextView
         android:id="@+id/tv_detail_endtime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
-        android:text="반납예정시간"
         android:fontFamily="@font/nanum"
-        android:textSize="20sp"
+        android:text="반납예정시간"
         android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/tv_detail_starttime"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@+id/textView59"
         app:layout_constraintTop_toBottomOf="@+id/tv_detail_starttime" />
+
+    <TextView
+        android:id="@+id/textView52"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="65dp"
+        android:fontFamily="@font/nanum"
+        android:text="차량번호 :"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/iv_detail_image"
+        app:layout_constraintTop_toBottomOf="@+id/iv_detail_image" />
+
+    <TextView
+        android:id="@+id/textView55"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/nanum"
+        android:text="차량모델 :"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/textView52"
+        app:layout_constraintTop_toBottomOf="@+id/textView52" />
+
+    <TextView
+        android:id="@+id/textView56"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/nanum"
+        android:text="인승 :"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/textView55"
+        app:layout_constraintTop_toBottomOf="@+id/textView55" />
+
+    <TextView
+        android:id="@+id/textView57"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/nanum"
+        android:text="차량위치 :"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/textView56"
+        app:layout_constraintTop_toBottomOf="@+id/textView56" />
+
+    <TextView
+        android:id="@+id/textView58"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/nanum"
+        android:text="대여시작시간 :"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/textView57"
+        app:layout_constraintTop_toBottomOf="@+id/textView57" />
+
+    <TextView
+        android:id="@+id/textView59"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/nanum"
+        android:text="반납시간 :"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/textView58"
+        app:layout_constraintTop_toBottomOf="@+id/textView58" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
