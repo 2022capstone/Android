@@ -50,6 +50,10 @@ abstract class BaseFragment <B : ViewBinding>(@LayoutRes private val layoutResId
         initAfterBinding()
     }
 
+    override fun onResume() {
+        super.onResume()
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
 

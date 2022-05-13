@@ -18,6 +18,9 @@ import com.android.r.databinding.NavHeaderMainBinding
 import com.android.r.viewmodel.CarViewModel
 import com.android.r.viewmodel.CustomerViewModel
 import com.google.android.material.navigation.NavigationView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import org.koin.android.viewmodel.ext.android.viewModel
 
 
@@ -44,6 +47,7 @@ class Start2Fragment : BaseFragment<FragmentStart2Binding>(R.layout.fragment_sta
 
         carViewModel.getMainList("nyh710")
 
+
         carViewModel.myCarLiveData.observe(this, { itemList ->
             carListAdapter.carList = itemList
         })
@@ -65,48 +69,14 @@ class Start2Fragment : BaseFragment<FragmentStart2Binding>(R.layout.fragment_sta
             }
         })
 
-        /*
-        // 텍스트 와쳐로 검색 기능 구현
-        binding.etSearch.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                if (s.toString().isEmpty()) {
-                    binding.btnClear.visibility = View.INVISIBLE
-                    searchAdapter.itemList = ArrayList()
-                    searchBinding.tvNumberOfResult.text = "0"
-                } else {
-                    updateSearchUI(s.toString())
-                    binding.btnClear.visibility = View.VISIBLE
-                }
-            }
-
-            override fun afterTextChanged(p0: Editable?) {
-                if (p0?.isEmpty() == false)
-                    binding.layoutSearch.setBackgroundResource(R.drawable.lightbluegrey_radius)
-                else
-                    binding.layoutSearch.setBackgroundResource(R.drawable.darkblue_radius)
-            }
-        })
-        */
-
 
         binding.etSearch.addTextChangedListener(object : TextWatcher{
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 if(s.toString().isEmpty()){
                     carListAdapter.carList = ArrayList()
-                }else{
-                    if(s.toString().length >= 2){
-                        Log.d("keyy", s.toString())
-                        carViewModel.getCarsByLocation(s.toString())
-                        carListAdapter.carList = carViewModel.myCarLiveData.value!!
-                    }
-
                 }
             }
 
@@ -114,10 +84,17 @@ class Start2Fragment : BaseFragment<FragmentStart2Binding>(R.layout.fragment_sta
                 if(s?.isEmpty() == true){
                     carViewModel.getMainList("nyh710")
 
-                    carViewModel.myCarLiveData.observe(requireActivity(), { itemList ->
+                    carViewModel.myCarLiveData.observe(this@Start2Fragment, { itemList ->
+                        Log.d("keyyy", itemList.toString())
                         carListAdapter.carList = itemList
                     })
 
+                }else{
+                    carViewModel.getCarsByLocation(s.toString())
+                    carViewModel.myCarLiveData.observe(this@Start2Fragment, { list ->
+                        Log.d("keyy", list.toString())
+                        carListAdapter.carList = list
+                    })
                 }
             }
 

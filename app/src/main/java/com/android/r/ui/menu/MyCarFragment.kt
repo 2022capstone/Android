@@ -31,6 +31,12 @@ class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_ca
         super.onCreate(savedInstanceState)
     }
 
+    override fun onResume() {
+        super.onResume()
+        Log.d("onResumee", "onResume")
+        initStartView()
+
+    }
     override fun initStartView() {
         super.initStartView()
 
@@ -72,6 +78,7 @@ class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_ca
         //내차리스트
         carViewModel.getMyCarList("nyh710")
         carViewModel.myCarLiveData.observe(this, { itemList ->
+            Log.d("itmeListt", itemList.toString())
             myCarAdapter.carList = itemList
         })
 

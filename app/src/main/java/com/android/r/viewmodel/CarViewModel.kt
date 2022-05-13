@@ -121,9 +121,14 @@ class CarViewModel(private val carRepository: CarRepository) : BaseViewModel(){
                     it.run{
                         if(resultMsg == "SUCCESS"){
                             _myCarLiveData.setValue(this.list.carInfo)
+                            Log.d("dataa", this.list.carInfo.toString())
+                        }
+                        else{
+                            Log.d("dataaa", this.list.carInfo.toString())
                         }
                     }
                 },{
+                    Log.d("errorrr", it.message.toString())
                     handleError(it)
                 })
         )

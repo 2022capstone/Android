@@ -35,7 +35,6 @@ class CarRegisterFragment : BaseFragment<FragmentCarRegisterBinding>(R.layout.fr
     }
 
 
-
     override fun initStartView() {
         super.initStartView()
 
@@ -51,7 +50,6 @@ class CarRegisterFragment : BaseFragment<FragmentCarRegisterBinding>(R.layout.fr
 
         binding.btnCarRegister.setOnClickListener {
 
-            Log.d("imagee", URLEncoder.encode(carViewModel.encodeImageToBase64(binding.ivRegisterCar.drawable.toBitmap()), "UTF-8"))
             carViewModel.insertCarInfo(
                 CarInfo(
                     binding.etRegisterNum.text.toString(),

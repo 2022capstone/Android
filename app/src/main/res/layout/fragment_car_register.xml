@@ -38,7 +38,7 @@
         android:fontFamily="@font/nanum"
         android:text="차량번호"
         android:textColor="#000000"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_image_register" />
 
@@ -51,6 +51,7 @@
         android:hint="차량번호"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView46"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/textView46"
@@ -63,7 +64,7 @@
         android:layout_marginTop="32dp"
         android:text="차량모델"
         android:textColor="#000000"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:fontFamily="@font/nanum"
         app:layout_constraintStart_toStartOf="@+id/textView46"
         app:layout_constraintTop_toBottomOf="@+id/et_register_num" />
@@ -84,6 +85,7 @@
         android:hint="차량모델"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView45"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/textView45"
@@ -96,7 +98,7 @@
         android:layout_marginTop="32dp"
         android:text="인승"
         android:textColor="#000000"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:fontFamily="@font/nanum"
         app:layout_constraintStart_toStartOf="@+id/textView45"
         app:layout_constraintTop_toBottomOf="@+id/et_register_model" />
@@ -110,6 +112,7 @@
         android:hint="인승"
         android:inputType="numberSigned"
         android:minHeight="48dp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView47"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/textView47" />
@@ -123,6 +126,7 @@
         android:hint="0000/00/00 00:00"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/textView48"
         app:layout_constraintTop_toBottomOf="@+id/textView48" />
 
@@ -130,11 +134,11 @@
         android:id="@+id/textView48"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:fontFamily="@font/nanum"
         android:text="사용가능기간"
         android:textColor="#000000"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/textView47"
         app:layout_constraintTop_toBottomOf="@+id/et_register_location" />
 
@@ -144,10 +148,10 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="차량등록하기"
+        android:text="차량 등록하기"
         android:textColor="@color/black"
         android:backgroundTint="#00ff0000"
-        android:fontFamily="@font/notosans"
+        android:fontFamily="@font/nanum"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -158,8 +162,8 @@
         android:layout_marginTop="32dp"
         android:text="위치"
         android:textColor="#000000"
-        android:textSize="20sp"
         android:fontFamily="@font/nanum"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/textView47"
         app:layout_constraintTop_toBottomOf="@+id/et_register_seater" />
 
@@ -172,6 +176,7 @@
         android:hint="ㅇㅇ시 ㅇㅇ구 ㅇㅇ동"
         android:inputType="textPersonName"
         android:minHeight="48dp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView63"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
         app:layout_constraintTop_toTopOf="@+id/textView63" />
@@ -185,6 +190,7 @@
         android:hint="0000/00/00 00:00"
         android:inputType="textPersonName"
         android:fontFamily="@font/nanum"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/et_register_starttime"
         app:layout_constraintTop_toBottomOf="@+id/et_register_starttime" />
 
