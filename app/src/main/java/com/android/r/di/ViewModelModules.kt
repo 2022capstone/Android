@@ -1,8 +1,10 @@
 package com.android.r.di
 
+import com.android.r.repository.CarImageRepository
 import com.android.r.repository.CarRepository
 import com.android.r.repository.CustomerRepository
 import com.android.r.repository.RentRepository
+import com.android.r.viewmodel.CarImageViewModel
 import com.android.r.viewmodel.CarViewModel
 import com.android.r.viewmodel.CustomerViewModel
 import com.android.r.viewmodel.RentViewModel
@@ -21,5 +23,9 @@ val viewModelModules = module {
 
     viewModel{
         CustomerViewModel(get<CustomerRepository>())
+    }
+
+    viewModel{
+        CarImageViewModel(get<CarImageRepository>())
     }
 }

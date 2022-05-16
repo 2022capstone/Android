@@ -11,10 +11,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.r.R
 import com.android.r.base.BaseFragment
 import com.android.r.databinding.FragmentUsageDetailBinding
+import com.android.r.model.RentInfo
 import com.android.r.ui.CarList
 import com.android.r.viewmodel.CarViewModel
 import com.android.r.viewmodel.RentViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
+import org.threeten.bp.LocalDateTime
+import org.threeten.bp.format.DateTimeFormatter
 
 class UsageDetailFragment : BaseFragment<FragmentUsageDetailBinding>(R.layout.fragment_usage_detail) {
 
@@ -31,28 +34,6 @@ class UsageDetailFragment : BaseFragment<FragmentUsageDetailBinding>(R.layout.fr
     override fun initStartView() {
         super.initStartView()
 
-        //현재이용중인차량
-        currentCarAdapter = CurrentCarAdapter(ArrayList(), this.context!!)
-
-        rentViewModel.getRentByRenterId("nyh710")
-
-        rentViewModel.rentInfoLiveData.observe(this, { itemList ->
-            currentCarAdapter.rentList = itemList
-            Log.d("rentt", itemList.toString())
-        })
-
-        binding.rvCurrentCar.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        binding.rvCurrentCar.setHasFixedSize(true)
-
-        binding.rvCurrentCar.adapter = currentCarAdapter
-        currentCarAdapter.setOnItemClickListener(object : CurrentCarAdapter.onItemClickListener{
-            override fun onItemClick(position: Button){
-                if(position.text == "대여준비"){
-                    navController.navigate(R.id.action_usageDetailFragment_to_takePicturesFragment)
-                }
-            }
-        })
-
 
 
         //과거이용했던차량
@@ -66,7 +47,6 @@ class UsageDetailFragment : BaseFragment<FragmentUsageDetailBinding>(R.layout.fr
         rentViewModel.getRentByRenterId("nyh710")
         rentViewModel.rentInfoLiveData.observe(this, { itemList ->
             usedCarAdapter.rentList = itemList
-            Log.d("Rentt", itemList.toString())
         })
 
         usedCarAdapter.setOnItemClickListener(object : UsedCarAdapter.onItemClickListener{
@@ -94,5 +74,46 @@ class UsageDetailFragment : BaseFragment<FragmentUsageDetailBinding>(R.layout.fr
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)
     }
 
+    override fun initDataBinding() {
+        super.initDataBinding()
+    }
+
+    override fun initAfterBinding() {
+        super.initAfterBinding()
+
+
+        //현재이용중인차량
+        currentCarAdapter = CurrentCarAdapter(ArrayList(), this.context!!)
+
+        rentViewModel.getRentByRenterId("nyh710")
+
+        rentViewModel.rentInfoLiveData.observe(this, { itemList ->
+            currentCarAdapter.rentList = itemList
+        })
+
+        binding.rvCurrentCar.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        binding.rvCurrentCar.setHasFixedSize(true)
+
+        binding.rvCurrentCar.adapter = currentCarAdapter
+        currentCarAdapter.setOnItemClickListener(object : CurrentCarAdapter.onItemClickListener{
+            override fun onItemClick(button: Button, position : Int){
+                if(button.text == "예약대기"){
+                    val bundle = Bundle()
+
+                    bundle.putSerializable("rent", rentViewModel.rentInfoLiveData.value?.get(position))
+
+                    navController.navigate(R.id.action_usageDetailFragment_to_takePicturesFragment, bundle)
+                }
+
+                if(button.text == "반납대기"){
+                    val bundle = Bundle()
+
+                    bundle.putSerializable("rent", rentViewModel.rentInfoLiveData.value?.get(position))
+
+                    navController.navigate(R.id.action_usageDetailFragment_to_takePicturesFragment, bundle)
+                }
+            }
+        })
+    }
 
 }

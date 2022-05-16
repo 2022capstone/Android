@@ -1,9 +1,11 @@
 package com.android.r.model
 
 import org.threeten.bp.LocalDateTime
+import java.io.Serializable
 
 
 data class RentInfo(
+    val rentId : Int,
     val renterId : String, //빌리는 사람 아이디
     val carNum : String, // 차 번호
     val startTime : LocalDateTime, //예약한 시간 또는 대여 시작 시간

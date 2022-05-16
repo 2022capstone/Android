@@ -15,9 +15,6 @@
         <item android:id="@+id/usagedetail"
             android:title="이용내역"/>
 
-        <item android:id="@+id/chat"
-            android:title="1:1대화내역"/>
-
     </group>
 
 </menu>

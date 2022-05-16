@@ -5,10 +5,7 @@ import io.reactivex.Single
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface RentService {
 
@@ -26,5 +23,11 @@ interface RentService {
 
     @POST("rentlist/rent")
     suspend fun insertRentInfo(@Body request : RequestBody) : Response<ResponseBody>
+
+    @PUT("rentlist/rent")
+    suspend fun updateRentInfo(@Body request: RequestBody) : Response<ResponseBody>
+
+    @DELETE("rentlist/rent")
+    suspend fun deleteRentInfo(@Query("id")id: Int) : Response<ResponseBody>
 
 }

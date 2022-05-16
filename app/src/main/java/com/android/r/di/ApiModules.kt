@@ -1,6 +1,7 @@
 package com.android.r.di
 
 import com.android.r.BuildConfig
+import com.android.r.retrofit.CarImageService
 import com.android.r.retrofit.CarService
 import com.android.r.retrofit.CustomerService
 import com.android.r.retrofit.RentService
@@ -36,5 +37,14 @@ val apiModules = module{
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(CustomerService::class.java)
+    }
+
+    single<CarImageService>{
+        Retrofit.Builder()
+            .baseUrl(BuildConfig.BASE_URL)
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(CarImageService::class.java)
     }
 }

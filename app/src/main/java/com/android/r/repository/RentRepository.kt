@@ -16,4 +16,8 @@ class RentRepository(val rentService: RentService) {
     fun getRentByRenterId(id : String) = rentService.getRentByRenterId(id)
 
     suspend fun insertRentInfo(request : RequestBody) = rentService.insertRentInfo(request)
+
+    suspend fun updateRentInfo(request: RequestBody) = rentService.updateRentInfo(request)
+
+    suspend fun deleteRentInfo(id: Int) = rentService.deleteRentInfo(id)
 }

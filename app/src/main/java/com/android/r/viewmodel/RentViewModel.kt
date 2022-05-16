@@ -77,7 +77,6 @@ class RentViewModel(private val rentRepository: RentRepository) : BaseViewModel(
         jsonObject.put("comment", rent.comment)
         jsonObject.put("carNum", rent.carNum)
 
-        Log.d("rentt", jsonObject.toString())
 
         val jsonObjectString = jsonObject.toString()
 
@@ -85,6 +84,36 @@ class RentViewModel(private val rentRepository: RentRepository) : BaseViewModel(
 
         CoroutineScope(Dispatchers.IO).launch {
             val response = rentRepository.insertRentInfo(requestBody)
+            withContext(Dispatchers.Main){
+                if (response.isSuccessful){
+                    val gson = GsonBuilder().setPrettyPrinting().create()
+                    val prettyJson = gson.toJson(
+                        response.body()?.string()
+                    )
+                }
+            }
+        }
+    }
+
+    fun updateRentInfo(rent: RentInfo){
+        val jsonObject = JSONObject()
+        jsonObject.put("rentId", rent.rentId)
+        jsonObject.put("renterId", rent.renterId)
+        jsonObject.put("startTime", rent.startTime)
+        jsonObject.put("returnTime", rent.endTime)
+        jsonObject.put("status", rent.status)
+        jsonObject.put("grade", rent.grade)
+        jsonObject.put("comment", rent.comment)
+        jsonObject.put("carNum", rent.carNum)
+
+
+
+        val jsonObjectString = jsonObject.toString()
+
+        val requestBody = jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
+
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = rentRepository.updateRentInfo(requestBody)
             Log.d("rentt", requestBody.toString())
             withContext(Dispatchers.Main){
                 if (response.isSuccessful){
@@ -100,6 +129,25 @@ class RentViewModel(private val rentRepository: RentRepository) : BaseViewModel(
 
             }
 
+        }
+    }
+
+    fun deleteRentInfo(id : Int){
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = rentRepository.deleteRentInfo(id)
+            withContext(Dispatchers.Main){
+                if (response.isSuccessful){
+                    val gson = GsonBuilder().setPrettyPrinting().create()
+                    val prettyJson = gson.toJson(
+                        response.body()?.string()
+                    )
+                    Log.d("Insert rentInfo : ", prettyJson)
+
+                }else{
+                    Log.e("Retorfit_Error", response.code().toString())
+                }
+
+            }
         }
     }
 

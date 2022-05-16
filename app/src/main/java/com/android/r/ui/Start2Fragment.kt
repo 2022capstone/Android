@@ -122,7 +122,6 @@ class Start2Fragment : BaseFragment<FragmentStart2Binding>(R.layout.fragment_sta
             R.id.myreservation -> navController.navigate(R.id.action_start2Fragment_to_myReservFragment)
             R.id.mycar -> navController.navigate(R.id.action_start2Fragment_to_myCarFragment)
             R.id.usagedetail -> navController.navigate(R.id.action_start2Fragment_to_usageDetailFragment)
-            R.id.chat -> navController.navigate(R.id.action_start2Fragment_to_chatFragment)
         }
 
         return false

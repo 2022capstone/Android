@@ -1,6 +1,7 @@
 package com.android.r.model
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 import java.time.LocalDateTime
 
 data class Car(
@@ -26,4 +27,4 @@ data class Car(
     val availableStatus : String,
 
     val ownerId : String
-)
+) : Serializable

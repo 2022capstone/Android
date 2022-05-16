@@ -15,23 +15,34 @@ import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.core.content.FileProvider
+import androidx.core.graphics.drawable.toBitmap
 import com.android.r.R
 import com.android.r.base.BaseFragment
 import com.android.r.databinding.FragmentTakePicturesBinding
+import com.android.r.model.CarImage
+import com.android.r.model.Rent
+import com.android.r.model.RentInfo
+import com.android.r.viewmodel.CarImageViewModel
+import com.android.r.viewmodel.RentViewModel
 import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
+import org.koin.android.viewmodel.ext.android.viewModel
+import org.threeten.bp.LocalDateTime
+import org.threeten.bp.format.DateTimeFormatter
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
+import java.net.URLEncoder
 import java.text.SimpleDateFormat
 import java.util.*
 
 class TakePicturesFragment : BaseFragment<FragmentTakePicturesBinding>(R.layout.fragment_take_pictures) {
 
     var REQUEST_IMAGE_CAPTURE = 1 //카메라 사진 촬영 요청코드
-    var REQUEST = 0
     lateinit var imagePath : File
     lateinit var curPhotoPath: String //문자열형태 사진 경로 값
+    val carImageViewModel : CarImageViewModel by viewModel()
+    val rentViewModel : RentViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +54,49 @@ class TakePicturesFragment : BaseFragment<FragmentTakePicturesBinding>(R.layout.
 
         setPermission()
 
+        //촬영 완료 버튼
         binding.btnTakeFinish.setOnClickListener {
+
+            val rentInfo = arguments?.getSerializable("rent") as Rent
+
+            if(rentInfo.status == "2"){
+                rentViewModel.updateRentInfo(
+                    RentInfo(
+                        rentInfo.rentId, rentInfo.renterId, rentInfo.carInfo.carNumber,
+                        LocalDateTime.parse(rentInfo.startTime, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")),
+                        LocalDateTime.parse(rentInfo.endTime, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")),
+                        "3" , 0.0.toFloat(),  ""
+                    )
+                )
+            }
+
+            else if(rentInfo.status == "5"){
+                rentViewModel.updateRentInfo(
+                    RentInfo(
+                        rentInfo.rentId, rentInfo.renterId, rentInfo.carInfo.carNumber,
+                        LocalDateTime.parse(rentInfo.startTime, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")),
+                        LocalDateTime.parse(rentInfo.endTime, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")),
+                        "6" , 0.0.toFloat(),  ""
+                    )
+                )
+            }
+
+
+            carImageViewModel.insertCarImageBeforeRent(
+                CarImage(
+                    rentInfo.rentId,
+                    URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivF.drawable.toBitmap()), "UTF-8"),
+                    URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivB.drawable.toBitmap()), "UTF-8"),
+                    URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivDriver.drawable.toBitmap()), "UTF-8"),
+                    URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivDriverB.drawable.toBitmap()), "UTF-8"),
+                    URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivPassenger.drawable.toBitmap()), "UTF-8"),
+                    URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivPassengerB.drawable.toBitmap()), "UTF-8"),
+                    "","","","","",""
+                )
+            )
+
+
+
             navController.navigate(R.id.action_takePicturesFragment_to_usageDetailFragment)
         }
 
@@ -74,6 +127,7 @@ class TakePicturesFragment : BaseFragment<FragmentTakePicturesBinding>(R.layout.
             takeCapture()
         }
     }
+
     //카메라 촬영
     private fun takeCapture() {
         //기본 카메라 앱 실행

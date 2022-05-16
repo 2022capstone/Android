@@ -28,7 +28,7 @@ class CurrentCarAdapter(rentList: List<Rent>, context : Context) : RecyclerView.
     private lateinit var mListener : onItemClickListener
 
     interface onItemClickListener{
-        fun onItemClick(position: Button)
+        fun onItemClick(button: Button, position: Int)
     }
 
     fun setOnItemClickListener(listener: onItemClickListener){
@@ -135,7 +135,7 @@ class CurrentCarAdapter(rentList: List<Rent>, context : Context) : RecyclerView.
         init {
             itemView.btnState.setOnClickListener {
                 //Log.d("test","click")
-                listener.onItemClick(state)
+                listener.onItemClick(state, adapterPosition)
             }
         }
 

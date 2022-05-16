@@ -29,7 +29,7 @@ class RequestRentalAdapter(rentList: List<Rent>, context : Context) : RecyclerVi
     private lateinit var mListener: onItemClickListener
 
     interface onItemClickListener{
-        fun onItemClick(position: Button)
+        fun onItemClick(button: Button, position: Int)
     }
 
     fun setOnItemClickListener(listener: onItemClickListener){
@@ -50,7 +50,7 @@ class RequestRentalAdapter(rentList: List<Rent>, context : Context) : RecyclerVi
     }
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
-        if (rentList.get(position).status.equals("2")){
+        if (rentList.get(position).status.equals("1")){
             holder.rentView.visibility = View.VISIBLE
             holder.state.text = "예약대기"
             Glide.with(context)
@@ -115,7 +115,7 @@ class RequestRentalAdapter(rentList: List<Rent>, context : Context) : RecyclerVi
             }*/
             itemView.btnState.setOnClickListener {
                 Log.d("test","click")
-                listener.onItemClick(state)
+                listener.onItemClick(state, adapterPosition)
             }
         }
     }

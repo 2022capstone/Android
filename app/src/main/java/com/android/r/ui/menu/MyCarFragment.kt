@@ -15,7 +15,9 @@ import com.android.r.model.Car
 import com.android.r.model.CarInfoResponse
 import com.android.r.ui.CarList
 import com.android.r.util.EventObserver
+import com.android.r.viewmodel.CarImageViewModel
 import com.android.r.viewmodel.CarViewModel
+import com.android.r.viewmodel.CustomerViewModel
 import com.android.r.viewmodel.RentViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -24,6 +26,7 @@ class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_ca
     val carViewModel : CarViewModel by viewModel()
     val rentViewModel : RentViewModel by viewModel()
 
+
     private lateinit var myCarAdapter : MyCarListAdapter
     private lateinit var requestRentalAdapter : RequestRentalAdapter
 
@@ -31,45 +34,18 @@ class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_ca
         super.onCreate(savedInstanceState)
     }
 
-    override fun onResume() {
+    /*override fun onResume() {
         super.onResume()
         Log.d("onResumee", "onResume")
-        initStartView()
-
-    }
-    override fun initStartView() {
-        super.initStartView()
-
-        //대여 요청 현황
-        requestRentalAdapter = RequestRentalAdapter(ArrayList(), this.context!!)
-
         rentViewModel.getRentByOwnerId("nyh710")
-
         rentViewModel.rentInfoLiveData.observe(this, { itemList ->
             requestRentalAdapter.rentList = itemList
-            Log.d("rentt", itemList.toString())
         })
+        carViewModel.getMyCarList("nyh710")
+    }*/
 
-        binding.rvRequestRental.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        binding.rvRequestRental.setHasFixedSize(true)
-
-
-        binding.rvRequestRental.adapter = requestRentalAdapter
-        requestRentalAdapter.setOnItemClickListener(object : RequestRentalAdapter.onItemClickListener{
-            override fun onItemClick(position: Button) {
-                if(position.text == "예약대기") {
-                    navController.navigate(R.id.action_myCarFragment_to_profileCheckFragment)//예약대기
-                }
-                if(position.text == "예약승인"){
-                    navController.navigate(R.id.action_myCarFragment_to_picCheckFragment)//예약승인
-                }
-                if(position.text == "반납대기"){
-                    navController.navigate(R.id.action_myCarFragment_to_picCheckAfterFragment)//반납대기
-                }
-            }
-        })
-
-
+    override fun initStartView() {
+        super.initStartView()
 
 
         //binding.rvRequestRental.adapter = RequestRentalAdapter(requestlentalList, this)
@@ -105,4 +81,57 @@ class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_ca
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)
     }
 
+    override fun initDataBinding() {
+        super.initDataBinding()
+    }
+
+    override fun initAfterBinding() {
+        super.initAfterBinding()
+
+        //대여요청현황황
+       requestRentalAdapter = RequestRentalAdapter(ArrayList(), this.context!!)
+
+        rentViewModel.getRentByOwnerId("nyh710")
+
+        binding.rvRequestRental.adapter = requestRentalAdapter
+
+        rentViewModel.rentInfoLiveData.observe(this, { itemList ->
+            requestRentalAdapter.rentList = itemList
+        })
+
+        binding.rvRequestRental.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        binding.rvRequestRental.setHasFixedSize(true)
+
+
+
+        requestRentalAdapter.setOnItemClickListener(object : RequestRentalAdapter.onItemClickListener{
+            override fun onItemClick(button: Button, position : Int) {
+
+                if(button.text == "예약대기") {
+                    val bundle = Bundle()
+
+                    bundle.putSerializable("rent", rentViewModel.rentInfoLiveData.value?.get(position))
+
+                    navController.navigate(R.id.action_myCarFragment_to_profileCheckFragment, bundle)//예약대기
+                }
+
+                if(button.text == "예약승인"){
+                    val bundle = Bundle()
+
+                    bundle.putSerializable("rent", rentViewModel.rentInfoLiveData.value?.get(position))
+
+                    navController.navigate(R.id.action_myCarFragment_to_picCheckFragment, bundle)//예약승인
+                }
+                if(button.text == "반납승인"){
+                    val bundle = Bundle()
+
+                    bundle.putSerializable("rent", rentViewModel.rentInfoLiveData.value?.get(position))
+
+                    navController.navigate(R.id.action_myCarFragment_to_picCheckAfterFragment, bundle)//반납승인
+                }
+            }
+        })
+
+
+    }
 }

@@ -48,7 +48,7 @@ class CarSelectFragment : BaseFragment<FragmentCarSelectBinding>(R.layout.fragme
                 Snackbar.make(this.view!!, "날짜를 선택해주세요.", 1000)
             }else{
                 rentViewModel.insertRentInfo(
-                    RentInfo(
+                    RentInfo(0,
                         "nyh710",
                         binding.tvCarnum.text.toString(),
                         LocalDateTime.parse(binding.tvStartTime.text.toString(), org.threeten.bp.format.DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm")),
