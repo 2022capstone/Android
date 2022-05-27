@@ -32,7 +32,6 @@ class UsageDetailFragment : BaseFragment<FragmentUsageDetailBinding>(R.layout.fr
     }
 
     override fun initStartView() {
-        super.initStartView()
 
         //과거이용했던차량
         usedCarAdapter = UsedCarAdapter(ArrayList(), this.context!!)
@@ -65,6 +64,9 @@ class UsageDetailFragment : BaseFragment<FragmentUsageDetailBinding>(R.layout.fr
             navController.navigate(R.id.action_usageDetailFragment_to_start2Fragment)
         }
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+
+        super.initStartView()
+
     }
 
     override fun initDataBinding() {
@@ -72,8 +74,6 @@ class UsageDetailFragment : BaseFragment<FragmentUsageDetailBinding>(R.layout.fr
     }
 
     override fun initAfterBinding() {
-        super.initAfterBinding()
-
 
         //현재이용중인차량
         currentCarAdapter = CurrentCarAdapter(ArrayList(), this.context!!)
@@ -107,6 +107,9 @@ class UsageDetailFragment : BaseFragment<FragmentUsageDetailBinding>(R.layout.fr
                 }
             }
         })
+
+        super.initAfterBinding()
+
     }
 
 }

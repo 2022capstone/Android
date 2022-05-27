@@ -27,7 +27,6 @@ class MyReserveFragment : BaseFragment<FragmentMyReserveBinding>(R.layout.fragme
     }
 
     override fun initStartView() {
-        super.initStartView()
 
         //예약내역
         reservationAdapter = ReservationAdapter(ArrayList(), this.context!!)
@@ -63,7 +62,8 @@ class MyReserveFragment : BaseFragment<FragmentMyReserveBinding>(R.layout.fragme
             navController.navigate(R.id.action_myReservFragment_to_start2Fragment)
         }
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+
+        super.initStartView()
+
     }
-
-
 }

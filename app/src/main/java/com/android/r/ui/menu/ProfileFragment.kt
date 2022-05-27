@@ -24,6 +24,13 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(R.layout.fragment_p
 
     override fun initStartView() {
         super.initStartView()
+    }
+
+    override fun initDataBinding() {
+        super.initDataBinding()
+    }
+
+    override fun initAfterBinding() {
 
         binding.btnFix.setOnClickListener {
             navController.navigate(R.id.action_profileFragment_to_profileFixFragment)
@@ -47,6 +54,9 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(R.layout.fragment_p
             navController.navigate(R.id.action_profileFragment_to_start2Fragment)
         }
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)
-    }
 
+
+        super.initAfterBinding()
+
+    }
 }

@@ -17,7 +17,7 @@
         android:backgroundTint="@color/sub"
         android:text="수정완료"
         android:textColor="@color/white"
-        android:fontFamily="@font/koddi"
+        android:fontFamily="@font/nanum"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

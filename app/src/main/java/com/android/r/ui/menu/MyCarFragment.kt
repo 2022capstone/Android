@@ -33,7 +33,6 @@ class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_ca
     }
 
     override fun initStartView() {
-        super.initStartView()
 
         //차량등록버튼
         binding.btnCarRegistration.setOnClickListener {
@@ -169,6 +168,6 @@ class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_ca
                 }
             }
         })
-
+        super.initStartView()
     }
 }

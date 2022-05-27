@@ -66,10 +66,10 @@
         android:layout_height="60dp"
         android:layout_marginStart="50dp"
         android:layout_marginTop="32dp"
-        android:backgroundTint="@color/gray"
+        android:backgroundTint="@color/main"
         android:fontFamily="@font/nanum"
         android:text="메시지"
-        android:textColor="#000000"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_pc_location" />
 
@@ -78,10 +78,10 @@
         android:layout_width="140dp"
         android:layout_height="60dp"
         android:layout_marginEnd="50dp"
-        android:backgroundTint="@color/gray"
+        android:backgroundTint="@color/main"
         android:fontFamily="@font/nanum"
         android:text="전화"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/btn_msg" />
 
