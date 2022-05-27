@@ -111,6 +111,46 @@ class CarImageViewModel(private val carImageRepository: CarImageRepository) : Ba
         )
     }
 
+    fun insertCarImageAfterRent(carImage : CarImage){
+        val jsonObject = JSONObject()
+
+        jsonObject.put("rentId", carImage.rentId)
+        jsonObject.put("beforeFrontImage", carImage.beforeFrontImage)
+        jsonObject.put("beforeBackImage", carImage.beforeBackImage)
+        jsonObject.put("beforeDriveFrontImage", carImage.beforeDriveFrontImage)
+        jsonObject.put("beforeDriveBackImage", carImage.beforeDriveBackImage)
+        jsonObject.put("beforePassengerFrontImage", carImage.beforePassengerFrontImage)
+        jsonObject.put("beforePassengerBackImage", carImage.beforePassengerBackImage)
+        jsonObject.put("afterFrontImage", carImage.afterFrontImage)
+        jsonObject.put("afterBackImage", carImage.afterBackImage)
+        jsonObject.put("afterDriveFrontImage", carImage.afterDriveFrontImage)
+        jsonObject.put("afterDriveBackImage", carImage.afterDriveBackImage)
+        jsonObject.put("afterPassengerFrontImage", carImage.afterPassengerFrontImage)
+        jsonObject.put("afterPassengerBackImage", carImage.afterPassengerBackImage)
+
+
+        val jsonObjectString = jsonObject.toString()
+        val requestBody = jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
+
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = carImageRepository.insertCarImageAfterRent(requestBody)
+            withContext(Dispatchers.Main){
+                if (response.isSuccessful){
+                    val gson = GsonBuilder().setPrettyPrinting().create()
+                    val prettyJson = gson.toJson(
+                        response.body()?.string()
+                    )
+                    Log.d("Insert rentInfo : ", prettyJson)
+
+                }else{
+                    Log.e("Retorfit_Error", response.code().toString())
+                }
+
+            }
+
+        }
+    }
+
 
 
     private fun handleError(exception: Throwable){

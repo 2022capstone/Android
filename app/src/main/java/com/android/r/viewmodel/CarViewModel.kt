@@ -1,14 +1,10 @@
 package com.android.r.viewmodel
 
-import android.media.Image
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.android.r.base.BaseViewModel
-import com.android.r.model.Car
-import com.android.r.model.CarInfo
-import com.android.r.model.CarInfoResponse
-import com.android.r.model.Rent
+import com.android.r.model.*
 import com.android.r.repository.CarRepository
 import com.android.r.util.Event
 import com.google.gson.GsonBuilder
@@ -18,9 +14,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
@@ -132,6 +126,43 @@ class CarViewModel(private val carRepository: CarRepository) : BaseViewModel(){
                     handleError(it)
                 })
         )
+    }
+
+    fun updateCarInfo(car: CarInfo){
+
+        val jsonObject = JSONObject()
+        jsonObject.put("number", car.number)
+        jsonObject.put("model", car.model)
+        jsonObject.put("location", car.location)
+        jsonObject.put("maxPeople", car.maxPeople)
+        jsonObject.put("imageURL", car.imageURL)
+        jsonObject.put("availableStartTime", car.availableStartTime)
+        jsonObject.put("availableEndTime", car.availableEndTime)
+        jsonObject.put("availableStatus", car.availableStatus)
+        jsonObject.put("ownerId", car.ownerId)
+
+        val jsonObjectString = jsonObject.toString()
+
+        val requestBody = jsonObjectString.toRequestBody("application/json".toMediaTypeOrNull())
+
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = carRepository.updateCarInfo(requestBody)
+
+            withContext(Dispatchers.Main){
+                if (response.isSuccessful){
+                    val gson = GsonBuilder().setPrettyPrinting().create()
+                    val prettyJson = gson.toJson(
+                        response.body()?.string()
+                    )
+                    Log.d("Update Customer : ", prettyJson)
+
+                }else{
+                    Log.e("Retorfit_Error", response.code().toString())
+                }
+
+            }
+
+        }
     }
 
 

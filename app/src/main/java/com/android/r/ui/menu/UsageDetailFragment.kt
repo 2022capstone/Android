@@ -34,8 +34,6 @@ class UsageDetailFragment : BaseFragment<FragmentUsageDetailBinding>(R.layout.fr
     override fun initStartView() {
         super.initStartView()
 
-
-
         //과거이용했던차량
         usedCarAdapter = UsedCarAdapter(ArrayList(), this.context!!)
         binding.rvUsedCar.adapter = usedCarAdapter
@@ -52,15 +50,10 @@ class UsageDetailFragment : BaseFragment<FragmentUsageDetailBinding>(R.layout.fr
         usedCarAdapter.setOnItemClickListener(object : UsedCarAdapter.onItemClickListener{
             override fun onItemClick(position: Int) {
                 val bundle = Bundle()
-                bundle.putString("model", "${rentViewModel.rentInfoLiveData.value?.get(position)?.carInfo?.carModel}")
-                bundle.putString("image", "${rentViewModel.rentInfoLiveData.value?.get(position)?.carInfo?.carImage}")
-                bundle.putString("seater", "${rentViewModel.rentInfoLiveData.value?.get(position)?.carInfo?.seater}")
-                bundle.putString("number", "${rentViewModel.rentInfoLiveData.value?.get(position)?.carInfo?.carNumber}")
-                bundle.putString("location", "${rentViewModel.rentInfoLiveData.value?.get(position)?.carInfo?.carLocation}")
-                bundle.putString("starttime", "${rentViewModel.rentInfoLiveData.value?.get(position)?.startTime}")
-                bundle.putString("endtime", "${rentViewModel.rentInfoLiveData.value?.get(position)?.endTime}")
+                bundle.putSerializable("rent", rentViewModel.rentInfoLiveData.value?.get(position))
+                bundle.putBoolean("btn", false)
 
-                navController.navigate(R.id.action_usageDetailFragment_to_carDetailFragment, bundle)
+                navController.navigate(R.id.action_usageDetailFragment_to_picCheckAfterFragment, bundle)
             }
 
         })

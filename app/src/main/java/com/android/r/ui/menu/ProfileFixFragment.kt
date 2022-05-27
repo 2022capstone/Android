@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import com.android.r.R
 import com.android.r.base.BaseFragment
 import com.android.r.databinding.FragmentProfileFixBinding
@@ -47,6 +48,17 @@ class ProfileFixFragment : BaseFragment<FragmentProfileFixBinding>(R.layout.frag
             )
             navController.navigate(R.id.action_profileFixFragment_to_profileFragment)
         }
+
+
+        //뒤로가기
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
+            navController.navigate(R.id.action_profileFragment_to_start2Fragment)
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+
+
     }
+
+
 
 }

@@ -15,4 +15,6 @@ class CarRepository(private val carService: CarService) {
 
     suspend fun insertCarInfo(data : RequestBody) = carService.registMyCar(data)
 
+    suspend fun updateCarInfo(request : RequestBody) = carService.updateCarInfo(request)
+
 }

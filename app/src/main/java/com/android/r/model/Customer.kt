@@ -1,5 +1,7 @@
 package com.android.r.model
 
+import java.io.Serializable
+
 data class Customer(
 
     val id : String,
@@ -14,4 +16,4 @@ data class Customer(
 
     val gradeAvg : Float
 
-)
+) : Serializable

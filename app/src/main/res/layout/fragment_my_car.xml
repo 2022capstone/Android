@@ -61,7 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:backgroundTint="#000000"
+        android:backgroundTint="@color/sub"
         android:text="차량등록"
         android:fontFamily="@font/nanum"
         android:textColor="@color/white"

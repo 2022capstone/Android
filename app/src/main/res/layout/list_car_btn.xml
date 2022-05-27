@@ -89,7 +89,7 @@
             android:id="@+id/btn_state"
             android:layout_width="100dp"
             android:layout_height="65dp"
-            android:backgroundTint="@color/gray2"
+            android:backgroundTint="@color/sub"
             android:fontFamily="@font/nanum"
             android:text="대여상태"
             android:textSize="16sp"

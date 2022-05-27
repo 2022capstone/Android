@@ -1,13 +1,7 @@
 package com.android.r.di
 
-import com.android.r.repository.CarImageRepository
-import com.android.r.repository.CarRepository
-import com.android.r.repository.CustomerRepository
-import com.android.r.repository.RentRepository
-import com.android.r.retrofit.CarImageService
-import com.android.r.retrofit.CarService
-import com.android.r.retrofit.CustomerService
-import com.android.r.retrofit.RentService
+import com.android.r.repository.*
+import com.android.r.retrofit.*
 import org.koin.dsl.module.module
 
 val repositoryModules = module {
@@ -26,5 +20,9 @@ val repositoryModules = module {
 
     single{
         CarImageRepository(get<CarImageService>())
+    }
+
+    single{
+        ScratchRepository(get<ScratchService>())
     }
 }

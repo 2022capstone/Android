@@ -11,4 +11,6 @@ class CarImageRepository(private val carImageService: CarImageService) {
     fun getCarImageAfterRentByRentId(id : Int) = carImageService.getCarImageAfterRentByRentId(id)
 
     suspend fun insertCarImageBeforeRent(data : RequestBody) = carImageService.insertCarImageBeforeRent(data)
+
+    suspend fun insertCarImageAfterRent(data: RequestBody) = carImageService.insertCarImageAfterRent(data)
 }

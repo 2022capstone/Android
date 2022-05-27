@@ -15,6 +15,7 @@ import com.android.r.databinding.ListCarBtnBinding
 import com.android.r.model.Car
 import com.android.r.model.CarInfoResponse
 import com.android.r.ui.CarList
+import com.android.r.ui.CarListAdapter
 import com.bumptech.glide.Glide
 import java.net.URI
 
@@ -27,6 +28,16 @@ class MyCarListAdapter(carList: List<Car>, context : Context) : RecyclerView.Ada
         }
     val context : Context = context
 
+    private lateinit var mListener: onItemClickListener
+
+    interface onItemClickListener{
+        fun onItemClick(button: Button, position: Int)
+    }
+
+    fun setOnItemClickListener(listener: onItemClickListener){
+        mListener = listener
+    }
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -36,7 +47,7 @@ class MyCarListAdapter(carList: List<Car>, context : Context) : RecyclerView.Ada
                 LayoutInflater.from(parent.context),
                 parent,
                 false
-            )
+            ), mListener
         )
     }
 
@@ -50,10 +61,10 @@ class MyCarListAdapter(carList: List<Car>, context : Context) : RecyclerView.Ada
         holder.enddate.text = carList.get(position).availableEndTime
 
         if(carList.get(position).availableStatus.equals("y")){
-            holder.state.text = "대여 가능"
+            holder.state.text = "대여가능"
         }
-        else{
-            holder.state.text = "대여 불가능"
+        else if(carList.get(position).availableStatus.equals("n")){
+            holder.state.text = "대여불가능"
         }
 
     }
@@ -62,15 +73,20 @@ class MyCarListAdapter(carList: List<Car>, context : Context) : RecyclerView.Ada
         return carList.size
     }
 
-    class CustomViewHolder(itemView: ListCarBtnBinding) : RecyclerView.ViewHolder(itemView.root) {
+    class CustomViewHolder(itemView: ListCarBtnBinding, listener: onItemClickListener) : RecyclerView.ViewHolder(itemView.root) {
         val image = itemView.ivCar //차 사진
         val model = itemView.tvModel //모델
         val owner = itemView.tvOwner //차주
         val startdate = itemView.tvStarttime //날짜
         val enddate = itemView.tvEndtime
         val state = itemView.btnState //대여상태
-    }
 
+        init {
+            itemView.btnState.setOnClickListener {
+                listener.onItemClick(state, adapterPosition)
+            }
+        }
+    }
 }
 
 

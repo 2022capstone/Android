@@ -75,6 +75,9 @@
         <action
             android:id="@+id/action_usageDetailFragment_to_start2Fragment"
             app:destination="@id/start2Fragment" />
+        <action
+            android:id="@+id/action_usageDetailFragment_to_picCheckAfterFragment"
+            app:destination="@id/picCheckAfterFragment" />
     </fragment>
     <fragment
         android:id="@+id/carRegisterFragment"
@@ -125,6 +128,9 @@
         <action
             android:id="@+id/action_picCheckAfterFragment_to_reviewFragment"
             app:destination="@id/reviewFragment" />
+        <action
+            android:id="@+id/action_picCheckAfterFragment_to_imageDetailFragment"
+            app:destination="@id/imageDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -170,4 +176,12 @@
         android:name="com.android.r.ui.CarDetailFragment"
         android:label="fragment_car_detail"
         tools:layout="@layout/fragment_car_detail" />
+    <fragment
+        android:id="@+id/imageDetailFragment"
+        android:name="com.android.r.ui.ImageDetailFragment"
+        android:label="ImageDetailFragment" >
+        <action
+            android:id="@+id/action_imageDetailFragment_to_picCheckAfterFragment"
+            app:destination="@id/picCheckAfterFragment" />
+    </fragment>
 </navigation>

@@ -47,6 +47,7 @@ abstract class BaseFragment <B : ViewBinding>(@LayoutRes private val layoutResId
 
         navController = findNavController()
         initStartView()
+        initDataBinding()
         initAfterBinding()
     }
 

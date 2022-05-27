@@ -134,7 +134,6 @@ class CurrentCarAdapter(rentList: List<Rent>, context : Context) : RecyclerView.
 
         init {
             itemView.btnState.setOnClickListener {
-                //Log.d("test","click")
                 listener.onItemClick(state, adapterPosition)
             }
         }

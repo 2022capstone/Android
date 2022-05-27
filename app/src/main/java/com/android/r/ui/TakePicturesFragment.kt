@@ -68,6 +68,19 @@ class TakePicturesFragment : BaseFragment<FragmentTakePicturesBinding>(R.layout.
                         "3" , 0.0.toFloat(),  ""
                     )
                 )
+
+                carImageViewModel.insertCarImageBeforeRent(
+                    CarImage(
+                        rentInfo.rentId,
+                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivF.drawable.toBitmap()), "UTF-8"),
+                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivB.drawable.toBitmap()), "UTF-8"),
+                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivDriver.drawable.toBitmap()), "UTF-8"),
+                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivDriverB.drawable.toBitmap()), "UTF-8"),
+                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivPassenger.drawable.toBitmap()), "UTF-8"),
+                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivPassengerB.drawable.toBitmap()), "UTF-8"),
+                        "","","","","",""
+                    )
+                )
             }
 
             else if(rentInfo.status == "5"){
@@ -79,21 +92,23 @@ class TakePicturesFragment : BaseFragment<FragmentTakePicturesBinding>(R.layout.
                         "6" , 0.0.toFloat(),  ""
                     )
                 )
+
+                carImageViewModel.insertCarImageAfterRent(
+                    CarImage(
+                        rentInfo.rentId,
+                        "","","","","","",
+                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivF.drawable.toBitmap()), "UTF-8"),
+                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivB.drawable.toBitmap()), "UTF-8"),
+                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivDriver.drawable.toBitmap()), "UTF-8"),
+                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivDriverB.drawable.toBitmap()), "UTF-8"),
+                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivPassenger.drawable.toBitmap()), "UTF-8"),
+                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivPassengerB.drawable.toBitmap()), "UTF-8")
+                    )
+                )
             }
 
 
-            carImageViewModel.insertCarImageBeforeRent(
-                CarImage(
-                    rentInfo.rentId,
-                    URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivF.drawable.toBitmap()), "UTF-8"),
-                    URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivB.drawable.toBitmap()), "UTF-8"),
-                    URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivDriver.drawable.toBitmap()), "UTF-8"),
-                    URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivDriverB.drawable.toBitmap()), "UTF-8"),
-                    URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivPassenger.drawable.toBitmap()), "UTF-8"),
-                    URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivPassengerB.drawable.toBitmap()), "UTF-8"),
-                    "","","","","",""
-                )
-            )
+
 
 
 

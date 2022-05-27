@@ -92,7 +92,7 @@
         android:layout_width="310dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
-        android:backgroundTint="#000000"
+        android:backgroundTint="@color/sub"
         android:fontFamily="@font/nanum"
         android:text="촬영 완료"
         android:textColor="@color/white"

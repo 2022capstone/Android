@@ -17,6 +17,7 @@ import com.android.r.databinding.FragmentStart2Binding
 import com.android.r.databinding.NavHeaderMainBinding
 import com.android.r.viewmodel.CarViewModel
 import com.android.r.viewmodel.CustomerViewModel
+import com.android.r.viewmodel.ScratchViewModel
 import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.GlobalScope
@@ -28,6 +29,7 @@ class Start2Fragment : BaseFragment<FragmentStart2Binding>(R.layout.fragment_sta
 
     val carViewModel : CarViewModel by viewModel()
     val customerViewModel : CustomerViewModel by viewModel()
+
     private lateinit var carListAdapter : CarListAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +38,14 @@ class Start2Fragment : BaseFragment<FragmentStart2Binding>(R.layout.fragment_sta
 
     override fun initStartView() {
         super.initStartView()
+    }
+
+    override fun initDataBinding() {
+        super.initDataBinding()
+    }
+
+    override fun initAfterBinding() {
+        super.initAfterBinding()
 
         binding.btnMenu.setOnClickListener{
             binding.layoutDrawer.openDrawer(GravityCompat.START)//START: left, END:right랑 같은 말
@@ -46,7 +56,6 @@ class Start2Fragment : BaseFragment<FragmentStart2Binding>(R.layout.fragment_sta
         carListAdapter = CarListAdapter(ArrayList(), this.context!!)
 
         carViewModel.getMainList("nyh710")
-
 
         carViewModel.myCarLiveData.observe(this, { itemList ->
             carListAdapter.carList = itemList
@@ -126,7 +135,6 @@ class Start2Fragment : BaseFragment<FragmentStart2Binding>(R.layout.fragment_sta
 
         return false
     }
-
 }
 
 

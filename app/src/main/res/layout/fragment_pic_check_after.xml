@@ -282,10 +282,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="조수석 뒤 : 스크래치 "
+            android:layout_marginBottom="40dp"
             android:fontFamily="@font/nanum"
+            android:text="조수석 뒤 : 스크래치 "
             android:textColor="@color/black"
             android:textSize="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_review"
             app:layout_constraintStart_toStartOf="@+id/iv_before_pback"
             app:layout_constraintTop_toBottomOf="@+id/iv_before_pback" />
 
@@ -305,16 +307,14 @@
             android:id="@+id/btn_review"
             android:layout_width="330dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
             android:layout_marginBottom="30dp"
-            android:backgroundTint="#000000"
+            android:backgroundTint="@color/sub"
             android:fontFamily="@font/nanum"
             android:text="평점 남기기"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView26" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/tv_before_front"

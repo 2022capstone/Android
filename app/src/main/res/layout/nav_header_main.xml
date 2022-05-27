@@ -18,7 +18,7 @@
     android:paddingTop="16dp"
     android:paddingRight="16dp"
     android:paddingBottom="16dp"
-    android:background="@color/gray">
+    android:background="@color/sub">
 
     <TextView
         android:id="@+id/tv_id"
@@ -27,14 +27,14 @@
         android:fontFamily="@font/nanum_bold"
         android:paddingTop="10dp"
         android:text="nyh710"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="18sp" />
 
     <TextView
         android:id="@+id/tv_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:text="초록빛"
         android:textSize="14sp"
         android:fontFamily="@font/nanum"/>

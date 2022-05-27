@@ -28,4 +28,7 @@ interface CarService {
     @POST("carlist/car")
     suspend fun registMyCar(@Body data : RequestBody) : Response<ResponseBody>
 
+    @PUT("carlist/car")
+    suspend fun updateCarInfo(@Body request : RequestBody) : Response<ResponseBody>
+
 }

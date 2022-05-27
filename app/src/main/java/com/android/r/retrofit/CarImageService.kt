@@ -18,4 +18,6 @@ interface CarImageService {
     @POST("carImage/before/compare-images")
     suspend fun insertCarImageBeforeRent(@Body data : RequestBody) : Response<ResponseBody>
 
+    @PUT("carImage/after/compare-images")
+    suspend fun insertCarImageAfterRent(@Body data: RequestBody) : Response<ResponseBody>
 }
