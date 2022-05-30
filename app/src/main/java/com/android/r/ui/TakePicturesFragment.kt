@@ -1,9 +1,12 @@
 package com.android.r.ui
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.ContentValues.TAG
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.database.Cursor
 import android.graphics.Bitmap
 import android.graphics.ImageDecoder
 import android.net.Uri
@@ -14,6 +17,8 @@ import android.provider.MediaStore
 import android.util.Log
 import android.view.*
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import androidx.core.graphics.drawable.toBitmap
 import com.android.r.R
@@ -38,7 +43,8 @@ import java.util.*
 
 class TakePicturesFragment : BaseFragment<FragmentTakePicturesBinding>(R.layout.fragment_take_pictures) {
 
-    var REQUEST_IMAGE_CAPTURE = 1 //카메라 사진 촬영 요청코드
+    var REQUEST_IMAGE_CAMERA = 1 //카메라 사진 촬영 요청코드
+    var REQUEST_IMAGE_GALLERY = 7
     lateinit var imagePath : File
     lateinit var curPhotoPath: String //문자열형태 사진 경로 값
     val carImageViewModel : CarImageViewModel by viewModel()
@@ -51,6 +57,14 @@ class TakePicturesFragment : BaseFragment<FragmentTakePicturesBinding>(R.layout.
 
     override fun initStartView() {
         super.initStartView()
+    }
+
+    override fun initDataBinding() {
+        super.initDataBinding()
+    }
+
+    override fun initAfterBinding() {
+
 
         setPermission()
 
@@ -72,12 +86,12 @@ class TakePicturesFragment : BaseFragment<FragmentTakePicturesBinding>(R.layout.
                 carImageViewModel.insertCarImageBeforeRent(
                     CarImage(
                         rentInfo.rentId,
-                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivF.drawable.toBitmap()), "UTF-8"),
-                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivB.drawable.toBitmap()), "UTF-8"),
-                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivDriver.drawable.toBitmap()), "UTF-8"),
-                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivDriverB.drawable.toBitmap()), "UTF-8"),
-                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivPassenger.drawable.toBitmap()), "UTF-8"),
-                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivPassengerB.drawable.toBitmap()), "UTF-8"),
+                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivF.drawable.toBitmap(), "jpg"), "UTF-8"),
+                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivB.drawable.toBitmap(), "jpg"), "UTF-8"),
+                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivDriver.drawable.toBitmap(), "jpg"), "UTF-8"),
+                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivDriverB.drawable.toBitmap(), "jpg"), "UTF-8"),
+                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivPassenger.drawable.toBitmap(),"jpg"), "UTF-8"),
+                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivPassengerB.drawable.toBitmap(),"jpg"), "UTF-8"),
                         "","","","","",""
                     )
                 )
@@ -97,19 +111,15 @@ class TakePicturesFragment : BaseFragment<FragmentTakePicturesBinding>(R.layout.
                     CarImage(
                         rentInfo.rentId,
                         "","","","","","",
-                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivF.drawable.toBitmap()), "UTF-8"),
-                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivB.drawable.toBitmap()), "UTF-8"),
-                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivDriver.drawable.toBitmap()), "UTF-8"),
-                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivDriverB.drawable.toBitmap()), "UTF-8"),
-                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivPassenger.drawable.toBitmap()), "UTF-8"),
-                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivPassengerB.drawable.toBitmap()), "UTF-8")
+                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivF.drawable.toBitmap(), "jpg"), "UTF-8"),
+                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivB.drawable.toBitmap(), "jpg"), "UTF-8"),
+                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivDriver.drawable.toBitmap(), "jpg"), "UTF-8"),
+                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivDriverB.drawable.toBitmap(), "jpg"), "UTF-8"),
+                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivPassenger.drawable.toBitmap(), "jpg"), "UTF-8"),
+                        URLEncoder.encode(carImageViewModel.encodeImageToBase64(binding.ivPassengerB.drawable.toBitmap(), "jpg"), "UTF-8")
                     )
                 )
             }
-
-
-
-
 
 
             navController.navigate(R.id.action_takePicturesFragment_to_usageDetailFragment)
@@ -117,43 +127,71 @@ class TakePicturesFragment : BaseFragment<FragmentTakePicturesBinding>(R.layout.
 
 
         binding.btnTakepicF.setOnClickListener{
-            REQUEST_IMAGE_CAPTURE = 1
-            Log.d("test","click")
+            REQUEST_IMAGE_CAMERA = 1
             takeCapture() //기본 카메라 앱을 실행하여 사진 촬영
         }
         binding.btnTakepicB.setOnClickListener {
-            REQUEST_IMAGE_CAPTURE = 2
+            REQUEST_IMAGE_CAMERA = 2
             takeCapture()
         }
         binding.btnTakepicD.setOnClickListener {
-            REQUEST_IMAGE_CAPTURE = 3
+            REQUEST_IMAGE_CAMERA = 3
             takeCapture()
         }
         binding.btnTakepicDback.setOnClickListener {
-            REQUEST_IMAGE_CAPTURE = 4
+            REQUEST_IMAGE_CAMERA = 4
             takeCapture()
         }
         binding.btnTakepicP.setOnClickListener {
-            REQUEST_IMAGE_CAPTURE = 5
+            REQUEST_IMAGE_CAMERA = 5
             takeCapture()
         }
         binding.btnTakepicPback.setOnClickListener {
-            REQUEST_IMAGE_CAPTURE = 6
+            REQUEST_IMAGE_CAMERA = 6
             takeCapture()
         }
+
+        binding.btnGalleryF.setOnClickListener {
+            REQUEST_IMAGE_GALLERY = 7
+            loadGallery()
+        }
+
+        binding.btnGalleryB.setOnClickListener {
+            REQUEST_IMAGE_GALLERY = 8
+            loadGallery()
+        }
+
+        binding.btnGalleryD.setOnClickListener {
+            REQUEST_IMAGE_GALLERY = 9
+            loadGallery()
+        }
+
+        binding.btnGalleryDback.setOnClickListener {
+            REQUEST_IMAGE_GALLERY = 10
+            loadGallery()
+        }
+
+        binding.btnGalleryP.setOnClickListener {
+            REQUEST_IMAGE_GALLERY = 11
+            loadGallery()
+        }
+
+        binding.btnGalleryPback.setOnClickListener {
+            REQUEST_IMAGE_GALLERY = 12
+            loadGallery()
+        }
+
+        super.initAfterBinding()
     }
 
     //카메라 촬영
     private fun takeCapture() {
         //기본 카메라 앱 실행
-        Log.d("test","takecapture")
         Intent(MediaStore.ACTION_IMAGE_CAPTURE).also { takePictureIntent ->
             takePictureIntent.resolveActivity(requireActivity().packageManager).also {
-                Log.d("test", "takeCapture : 2")
                 val photoFile: File? = try{
                     createImageFile()
                 }catch(ex:IOException){
-                    Log.d("test","error")
                     null
                 }
                 photoFile?.also {
@@ -162,12 +200,10 @@ class TakePicturesFragment : BaseFragment<FragmentTakePicturesBinding>(R.layout.
                         "com.android.r.fileprovider",
                         it
                     )
-                    Log.d("test", "takeCapture : 3")
                     takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI)
-                    startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+                    startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAMERA)
                 }
             }
-            Log.d("test", "takeCapture : 4")
         }
     }
 
@@ -184,7 +220,7 @@ class TakePicturesFragment : BaseFragment<FragmentTakePicturesBinding>(R.layout.
         //val timestamp: String = SimpleDateFormat("yyyyMMdd_HHmmss").format(Date())
 
         val storageDir: File? = requireActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-        return File.createTempFile("JPEG_${REQUEST_IMAGE_CAPTURE}", ".jpg", storageDir)
+        return File.createTempFile("JPEG_${REQUEST_IMAGE_CAMERA}", ".jpg", storageDir)
             .apply { curPhotoPath = absolutePath }
 
     }
@@ -208,21 +244,23 @@ class TakePicturesFragment : BaseFragment<FragmentTakePicturesBinding>(R.layout.
             .setDeniedMessage("권한을 거부하셨습니다. [앱 설정]->[권한] 항목에서 허용해주세요")
             .setPermissions(android.Manifest.permission.WRITE_EXTERNAL_STORAGE, android.Manifest.permission.CAMERA)
             .check()
+
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         //startActivityForResult를 통해서 기본 카메라 앱으로 부터 받아온 사진 결과 값
         super.onActivityResult(requestCode, resultCode, data)
 
-        if(requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK){
+        if(requestCode == REQUEST_IMAGE_CAMERA && resultCode == Activity.RESULT_OK){
             //이미지를 성공적으로 가져왔다면
-                val bitmap: Bitmap
+            val bitmap: Bitmap
             val file = File(curPhotoPath)
-            if(Build.VERSION.SDK_INT < 28){
-                bitmap = MediaStore.Images.Media
-                    .getBitmap(requireActivity().contentResolver, Uri.fromFile(file))
 
-                when(REQUEST_IMAGE_CAPTURE){
+            if(Build.VERSION.SDK_INT < 28){
+                bitmap = MediaStore.Images.Media.getBitmap(requireActivity().contentResolver, Uri.fromFile(file))
+
+                when(REQUEST_IMAGE_CAMERA){
                     1 ->  binding.ivF.setImageBitmap(bitmap)
                     2 ->  binding.ivB.setImageBitmap(bitmap)
                     3 ->  binding.ivDriver.setImageBitmap(bitmap)
@@ -237,17 +275,65 @@ class TakePicturesFragment : BaseFragment<FragmentTakePicturesBinding>(R.layout.
                 )
                 bitmap = ImageDecoder.decodeBitmap(decode)
 
-                when(REQUEST_IMAGE_CAPTURE){
+                when(REQUEST_IMAGE_CAMERA){
                     1 ->  binding.ivF.setImageBitmap(bitmap)
                     2 ->  binding.ivB.setImageBitmap(bitmap)
                     3 ->  binding.ivDriver.setImageBitmap(bitmap)
                     4 ->  binding.ivDriverB.setImageBitmap(bitmap)
                     5 ->  binding.ivPassenger.setImageBitmap(bitmap)
                     6 ->  binding.ivPassengerB.setImageBitmap(bitmap)
+                    7 -> binding.ivF.setImageBitmap(bitmap)
                 }
             }
-            savePhoto(bitmap)
+
+
+            //savePhoto(bitmap)
         }
+        else if(requestCode == REQUEST_IMAGE_GALLERY && resultCode == Activity.RESULT_OK){
+            var imageUriF: Uri = data?.data!!
+            var imageUriB: Uri = data?.data!!
+            var imageUriD: Uri = data?.data!!
+            var imageUriDBack: Uri = data?.data!!
+            var imageUriP: Uri = data?.data!!
+            var imageUriPBack: Uri = data?.data!!
+
+            fun getFileTag(imageUri: Uri) : String? {
+                var proj: Array<String> = arrayOf(MediaStore.Images.Media.DATA)
+                var c: Cursor = context?.contentResolver?.query(imageUri, proj, null, null, null)!!
+                var index = c.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+                c.moveToFirst()
+                var result = c.getString(index)
+
+                return result
+            }
+
+            when(REQUEST_IMAGE_GALLERY){
+                7 -> {
+                    binding.ivF.setImageURI(imageUriF)
+                    binding.ivF.setTag(getFileTag(imageUriF))}
+                8 -> {
+                    binding.ivB.setImageURI(imageUriB)
+                    binding.ivB.setTag(getFileTag(imageUriB))
+                }
+                9 -> {
+                    binding.ivDriver.setImageURI(imageUriD)
+                    binding.ivDriver.setTag(getFileTag(imageUriD))
+                }
+                10 -> {
+                    binding.ivDriverB.setImageURI(imageUriDBack)
+                    binding.ivDriverB.setTag(getFileTag(imageUriDBack))
+                }
+                11 -> {
+                    binding.ivPassenger.setImageURI(imageUriP)
+                    binding.ivPassenger.setTag(getFileTag(imageUriP))
+                }
+                12 -> {
+                    binding.ivPassengerB.setImageURI(imageUriPBack)
+                    binding.ivPassengerB.setTag(getFileTag(imageUriPBack))
+                }
+            }
+        }
+
     }
 
     //갤러리에 저장
@@ -264,4 +350,13 @@ class TakePicturesFragment : BaseFragment<FragmentTakePicturesBinding>(R.layout.
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out)
         Toast.makeText(context, "사진이 앨범에 저장되었습니다.", Toast.LENGTH_SHORT).show()
     }
+
+    //갤러리에서 사진 가져오기
+    private fun loadGallery(){
+        val intent = Intent(Intent.ACTION_GET_CONTENT)
+        intent.setType("image/*")
+
+        startActivityForResult(intent, REQUEST_IMAGE_GALLERY)
+    }
+
 }

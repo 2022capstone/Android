@@ -46,7 +46,6 @@ class PicCheckAfterFragment : BaseFragment<FragmentPicCheckAfterBinding>(R.layou
     }
 
     override fun initAfterBinding() {
-        super.initAfterBinding()
 
         val rentInfo = arguments?.getSerializable("rent") as Rent
 
@@ -210,5 +209,8 @@ class PicCheckAfterFragment : BaseFragment<FragmentPicCheckAfterBinding>(R.layou
 
             navController.navigate(R.id.action_picCheckAfterFragment_to_reviewFragment, bundle)
         }
+
+        super.initAfterBinding()
+
     }
 }

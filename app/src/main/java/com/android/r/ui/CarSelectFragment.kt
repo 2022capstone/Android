@@ -31,7 +31,6 @@ class CarSelectFragment : BaseFragment<FragmentCarSelectBinding>(R.layout.fragme
     }
 
     override fun initStartView() {
-        super.initStartView()
 
         Glide.with(context!!)
             .load(arguments?.getString("image"))
@@ -109,7 +108,7 @@ class CarSelectFragment : BaseFragment<FragmentCarSelectBinding>(R.layout.fragme
                 month,
                 day
             )
-//           최소 날짜를 현재 시각 이후로
+            //최소 날짜를 현재 시각 이후로
             dpd.datePicker.minDate = System.currentTimeMillis() - 1000;
             dpd.show()
         }
@@ -163,6 +162,9 @@ class CarSelectFragment : BaseFragment<FragmentCarSelectBinding>(R.layout.fragme
             dpd.datePicker.minDate = System.currentTimeMillis() - 1000;
             dpd.show()
         }
+
+        super.initStartView()
+
     }
 
 }

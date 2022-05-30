@@ -3,6 +3,7 @@ package com.android.r.ui.menu
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.r.R
@@ -33,28 +34,16 @@ class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_ca
     }
 
     override fun initStartView() {
-
-        //차량등록버튼
-        binding.btnCarRegistration.setOnClickListener {
-            navController.navigate(R.id.action_myCarFragment_to_carRegisterFragment)
-        }
-
-        //뒤로가기
-        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
-            navController.navigate(R.id.action_myCarFragment_to_start2Fragment)
-        }
-        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+        super.initStartView()
     }
 
     override fun initDataBinding() {
         super.initDataBinding()
-
     }
 
     override fun initAfterBinding() {
-        super.initAfterBinding()
 
-        //대여요청현황황
+        //대여요청현황
         requestRentalAdapter = RequestRentalAdapter(ArrayList(), this.context!!)
 
         rentViewModel.getRentByOwnerId("nyh710")
@@ -136,7 +125,7 @@ class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_ca
             override fun onItemClick(button: Button, position: Int) {
 
                 if (button.text == "대여가능") {
-                    button.text = "대여불가능"
+                    //button.text = "대여불가능"
                     carViewModel.updateCarInfo(
                         CarInfo(
                             carViewModel.myCarLiveData.value?.get(position)?.carNumber!!,
@@ -151,6 +140,7 @@ class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_ca
                         )
                     )
                 } else if (button.text == "대여불가능") {
+
                     button.text = "대여가능"
                     carViewModel.updateCarInfo(
                         CarInfo(
@@ -165,9 +155,24 @@ class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_ca
                             "nyh710"
                         )
                     )
+                    //Toast.makeText(context, "변경 불가능합니다.", Toast.LENGTH_SHORT).show()
                 }
             }
         })
-        super.initStartView()
+
+        //차량등록버튼
+        binding.btnCarRegistration.setOnClickListener {
+            navController.navigate(R.id.action_myCarFragment_to_carRegisterFragment)
+        }
+
+        //뒤로가기
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(this) {
+            navController.navigate(R.id.action_myCarFragment_to_start2Fragment)
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+
+
+        super.initAfterBinding()
     }
+
 }

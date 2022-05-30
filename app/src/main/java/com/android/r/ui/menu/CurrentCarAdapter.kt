@@ -1,19 +1,13 @@
 package com.android.r.ui.menu
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.android.r.R
-import com.android.r.databinding.ListCarBinding
 import com.android.r.databinding.ListCarBtnBinding
 import com.android.r.model.Rent
-import com.android.r.ui.CarList
 import com.bumptech.glide.Glide
 
 class CurrentCarAdapter(rentList: List<Rent>, context : Context) : RecyclerView.Adapter<CurrentCarAdapter.CustomViewHolder>(){
@@ -58,8 +52,8 @@ class CurrentCarAdapter(rentList: List<Rent>, context : Context) : RecyclerView.
                 .into(holder.image)
             holder.model.text = rentList.get(position).carInfo.carModel
             holder.owner.text = rentList.get(position).carInfo.ownerId
-            holder.startdate.text = rentList.get(position).carInfo.availableStartTime
-            holder.enddate.text = rentList.get(position).carInfo.availableEndTime
+            holder.startdate.text = rentList.get(position).startTime
+            holder.enddate.text = rentList.get(position).endTime
             //1 -> 예약함, 2 -> 예약 승인 받고 대여 대기중, 3 -> 사진 저장 후 대여 대기중, 4 -> 대여중, 5 -> 반납 대기중, 6 -> 사진 저장후 반납 대기중, 7 -> 반납 완료
         }
         else if (rentList.get(position).status.equals("3")){
@@ -78,7 +72,7 @@ class CurrentCarAdapter(rentList: List<Rent>, context : Context) : RecyclerView.
         else if (rentList.get(position).status.equals("4")){
             holder.rentView.visibility = View.VISIBLE
 
-            holder.state.text = "대여중"
+            holder.state.text = "반납하기"
             Glide.with(context)
                 .load(rentList.get(position).carInfo.carImage)
                 .into(holder.image)
@@ -91,7 +85,7 @@ class CurrentCarAdapter(rentList: List<Rent>, context : Context) : RecyclerView.
         else if (rentList.get(position).status.equals("5")){
             holder.rentView.visibility = View.VISIBLE
 
-            holder.state.text = "반납대기"
+            holder.state.text = "반납하기"
             Glide.with(context)
                 .load(rentList.get(position).carInfo.carImage)
                 .into(holder.image)
@@ -104,7 +98,7 @@ class CurrentCarAdapter(rentList: List<Rent>, context : Context) : RecyclerView.
         else if (rentList.get(position).status.equals("6")){
             holder.rentView.visibility = View.VISIBLE
 
-            holder.state.text = "반납승인"
+            holder.state.text = "반납대기"
             Glide.with(context)
                 .load(rentList.get(position).carInfo.carImage)
                 .into(holder.image)

@@ -2,6 +2,7 @@ package com.android.r.ui
 
 import android.app.Activity
 import android.content.Intent
+import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -10,7 +11,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.MimeTypeMap
 import androidx.core.graphics.drawable.toBitmap
+import androidx.core.net.toFile
 import com.android.r.R
 import com.android.r.base.BaseFragment
 import com.android.r.databinding.FragmentCarRegisterBinding
@@ -31,12 +34,17 @@ class CarRegisterFragment : BaseFragment<FragmentCarRegisterBinding>(R.layout.fr
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
-
 
     override fun initStartView() {
         super.initStartView()
+    }
+
+    override fun initDataBinding() {
+        super.initDataBinding()
+    }
+
+    override fun initAfterBinding() {
 
         binding.btnImageRegister.setOnClickListener {
             REQUEST_IMAGE_CODE = 1
@@ -56,7 +64,9 @@ class CarRegisterFragment : BaseFragment<FragmentCarRegisterBinding>(R.layout.fr
                     binding.etRegisterModel.text.toString(),
                     binding.etRegisterLocation.text.toString(),
                     binding.etRegisterSeater.text.toString(),
-                    URLEncoder.encode(carViewModel.encodeImageToBase64(binding.ivRegisterCar.drawable.toBitmap()), "UTF-8"),
+                    URLEncoder.encode(carViewModel.encodeImageToBase64(binding.ivRegisterCar.drawable.toBitmap(), binding.ivRegisterCar.tag.toString().substring(
+                        binding.ivRegisterCar.tag.toString().indexOf(".") + 1
+                    )), "UTF-8"),
                     LocalDateTime.parse(binding.etRegisterStarttime.text.toString(), DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm")),
                     LocalDateTime.parse(binding.etRegisterEndtime.text.toString(), DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm")),
                     "y",
@@ -65,16 +75,27 @@ class CarRegisterFragment : BaseFragment<FragmentCarRegisterBinding>(R.layout.fr
             )
             navController.navigate(R.id.action_carRegisterFragment_to_myCarFragment)
         }
+
+        super.initAfterBinding()
     }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         var selectedImageUri: Uri = data?.data!!
 
+        Log.d("filetypee", selectedImageUri.lastPathSegment.toString())
+
+        var proj: Array<String> = arrayOf(MediaStore.Images.Media.DATA)
+        var c: Cursor = context?.contentResolver?.query(selectedImageUri, proj, null, null, null)!!
+        var index = c.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+        c.moveToFirst()
+        var result = c.getString(index)
 
         binding.ivRegisterCar.setImageURI(selectedImageUri)
-        binding.ivRegisterCar.setTag(selectedImageUri)
+        binding.ivRegisterCar.setTag(result)
+
     }
 
 }

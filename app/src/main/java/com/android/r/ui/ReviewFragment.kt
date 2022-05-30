@@ -16,6 +16,7 @@ import com.android.r.model.Rent
 import com.android.r.model.RentInfo
 import com.android.r.viewmodel.CustomerViewModel
 import com.android.r.viewmodel.RentViewModel
+import com.bumptech.glide.Glide
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.threeten.bp.LocalDateTime
 import org.threeten.bp.format.DateTimeFormatter
@@ -75,6 +76,9 @@ class ReviewFragment : BaseFragment<FragmentReviewBinding>(R.layout.fragment_rev
         binding.tvReviewEndtime.text = rentInfo.endTime
         binding.tvReviewModel.text = rentInfo.carInfo.carModel
         binding.tvReviewCarnum.text = rentInfo.carInfo.carNumber
+        Glide.with(context!!)
+            .load(rentInfo.carInfo.carImage)
+            .into(binding.ivReviewCar)
 
         binding.btnReturnApproval.setOnClickListener {
             navController.navigate(R.id.action_reviewFragment_to_myCarFragment)

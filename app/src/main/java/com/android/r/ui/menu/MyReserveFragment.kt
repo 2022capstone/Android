@@ -63,7 +63,7 @@ class MyReserveFragment : BaseFragment<FragmentMyReserveBinding>(R.layout.fragme
         }
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)
 
-        super.initStartView()
 
+        super.initStartView()
     }
 }

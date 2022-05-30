@@ -31,7 +31,6 @@ class PicCheckFragment : BaseFragment<FragmentPicCheckBinding>(R.layout.fragment
     }
 
     override fun initStartView() {
-        super.initStartView()
 
         val rentInfo = arguments?.getSerializable("rent") as Rent
 
@@ -82,7 +81,9 @@ class PicCheckFragment : BaseFragment<FragmentPicCheckBinding>(R.layout.fragment
 
             navController.navigate(R.id.action_picCheckFragment_to_myCarFragment)
         }
-    }
 
+        super.initStartView()
+
+    }
 
 }

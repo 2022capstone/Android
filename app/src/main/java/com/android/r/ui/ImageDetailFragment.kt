@@ -24,12 +24,15 @@ class ImageDetailFragment : BaseFragment<FragmentImageDetailBinding>(R.layout.fr
     }
 
     override fun initStartView() {
-        super.initStartView()
 
         val imageInfo = arguments?.getString("image")
 
         Glide.with(context!!)
             .load(imageInfo)
             .into(binding.ivAftercheckCar)
+
+
+        super.initStartView()
+
     }
 }

@@ -28,45 +28,10 @@ class UsageDetailFragment : BaseFragment<FragmentUsageDetailBinding>(R.layout.fr
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun initStartView() {
-
-        //과거이용했던차량
-        usedCarAdapter = UsedCarAdapter(ArrayList(), this.context!!)
-        binding.rvUsedCar.adapter = usedCarAdapter
-
-        binding.rvUsedCar.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        binding.rvUsedCar.setHasFixedSize(true)
-
-        binding.rvUsedCar.adapter = usedCarAdapter
-        rentViewModel.getRentByRenterId("nyh710")
-        rentViewModel.rentInfoLiveData.observe(this, { itemList ->
-            usedCarAdapter.rentList = itemList
-        })
-
-        usedCarAdapter.setOnItemClickListener(object : UsedCarAdapter.onItemClickListener{
-            override fun onItemClick(position: Int) {
-                val bundle = Bundle()
-                bundle.putSerializable("rent", rentViewModel.rentInfoLiveData.value?.get(position))
-                bundle.putBoolean("btn", false)
-
-                navController.navigate(R.id.action_usageDetailFragment_to_picCheckAfterFragment, bundle)
-            }
-
-        })
-
-
-
-        //뒤로가기
-        val callback = requireActivity().onBackPressedDispatcher.addCallback(this){
-            navController.navigate(R.id.action_usageDetailFragment_to_start2Fragment)
-        }
-        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
-
         super.initStartView()
-
     }
 
     override fun initDataBinding() {
@@ -98,7 +63,7 @@ class UsageDetailFragment : BaseFragment<FragmentUsageDetailBinding>(R.layout.fr
                     navController.navigate(R.id.action_usageDetailFragment_to_takePicturesFragment, bundle)
                 }
 
-                if(button.text == "반납대기"){
+                if(button.text == "반납하기"){
                     val bundle = Bundle()
 
                     bundle.putSerializable("rent", rentViewModel.rentInfoLiveData.value?.get(position))
@@ -108,8 +73,40 @@ class UsageDetailFragment : BaseFragment<FragmentUsageDetailBinding>(R.layout.fr
             }
         })
 
+
+        //과거이용했던차량
+        usedCarAdapter = UsedCarAdapter(ArrayList(), this.context!!)
+        binding.rvUsedCar.adapter = usedCarAdapter
+
+        binding.rvUsedCar.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        binding.rvUsedCar.setHasFixedSize(true)
+
+        binding.rvUsedCar.adapter = usedCarAdapter
+        rentViewModel.getRentByRenterId("nyh710")
+        rentViewModel.rentInfoLiveData.observe(this, { itemList ->
+            usedCarAdapter.rentList = itemList
+        })
+
+        usedCarAdapter.setOnItemClickListener(object : UsedCarAdapter.onItemClickListener{
+            override fun onItemClick(position: Int) {
+                val bundle = Bundle()
+                bundle.putSerializable("rent", rentViewModel.rentInfoLiveData.value?.get(position))
+                bundle.putBoolean("btn", false)
+
+                navController.navigate(R.id.action_usageDetailFragment_to_picCheckAfterFragment, bundle)
+            }
+
+        })
+
+
+        //뒤로가기
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(this){
+            navController.navigate(R.id.action_usageDetailFragment_to_start2Fragment)
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+
+
         super.initAfterBinding()
 
     }
-
 }

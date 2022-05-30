@@ -70,6 +70,7 @@ class ProfileFixFragment : BaseFragment<FragmentProfileFixBinding>(R.layout.frag
         }
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)
 
+
         super.initAfterBinding()
     }
 

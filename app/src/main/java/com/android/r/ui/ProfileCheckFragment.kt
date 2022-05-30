@@ -33,7 +33,7 @@ class ProfileCheckFragment : BaseFragment<FragmentProfileCheckBinding>(R.layout.
     }
 
     override fun initStartView() {
-        super.initStartView()
+
         val rentInfo = arguments?.getSerializable("rent") as Rent
         binding.tvPcId.text = rentInfo.renterId
 
@@ -89,6 +89,9 @@ class ProfileCheckFragment : BaseFragment<FragmentProfileCheckBinding>(R.layout.
         binding.btnReserveRefuse.setOnClickListener {
             navController.navigate(R.id.action_profileCheckFragment_to_myCarFragment)
         }
+
+        super.initStartView()
+
     }
 
 
