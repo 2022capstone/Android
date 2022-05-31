@@ -41,7 +41,7 @@ class UsageDetailFragment : BaseFragment<FragmentUsageDetailBinding>(R.layout.fr
     override fun initAfterBinding() {
 
         //현재이용중인차량
-        currentCarAdapter = CurrentCarAdapter(ArrayList(), this.context!!)
+        currentCarAdapter = CurrentCarAdapter(ArrayList(), requireContext())
 
         rentViewModel.getRentByRenterId("nyh710")
 
@@ -76,7 +76,7 @@ class UsageDetailFragment : BaseFragment<FragmentUsageDetailBinding>(R.layout.fr
 
 
         //과거이용했던차량
-        usedCarAdapter = UsedCarAdapter(ArrayList(), this.context!!)
+        usedCarAdapter = UsedCarAdapter(ArrayList(), requireContext())
         binding.rvUsedCar.adapter = usedCarAdapter
 
         binding.rvUsedCar.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)

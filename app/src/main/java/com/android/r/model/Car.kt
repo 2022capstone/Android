@@ -24,7 +24,7 @@ data class Car(
 
     val availableEndTime : String,
 
-    val availableStatus : String,
+    val availableStatus : String, //234546 대여 중 대여불가능
 
     val ownerId : String
 ) : Serializable

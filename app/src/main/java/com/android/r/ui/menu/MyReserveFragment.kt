@@ -37,7 +37,7 @@ class MyReserveFragment : BaseFragment<FragmentMyReserveBinding>(R.layout.fragme
     override fun initAfterBinding() {
 
         //예약내역
-        reservationAdapter = ReservationAdapter(ArrayList(), this.context!!)
+        reservationAdapter = ReservationAdapter(ArrayList(), requireContext())
 
         rentViewModel.getRentByRenterId("nyh710")
 

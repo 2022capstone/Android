@@ -44,7 +44,7 @@ class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_ca
     override fun initAfterBinding() {
 
         //대여요청현황
-        requestRentalAdapter = RequestRentalAdapter(ArrayList(), this.context!!)
+        requestRentalAdapter = RequestRentalAdapter(ArrayList(), requireContext())
 
         rentViewModel.getRentByOwnerId("nyh710")
 
@@ -118,7 +118,7 @@ class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_ca
         })
 
         //binding.rvRequestRental.adapter = RequestRentalAdapter(requestlentalList, this)
-        myCarAdapter = MyCarListAdapter(ArrayList(), this.context!!)
+        myCarAdapter = MyCarListAdapter(ArrayList(), requireContext())
         binding.rvMycarlist.adapter = myCarAdapter
 
 
@@ -140,7 +140,7 @@ class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_ca
             override fun onItemClick(button: Button, position: Int) {
 
                 if (button.text == "대여가능") {
-                    //button.text = "대여불가능"
+                    button.text = "대여불가능"
                     carViewModel.updateCarInfo(
                         CarInfo(
                             carViewModel.myCarLiveData.value?.get(position)?.carNumber!!,
@@ -161,7 +161,6 @@ class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_ca
                         )
                     )
                 } else if (button.text == "대여불가능") {
-
                     button.text = "대여가능"
                     carViewModel.updateCarInfo(
                         CarInfo(
@@ -182,7 +181,9 @@ class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_ca
                             "nyh710"
                         )
                     )
-                    //Toast.makeText(context, "변경 불가능합니다.", Toast.LENGTH_SHORT).show()
+                }
+                else if (button.text == "대여중") {
+                    Toast.makeText(context, "이미 대여중인 차량입니다. 변경 불가능합니다.", Toast.LENGTH_SHORT).show()
                 }
             }
         })

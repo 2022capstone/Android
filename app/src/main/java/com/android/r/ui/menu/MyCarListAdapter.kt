@@ -66,6 +66,9 @@ class MyCarListAdapter(carList: List<Car>, context : Context) : RecyclerView.Ada
         else if(carList.get(position).availableStatus.equals("n")){
             holder.state.text = "대여불가능"
         }
+        else if(carList.get(position).availableStatus.equals("r")){
+            holder.state.text = "대여중"
+        }
 
     }
 

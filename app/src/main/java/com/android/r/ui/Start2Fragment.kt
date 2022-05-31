@@ -52,7 +52,7 @@ class Start2Fragment : BaseFragment<FragmentStart2Binding>(R.layout.fragment_sta
 
         binding.navView.setNavigationItemSelectedListener(this)//네비게이션 메뉴 아이템에 클릭 속성 부여
 
-        carListAdapter = CarListAdapter(ArrayList(), this.context!!)
+        carListAdapter = CarListAdapter(ArrayList(), requireContext())
 
         carViewModel.getMainList("nyh710")
 
