@@ -33,6 +33,14 @@ class ProfileCheckFragment : BaseFragment<FragmentProfileCheckBinding>(R.layout.
     }
 
     override fun initStartView() {
+        super.initStartView()
+    }
+
+    override fun initDataBinding() {
+        super.initDataBinding()
+    }
+
+    override fun initAfterBinding() {
 
         val rentInfo = arguments?.getSerializable("rent") as Rent
         binding.tvPcId.text = rentInfo.renterId
@@ -60,14 +68,14 @@ class ProfileCheckFragment : BaseFragment<FragmentProfileCheckBinding>(R.layout.
         //전화
         binding.btnCalling.setOnClickListener {
 
-        // 어디에 전화를 걸건지 text 정보 받기
-        val input = binding.tvPcPhonenum.text
-        // Uri를 이용해서 정보 저장
-        val myUri = Uri.parse("tel:${input}")
-        // 전환할 정보 설정 - ACTION_DIAL
-        val myIntent = Intent(Intent.ACTION_DIAL, myUri)
-        // 이동
-        startActivity(myIntent)
+            // 어디에 전화를 걸건지 text 정보 받기
+            val input = binding.tvPcPhonenum.text
+            // Uri를 이용해서 정보 저장
+            val myUri = Uri.parse("tel:${input}")
+            // 전환할 정보 설정 - ACTION_DIAL
+            val myIntent = Intent(Intent.ACTION_DIAL, myUri)
+            // 이동
+            startActivity(myIntent)
 
         }
 
@@ -90,9 +98,8 @@ class ProfileCheckFragment : BaseFragment<FragmentProfileCheckBinding>(R.layout.
             navController.navigate(R.id.action_profileCheckFragment_to_myCarFragment)
         }
 
-        super.initStartView()
 
+        super.initAfterBinding()
     }
-
 
 }

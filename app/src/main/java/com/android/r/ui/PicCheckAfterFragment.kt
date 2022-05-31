@@ -98,7 +98,7 @@ class PicCheckAfterFragment : BaseFragment<FragmentPicCheckAfterBinding>(R.layou
             binding.tvBeforeBack.text = itemList.beforeBackCount.toString()
             binding.tvBeforeD.text = itemList.beforeDriveFrontCount.toString()
             binding.tvBeforeDback.text = itemList.beforeDriveBackCount.toString()
-            binding.tvBeforeP.text = itemList.beforeDriveFrontCount.toString()
+            binding.tvBeforeP.text = itemList.beforePassengerFrontCount.toString()
             binding.tvBeforePback.text = itemList.beforePassengerBackCount.toString()
 
             binding.tvAfterFront.text = itemList.afterFrontCount.toString()
@@ -184,6 +184,14 @@ class PicCheckAfterFragment : BaseFragment<FragmentPicCheckAfterBinding>(R.layou
             navController.navigate(R.id.action_picCheckAfterFragment_to_imageDetailFragment, bundle)
         }
 
+        binding.ivAfterDback.setOnClickListener{
+            val bundle = Bundle()
+
+            bundle.putString("image", carImageViewModel.carImageLiveData.value?.get(0)?.afterDriveBackImage)
+
+            navController.navigate(R.id.action_picCheckAfterFragment_to_imageDetailFragment, bundle)
+        }
+
         binding.ivAfterP.setOnClickListener {
             val bundle = Bundle()
 
@@ -210,7 +218,7 @@ class PicCheckAfterFragment : BaseFragment<FragmentPicCheckAfterBinding>(R.layou
             navController.navigate(R.id.action_picCheckAfterFragment_to_reviewFragment, bundle)
         }
 
-        super.initAfterBinding()
 
+        super.initAfterBinding()
     }
 }

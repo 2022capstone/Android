@@ -31,6 +31,14 @@ class CarSelectFragment : BaseFragment<FragmentCarSelectBinding>(R.layout.fragme
     }
 
     override fun initStartView() {
+        super.initStartView()
+    }
+
+    override fun initDataBinding() {
+        super.initDataBinding()
+    }
+
+    override fun initAfterBinding() {
 
         Glide.with(context!!)
             .load(arguments?.getString("image"))
@@ -79,8 +87,8 @@ class CarSelectFragment : BaseFragment<FragmentCarSelectBinding>(R.layout.fragme
                     calendar.set(year, monthOfYear, dayOfMonth)
 
                     val timeSetListener = TimePickerDialog.OnTimeSetListener { _, hour, min ->
-                            datepickercalendar.set(Calendar.HOUR_OF_DAY, hour)
-                            datepickercalendar.set(Calendar.MINUTE, min)
+                        datepickercalendar.set(Calendar.HOUR_OF_DAY, hour)
+                        datepickercalendar.set(Calendar.MINUTE, min)
                         var fomattedHour : String = hour.toString()
                         var fomattedMonth : String = month.toString()
                         var fomattedMinute : String = min.toString()
@@ -98,8 +106,8 @@ class CarSelectFragment : BaseFragment<FragmentCarSelectBinding>(R.layout.fragme
                         if (dayOfMonth < 10){
                             fomattedDay = "0" + dayOfMonth.toString()
                         }
-                            binding.tvStartTime.text = "$year/$fomattedMonth/$fomattedDay $fomattedHour:$fomattedMinute"
-                        }
+                        binding.tvStartTime.text = "$year/$fomattedMonth/$fomattedDay $fomattedHour:$fomattedMinute"
+                    }
 
                     TimePickerDialog(context, R.style.MySpinnerDatePickerStyle, timeSetListener, datepickercalendar.get(Calendar.HOUR_OF_DAY), datepickercalendar.get(Calendar.MINUTE), true).show()
 
@@ -163,8 +171,8 @@ class CarSelectFragment : BaseFragment<FragmentCarSelectBinding>(R.layout.fragme
             dpd.show()
         }
 
-        super.initStartView()
 
+        super.initAfterBinding()
     }
 
 }

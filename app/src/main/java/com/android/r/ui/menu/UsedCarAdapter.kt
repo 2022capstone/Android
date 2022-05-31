@@ -57,8 +57,8 @@ class UsedCarAdapter(rentList: List<Rent>, context : Context) : RecyclerView.Ada
             holder.model.text = rentList.get(position).carInfo.carModel
             holder.owner.text = rentList.get(position).carInfo.ownerId
             holder.location.text = rentList.get(position).carInfo.carLocation
-            holder.startdate.text = rentList.get(position).carInfo.availableStartTime
-            holder.enddate.text = rentList.get(position).carInfo.availableEndTime
+            holder.startdate.text = rentList.get(position).startTime
+            holder.enddate.text = rentList.get(position).endTime
             //1 -> 예약함, 2 -> 예약 승인 받고 대여 대기중, 3 -> 사진 저장 후 대여 대기중, 4 -> 대여중, 5 -> 반납 대기중, 6 -> 사진 저장후 반납 대기중, 7 -> 반납 완료
         }else{
            holder.rentView.visibility = View.GONE

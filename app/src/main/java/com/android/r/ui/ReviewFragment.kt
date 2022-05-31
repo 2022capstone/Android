@@ -40,8 +40,6 @@ class ReviewFragment : BaseFragment<FragmentReviewBinding>(R.layout.fragment_rev
     }
 
     override fun initAfterBinding() {
-        super.initAfterBinding()
-
 
         val rentInfo = arguments?.getSerializable("rent") as Rent
 
@@ -96,6 +94,8 @@ class ReviewFragment : BaseFragment<FragmentReviewBinding>(R.layout.fragment_rev
             navController.navigate(R.id.action_reviewFragment_to_myCarFragment)
         }
 
+
+        super.initAfterBinding()
     }
 
 }

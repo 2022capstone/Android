@@ -27,6 +27,14 @@ class MyReserveFragment : BaseFragment<FragmentMyReserveBinding>(R.layout.fragme
     }
 
     override fun initStartView() {
+        super.initStartView()
+    }
+
+    override fun initDataBinding() {
+        super.initDataBinding()
+    }
+
+    override fun initAfterBinding() {
 
         //예약내역
         reservationAdapter = ReservationAdapter(ArrayList(), this.context!!)
@@ -64,6 +72,6 @@ class MyReserveFragment : BaseFragment<FragmentMyReserveBinding>(R.layout.fragme
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)
 
 
-        super.initStartView()
+        super.initAfterBinding()
     }
 }

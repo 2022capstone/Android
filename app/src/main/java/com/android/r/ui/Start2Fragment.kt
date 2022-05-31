@@ -45,7 +45,6 @@ class Start2Fragment : BaseFragment<FragmentStart2Binding>(R.layout.fragment_sta
     }
 
     override fun initAfterBinding() {
-        super.initAfterBinding()
 
         binding.btnMenu.setOnClickListener{
             binding.layoutDrawer.openDrawer(GravityCompat.START)//START: left, END:right랑 같은 말
@@ -119,6 +118,7 @@ class Start2Fragment : BaseFragment<FragmentStart2Binding>(R.layout.fragment_sta
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)
 
 
+        super.initAfterBinding()
     }
 
 

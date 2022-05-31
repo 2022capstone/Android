@@ -23,7 +23,7 @@ class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_ca
 
     val carViewModel: CarViewModel by viewModel()
     val rentViewModel: RentViewModel by viewModel()
-    val customerViewModel : CustomerViewModel by viewModel()
+    val customerViewModel: CustomerViewModel by viewModel()
 
 
     private lateinit var myCarAdapter: MyCarListAdapter
@@ -60,13 +60,17 @@ class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_ca
 
 
 
-        requestRentalAdapter.setOnItemClickListener(object : RequestRentalAdapter.onItemClickListener {
+        requestRentalAdapter.setOnItemClickListener(object :
+            RequestRentalAdapter.onItemClickListener {
             override fun onItemClick(button: Button, position: Int) {
 
                 if (button.text == "예약대기") {
                     val bundle = Bundle()
 
-                    bundle.putSerializable("rent", rentViewModel.rentInfoLiveData.value?.get(position))
+                    bundle.putSerializable(
+                        "rent",
+                        rentViewModel.rentInfoLiveData.value?.get(position)
+                    )
 
                     navController.navigate(
                         R.id.action_myCarFragment_to_profileCheckFragment,
@@ -87,18 +91,28 @@ class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_ca
                     )//예약승인
                 }
                 if (button.text == "반납승인") {
-                    val bundle = Bundle()
 
-                    bundle.putSerializable(
-                        "rent",
-                        rentViewModel.rentInfoLiveData.value?.get(position)
-                    )
-                    bundle.putBoolean("btn", true)
+                    if (rentViewModel.rentInfoLiveData.value?.get(position)?.detectDiv == "0") {
+                        Toast.makeText(
+                            requireContext(),
+                            "이미지 로딩중입니다. 잠시만 기다려주세요.",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    } else {
 
-                    navController.navigate(
-                        R.id.action_myCarFragment_to_picCheckAfterFragment,
-                        bundle
-                    )//반납승인
+                        val bundle = Bundle()
+
+                        bundle.putSerializable(
+                            "rent",
+                            rentViewModel.rentInfoLiveData.value?.get(position)
+                        )
+                        bundle.putBoolean("btn", true)
+
+                        navController.navigate(
+                            R.id.action_myCarFragment_to_picCheckAfterFragment,
+                            bundle
+                        )//반납승인
+                    }
                 }
             }
         })
@@ -118,7 +132,8 @@ class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_ca
         carViewModel.error.observe(this, EventObserver {
             Log.d("Carr", carViewModel.error.value.toString())
         })
-        binding.rvMycarlist.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        binding.rvMycarlist.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.rvMycarlist.setHasFixedSize(true)
 
         myCarAdapter.setOnItemClickListener(object : MyCarListAdapter.onItemClickListener {
@@ -133,8 +148,14 @@ class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_ca
                             carViewModel.myCarLiveData.value?.get(position)?.carLocation!!,
                             carViewModel.myCarLiveData.value?.get(position)?.seater!!,
                             carViewModel.myCarLiveData.value?.get(position)?.carImage!!,
-                            LocalDateTime.parse(carViewModel.myCarLiveData.value?.get(position)?.availableStartTime!!, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")),
-                            LocalDateTime.parse(carViewModel.myCarLiveData.value?.get(position)?.availableEndTime!!, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")),
+                            LocalDateTime.parse(
+                                carViewModel.myCarLiveData.value?.get(position)?.availableStartTime!!,
+                                DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")
+                            ),
+                            LocalDateTime.parse(
+                                carViewModel.myCarLiveData.value?.get(position)?.availableEndTime!!,
+                                DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")
+                            ),
                             "n",
                             "nyh710"
                         )
@@ -149,8 +170,14 @@ class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_ca
                             carViewModel.myCarLiveData.value?.get(position)?.carLocation!!,
                             carViewModel.myCarLiveData.value?.get(position)?.seater!!,
                             carViewModel.myCarLiveData.value?.get(position)?.carImage!!,
-                            LocalDateTime.parse(carViewModel.myCarLiveData.value?.get(position)?.availableStartTime!!, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")),
-                            LocalDateTime.parse(carViewModel.myCarLiveData.value?.get(position)?.availableEndTime!!, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")),
+                            LocalDateTime.parse(
+                                carViewModel.myCarLiveData.value?.get(position)?.availableStartTime!!,
+                                DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")
+                            ),
+                            LocalDateTime.parse(
+                                carViewModel.myCarLiveData.value?.get(position)?.availableEndTime!!,
+                                DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")
+                            ),
                             "y",
                             "nyh710"
                         )

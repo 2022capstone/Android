@@ -60,6 +60,7 @@ class UsageDetailFragment : BaseFragment<FragmentUsageDetailBinding>(R.layout.fr
 
                     bundle.putSerializable("rent", rentViewModel.rentInfoLiveData.value?.get(position))
 
+                    Log.d("rentttt", rentViewModel.rentInfoLiveData.value?.get(position).toString())
                     navController.navigate(R.id.action_usageDetailFragment_to_takePicturesFragment, bundle)
                 }
 

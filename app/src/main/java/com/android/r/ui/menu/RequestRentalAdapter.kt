@@ -108,6 +108,7 @@ class RequestRentalAdapter(rentList: List<Rent>, context : Context) : RecyclerVi
         val enddate = itemView.tvEndtime
         val state = itemView.btnState //대여상태
         val rentView = itemView.clCarlist
+        //반납승인에서 detecDiv가 0이면 snackbar
 
         init {
             /*itemView.setOnClickListener {

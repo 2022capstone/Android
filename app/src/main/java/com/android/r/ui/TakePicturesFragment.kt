@@ -97,15 +97,15 @@ class TakePicturesFragment : BaseFragment<FragmentTakePicturesBinding>(R.layout.
                 )
             }
 
-            else if(rentInfo.status == "5"){
-                rentViewModel.updateRentInfo(
+            else if(rentInfo.status == "4"){
+                /*rentViewModel.updateRentInfo(
                     RentInfo(
                         rentInfo.rentId, rentInfo.renterId, rentInfo.carInfo.carNumber,
                         LocalDateTime.parse(rentInfo.startTime, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")),
                         LocalDateTime.parse(rentInfo.endTime, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")),
                         "6" , 0.0.toFloat(),  ""
                     )
-                )
+                )*/
 
                 carImageViewModel.insertCarImageAfterRent(
                     CarImage(
