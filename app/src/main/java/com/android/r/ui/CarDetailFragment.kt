@@ -16,6 +16,12 @@ class CarDetailFragment : BaseFragment<FragmentCarDetailBinding>(R.layout.fragme
         super.onCreate(savedInstanceState)
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        initAfterBinding()
+    }
+
     override fun initStartView() {
         super.initStartView()
     }
@@ -25,6 +31,7 @@ class CarDetailFragment : BaseFragment<FragmentCarDetailBinding>(R.layout.fragme
     }
 
     override fun initAfterBinding() {
+        super.initAfterBinding()
 
         Glide.with(context!!)
             .load(arguments?.getString("image"))
@@ -36,8 +43,6 @@ class CarDetailFragment : BaseFragment<FragmentCarDetailBinding>(R.layout.fragme
         binding.tvDetailStarttime.text = arguments?.getString("starttime") ?: "starttime"
         binding.tvDetailEndtime.text = arguments?.getString("endtime") ?: "endtime"
 
-
-        super.initAfterBinding()
     }
 
 }

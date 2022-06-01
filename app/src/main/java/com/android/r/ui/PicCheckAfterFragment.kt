@@ -29,6 +29,12 @@ class PicCheckAfterFragment : BaseFragment<FragmentPicCheckAfterBinding>(R.layou
         super.onCreate(savedInstanceState)
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        initAfterBinding()
+    }
+
     override fun initStartView() {
         super.initStartView()
 

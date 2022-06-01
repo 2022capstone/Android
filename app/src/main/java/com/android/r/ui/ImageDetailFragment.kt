@@ -23,6 +23,12 @@ class ImageDetailFragment : BaseFragment<FragmentImageDetailBinding>(R.layout.fr
         super.onCreate(savedInstanceState)
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        initAfterBinding()
+    }
+
     override fun initStartView() {
         super.initStartView()
     }
@@ -32,6 +38,7 @@ class ImageDetailFragment : BaseFragment<FragmentImageDetailBinding>(R.layout.fr
     }
 
     override fun initAfterBinding() {
+        super.initAfterBinding()
 
         val imageInfo = arguments?.getString("image")
 
@@ -39,8 +46,5 @@ class ImageDetailFragment : BaseFragment<FragmentImageDetailBinding>(R.layout.fr
             .load(imageInfo)
             .into(binding.ivAftercheckCar)
 
-
-
-        super.initAfterBinding()
     }
 }

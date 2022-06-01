@@ -36,6 +36,12 @@ class Start2Fragment : BaseFragment<FragmentStart2Binding>(R.layout.fragment_sta
         super.onCreate(savedInstanceState)
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        initAfterBinding()
+    }
+
     override fun initStartView() {
         super.initStartView()
     }
@@ -45,6 +51,7 @@ class Start2Fragment : BaseFragment<FragmentStart2Binding>(R.layout.fragment_sta
     }
 
     override fun initAfterBinding() {
+        super.initAfterBinding()
 
         binding.btnMenu.setOnClickListener{
             binding.layoutDrawer.openDrawer(GravityCompat.START)//START: left, END:right랑 같은 말
@@ -58,6 +65,11 @@ class Start2Fragment : BaseFragment<FragmentStart2Binding>(R.layout.fragment_sta
 
         carViewModel.myCarLiveData.observe(this, { itemList ->
             carListAdapter.carList = itemList
+            if (itemList.isEmpty()){
+                binding.ivEmpty4.visibility = View.VISIBLE
+            }else{
+                binding.ivEmpty4.visibility = View.GONE
+            }
         })
 
         binding.rvCarRentBefore.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
@@ -116,9 +128,6 @@ class Start2Fragment : BaseFragment<FragmentStart2Binding>(R.layout.fragment_sta
             }
         }
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)
-
-
-        super.initAfterBinding()
     }
 
 

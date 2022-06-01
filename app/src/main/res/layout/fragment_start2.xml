@@ -27,6 +27,7 @@
             tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
         <ScrollView
+            android:id="@+id/scrollView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -55,6 +56,15 @@
             app:layout_constraintBottom_toBottomOf="@+id/btn_menu"
             app:layout_constraintStart_toEndOf="@+id/btn_menu"
             app:layout_constraintTop_toTopOf="@+id/btn_menu" />
+
+        <ImageView
+            android:id="@+id/iv_empty4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/scrollView2"
+            app:srcCompat="@drawable/empty_list" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

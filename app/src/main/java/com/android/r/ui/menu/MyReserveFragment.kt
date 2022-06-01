@@ -26,6 +26,12 @@ class MyReserveFragment : BaseFragment<FragmentMyReserveBinding>(R.layout.fragme
         super.onCreate(savedInstanceState)
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        initAfterBinding()
+    }
+
     override fun initStartView() {
         super.initStartView()
     }
@@ -35,6 +41,7 @@ class MyReserveFragment : BaseFragment<FragmentMyReserveBinding>(R.layout.fragme
     }
 
     override fun initAfterBinding() {
+        super.initAfterBinding()
 
         //예약내역
         reservationAdapter = ReservationAdapter(ArrayList(), requireContext())
@@ -43,6 +50,17 @@ class MyReserveFragment : BaseFragment<FragmentMyReserveBinding>(R.layout.fragme
 
         rentViewModel.rentInfoLiveData.observe(this, { itemList ->
             reservationAdapter.rentList = itemList
+            var isEmptyCheck : Boolean = true
+            for(item in itemList){
+                if (item.status.equals("1"))
+                    isEmptyCheck = false
+            }
+
+            if (isEmptyCheck){
+                binding.ivEmpty3.visibility = View.VISIBLE
+            }else{
+                binding.ivEmpty3.visibility = View.GONE
+            }
         })
 
         binding.rvReserve.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
@@ -72,6 +90,5 @@ class MyReserveFragment : BaseFragment<FragmentMyReserveBinding>(R.layout.fragme
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)
 
 
-        super.initAfterBinding()
     }
 }

@@ -15,7 +15,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="60dp"
         android:fontFamily="@font/nanum_bold"
-        android:text="예약내역"
+        android:text="예약 내역"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -29,6 +29,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+    <ImageView
+        android:id="@+id/iv_empty3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/rv_reserve"
+        app:srcCompat="@drawable/empty_list" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

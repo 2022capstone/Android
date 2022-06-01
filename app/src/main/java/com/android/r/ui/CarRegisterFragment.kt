@@ -36,6 +36,12 @@ class CarRegisterFragment : BaseFragment<FragmentCarRegisterBinding>(R.layout.fr
         super.onCreate(savedInstanceState)
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        initAfterBinding()
+    }
+
     override fun initStartView() {
         super.initStartView()
     }
@@ -45,6 +51,7 @@ class CarRegisterFragment : BaseFragment<FragmentCarRegisterBinding>(R.layout.fr
     }
 
     override fun initAfterBinding() {
+        super.initAfterBinding()
 
         binding.btnImageRegister.setOnClickListener {
             REQUEST_IMAGE_CODE = 1
@@ -75,8 +82,6 @@ class CarRegisterFragment : BaseFragment<FragmentCarRegisterBinding>(R.layout.fr
             )
             navController.navigate(R.id.action_carRegisterFragment_to_myCarFragment)
         }
-
-        super.initAfterBinding()
     }
 
 

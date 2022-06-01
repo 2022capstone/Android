@@ -30,6 +30,12 @@ class CarSelectFragment : BaseFragment<FragmentCarSelectBinding>(R.layout.fragme
         super.onCreate(savedInstanceState)
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        initAfterBinding()
+    }
+
     override fun initStartView() {
         super.initStartView()
     }
@@ -39,6 +45,7 @@ class CarSelectFragment : BaseFragment<FragmentCarSelectBinding>(R.layout.fragme
     }
 
     override fun initAfterBinding() {
+        super.initAfterBinding()
 
         Glide.with(context!!)
             .load(arguments?.getString("image"))
@@ -170,9 +177,6 @@ class CarSelectFragment : BaseFragment<FragmentCarSelectBinding>(R.layout.fragme
             dpd.datePicker.minDate = System.currentTimeMillis() - 1000;
             dpd.show()
         }
-
-
-        super.initAfterBinding()
     }
 
 }

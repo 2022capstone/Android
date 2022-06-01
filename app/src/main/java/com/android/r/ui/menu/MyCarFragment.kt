@@ -5,6 +5,8 @@ import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import androidx.activity.addCallback
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.r.R
 import com.android.r.base.BaseFragment
@@ -18,6 +20,9 @@ import com.android.r.viewmodel.RentViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.threeten.bp.LocalDateTime
 import org.threeten.bp.format.DateTimeFormatter
+import android.os.Build
+import android.view.View
+
 
 class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_car) {
 
@@ -33,6 +38,12 @@ class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_ca
         super.onCreate(savedInstanceState)
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        initAfterBinding()
+    }
+
     override fun initStartView() {
         super.initStartView()
     }
@@ -42,6 +53,7 @@ class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_ca
     }
 
     override fun initAfterBinding() {
+        super.initAfterBinding()
 
         //대여요청현황
         requestRentalAdapter = RequestRentalAdapter(ArrayList(), requireContext())
@@ -52,6 +64,11 @@ class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_ca
 
         rentViewModel.rentInfoLiveData.observe(this, { itemList ->
             requestRentalAdapter.rentList = itemList
+            if (itemList.isEmpty()){
+                binding.ivEmpty1.visibility = View.VISIBLE
+            }else{
+                binding.ivEmpty1.visibility = View.GONE
+            }
         })
 
         binding.rvRequestRental.layoutManager =
@@ -127,6 +144,11 @@ class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_ca
         carViewModel.myCarLiveData.observe(this, { itemList ->
             Log.d("itmeListt", itemList.toString())
             myCarAdapter.carList = itemList
+            if (itemList.isEmpty()){
+                binding.ivEmpty2.visibility = View.VISIBLE
+            }else{
+                binding.ivEmpty2.visibility = View.GONE
+            }
         })
 
         carViewModel.error.observe(this, EventObserver {
@@ -200,7 +222,7 @@ class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_ca
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)
 
 
-        super.initAfterBinding()
+
     }
 
 }

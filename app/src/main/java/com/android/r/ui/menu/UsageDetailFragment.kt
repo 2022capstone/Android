@@ -30,6 +30,12 @@ class UsageDetailFragment : BaseFragment<FragmentUsageDetailBinding>(R.layout.fr
         super.onCreate(savedInstanceState)
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        initAfterBinding()
+    }
+
     override fun initStartView() {
         super.initStartView()
     }
@@ -39,6 +45,7 @@ class UsageDetailFragment : BaseFragment<FragmentUsageDetailBinding>(R.layout.fr
     }
 
     override fun initAfterBinding() {
+        super.initAfterBinding()
 
         //현재이용중인차량
         currentCarAdapter = CurrentCarAdapter(ArrayList(), requireContext())
@@ -47,6 +54,17 @@ class UsageDetailFragment : BaseFragment<FragmentUsageDetailBinding>(R.layout.fr
 
         rentViewModel.rentInfoLiveData.observe(this, { itemList ->
             currentCarAdapter.rentList = itemList
+            var isEmptyCheck : Boolean = true
+            for(item in itemList){
+                if (item.status.equals("2") || item.status.equals("3") || item.status.equals("4") || item.status.equals("6"))
+                    isEmptyCheck = false
+            }
+
+            if (isEmptyCheck){
+                binding.ivEmpty5.visibility = View.VISIBLE
+            }else{
+                binding.ivEmpty5.visibility = View.GONE
+            }
         })
 
         binding.rvCurrentCar.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
@@ -86,6 +104,11 @@ class UsageDetailFragment : BaseFragment<FragmentUsageDetailBinding>(R.layout.fr
         rentViewModel.getRentByRenterId("nyh710")
         rentViewModel.rentInfoLiveData.observe(this, { itemList ->
             usedCarAdapter.rentList = itemList
+            if (itemList.isEmpty()){
+                binding.ivEmpty6.visibility = View.VISIBLE
+            }else{
+                binding.ivEmpty6.visibility = View.GONE
+            }
         })
 
         usedCarAdapter.setOnItemClickListener(object : UsedCarAdapter.onItemClickListener{
@@ -105,9 +128,6 @@ class UsageDetailFragment : BaseFragment<FragmentUsageDetailBinding>(R.layout.fr
             navController.navigate(R.id.action_usageDetailFragment_to_start2Fragment)
         }
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)
-
-
-        super.initAfterBinding()
 
     }
 }

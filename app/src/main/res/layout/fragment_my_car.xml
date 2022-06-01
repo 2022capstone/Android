@@ -16,7 +16,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="48dp"
         android:fontFamily="@font/nanum_bold"
-        android:text="대여요청현황"
+        android:text="대여 요청 현황"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:fontFamily="@font/nanum_bold"
-        android:text="내차리스트"
+        android:text="내 차 리스트"
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="@+id/textView9"
@@ -68,5 +68,25 @@
         app:layout_constraintBottom_toBottomOf="@+id/textView10"
         app:layout_constraintStart_toEndOf="@+id/textView10"
         app:layout_constraintTop_toTopOf="@+id/textView10" />
+
+    <ImageView
+        android:id="@+id/iv_empty1"
+        android:layout_width="wrap_content"
+        android:layout_height="240dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/rv_request_rental"
+        app:srcCompat="@drawable/empty_list" />
+
+    <ImageView
+        android:id="@+id/iv_empty2"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/rv_mycarlist"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/rv_mycarlist"
+        app:srcCompat="@drawable/empty_list" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

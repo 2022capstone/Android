@@ -52,7 +52,6 @@ class TakePicturesFragment : BaseFragment<FragmentTakePicturesBinding>(R.layout.
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
     }
 
     override fun initStartView() {
@@ -64,7 +63,7 @@ class TakePicturesFragment : BaseFragment<FragmentTakePicturesBinding>(R.layout.
     }
 
     override fun initAfterBinding() {
-
+        super.initAfterBinding()
 
         setPermission()
 
@@ -180,8 +179,6 @@ class TakePicturesFragment : BaseFragment<FragmentTakePicturesBinding>(R.layout.
             REQUEST_IMAGE_GALLERY = 12
             loadGallery()
         }
-
-        super.initAfterBinding()
     }
 
     //카메라 촬영

@@ -29,7 +29,12 @@ class ProfileCheckFragment : BaseFragment<FragmentProfileCheckBinding>(R.layout.
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+    }
 
+    override fun onResume() {
+        super.onResume()
+
+        initAfterBinding()
     }
 
     override fun initStartView() {
@@ -41,6 +46,7 @@ class ProfileCheckFragment : BaseFragment<FragmentProfileCheckBinding>(R.layout.
     }
 
     override fun initAfterBinding() {
+        super.initAfterBinding()
 
         val rentInfo = arguments?.getSerializable("rent") as Rent
         binding.tvPcId.text = rentInfo.renterId
@@ -97,9 +103,6 @@ class ProfileCheckFragment : BaseFragment<FragmentProfileCheckBinding>(R.layout.
         binding.btnReserveRefuse.setOnClickListener {
             navController.navigate(R.id.action_profileCheckFragment_to_myCarFragment)
         }
-
-
-        super.initAfterBinding()
     }
 
 }

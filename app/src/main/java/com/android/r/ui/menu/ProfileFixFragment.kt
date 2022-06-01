@@ -20,7 +20,12 @@ class ProfileFixFragment : BaseFragment<FragmentProfileFixBinding>(R.layout.frag
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+    }
 
+    override fun onResume() {
+        super.onResume()
+
+        initAfterBinding()
     }
 
     override fun initStartView() {
@@ -32,6 +37,7 @@ class ProfileFixFragment : BaseFragment<FragmentProfileFixBinding>(R.layout.frag
     }
 
     override fun initAfterBinding() {
+        super.initAfterBinding()
 
         customerViewModel.getCustomerById("nyh710")
         customerViewModel.customerLiveData.observe(this, { itemList->
@@ -70,8 +76,6 @@ class ProfileFixFragment : BaseFragment<FragmentProfileFixBinding>(R.layout.frag
         }
         requireActivity().onBackPressedDispatcher.addCallback(this, callback)
 
-
-        super.initAfterBinding()
     }
 
 }
