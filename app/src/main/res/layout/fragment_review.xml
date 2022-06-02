@@ -3,14 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <ScrollView
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".ui.ReviewFragment"
-            android:background="@color/white">
+            android:background="@color/white"
+            tools:context=".ui.ReviewFragment">
 
 
             <TextView
@@ -66,8 +67,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanum"
                 android:text="차종"
-                android:textSize="15dp"
                 android:textColor="@color/black"
+                android:textSize="15dp"
                 app:layout_constraintStart_toEndOf="@+id/textView30"
                 app:layout_constraintTop_toBottomOf="@+id/tv_review_endtime" />
 
@@ -80,7 +81,9 @@
                 android:fontFamily="@font/nanum"
                 android:text="메시지"
                 android:textColor="@color/white"
-                app:layout_constraintStart_toStartOf="@+id/textView16"
+                app:layout_constraintEnd_toStartOf="@+id/btn_call"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_review_carnum" />
 
             <Button
@@ -88,11 +91,13 @@
                 android:layout_width="130dp"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/main"
+                android:fontFamily="@font/nanum"
                 android:text="전화걸기"
                 android:textColor="@color/white"
-                android:fontFamily="@font/nanum"
                 app:layout_constraintBottom_toBottomOf="@+id/btn_message"
-                app:layout_constraintEnd_toEndOf="@+id/iv_review_car"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/btn_message"
                 app:layout_constraintTop_toTopOf="@+id/btn_message" />
 
             <TextView
@@ -147,8 +152,8 @@
                 android:hint="한줄평 남기기"
                 android:inputType="text|textMultiLine"
                 android:minHeight="48dp"
-                android:scrollbars="vertical"
                 android:privateImeOptions="defaultInputmode=korean"
+                android:scrollbars="vertical"
                 app:layout_constraintEnd_toEndOf="@+id/btn_return_approval"
                 app:layout_constraintStart_toStartOf="@+id/btn_return_approval"
                 app:layout_constraintTop_toBottomOf="@+id/textView33" />
@@ -172,10 +177,10 @@
                 android:id="@+id/tv_review_grade"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="5.0"
                 android:fontFamily="@font/nanum"
-                android:textSize="16dp"
+                android:text="5.0"
                 android:textColor="@color/black"
+                android:textSize="16dp"
                 app:layout_constraintBottom_toBottomOf="@+id/textView29"
                 app:layout_constraintStart_toEndOf="@+id/textView29"
                 app:layout_constraintTop_toTopOf="@+id/textView29" />
