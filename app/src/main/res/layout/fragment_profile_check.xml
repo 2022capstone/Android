@@ -63,9 +63,11 @@
 
         <Button
             android:id="@+id/btn_msg"
-            android:layout_width="140dp"
+            android:layout_width="0dp"
             android:layout_height="60dp"
+            android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
+            android:layout_marginEnd="24dp"
             android:backgroundTint="@color/main"
             android:fontFamily="@font/nanum"
             android:text="메시지"
@@ -79,6 +81,7 @@
             android:id="@+id/btn_calling"
             android:layout_width="140dp"
             android:layout_height="60dp"
+            android:layout_marginEnd="32dp"
             android:backgroundTint="@color/main"
             android:fontFamily="@font/nanum"
             android:text="전화"
@@ -90,33 +93,29 @@
 
         <Button
             android:id="@+id/btn_reserve_approval"
-            android:layout_width="175dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginBottom="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="16dp"
             android:backgroundTint="@color/sub"
             android:fontFamily="@font/nanum"
             android:text="예약승인하기"
             android:textColor="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btn_reserve_refuse"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="651dp" />
 
         <Button
             android:id="@+id/btn_reserve_refuse"
-            android:layout_width="125dp"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="50dp"
+            android:layout_marginEnd="32dp"
             android:backgroundTint="@color/sub"
             android:fontFamily="@font/nanum"
             android:text="예약거절하기"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/btn_reserve_approval"
-            app:layout_constraintTop_toTopOf="@+id/btn_reserve_approval" />
+            tools:layout_editor_absoluteY="651dp" />
 
         <TextView
             android:id="@+id/textView34"

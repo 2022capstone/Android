@@ -32,6 +32,7 @@ class PicCheckAfterFragment : BaseFragment<FragmentPicCheckAfterBinding>(R.layou
     override fun onResume() {
         super.onResume()
 
+        initStartView()
         initAfterBinding()
     }
 

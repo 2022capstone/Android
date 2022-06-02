@@ -157,26 +157,29 @@
 
             <Button
                 android:id="@+id/btn_approve"
-                android:layout_width="134dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginBottom="32dp"
-                android:text="예약승인하기"
                 android:backgroundTint="@color/sub"
+                android:text="예약승인하기"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btn_refuse"
+                app:layout_constraintStart_toEndOf="@+id/iv_back_passenser"
                 app:layout_constraintStart_toStartOf="@+id/iv_back_passenser"
-                app:layout_constraintTop_toBottomOf="@+id/iv_back_passenser" />
+                app:layout_constraintTop_toBottomOf="@+id/iv_back_passenser"
+                app:layout_constraintVertical_bias="0.0" />
 
             <Button
                 android:id="@+id/btn_refuse"
-                android:layout_width="134dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:text="예약거절하기"
                 android:backgroundTint="@color/sub"
+                android:text="예약거절하기"
                 android:textColor="@color/white"
-                app:layout_constraintStart_toEndOf="@+id/btn_approve"
+                app:layout_constraintEnd_toEndOf="@+id/iv_back_passenser"
                 app:layout_constraintTop_toTopOf="@+id/btn_approve" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
