@@ -19,6 +19,8 @@ import org.koin.android.ext.android.get
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.threeten.bp.LocalDateTime
 import org.threeten.bp.format.DateTimeFormatter
+import java.util.*
+import kotlin.concurrent.schedule
 
 
 class PicCheckFragment : BaseFragment<FragmentPicCheckBinding>(R.layout.fragment_pic_check) {
@@ -85,7 +87,6 @@ class PicCheckFragment : BaseFragment<FragmentPicCheckBinding>(R.layout.fragment
                     "4" , 0.0.toFloat(),  ""
                 )
             )
-
 
             navController.navigate(R.id.action_picCheckFragment_to_myCarFragment)
         }

@@ -35,7 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        android:text="초록빛"
+        android:text="초록빛(고객)"
         android:textSize="14sp"
         android:fontFamily="@font/nanum"/>
 </LinearLayout>

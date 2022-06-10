@@ -20,6 +20,8 @@ import com.bumptech.glide.Glide
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.threeten.bp.LocalDateTime
 import org.threeten.bp.format.DateTimeFormatter
+import java.util.*
+import kotlin.concurrent.schedule
 
 class ReviewFragment : BaseFragment<FragmentReviewBinding>(R.layout.fragment_review) {
 
@@ -97,6 +99,7 @@ class ReviewFragment : BaseFragment<FragmentReviewBinding>(R.layout.fragment_rev
                     "7" , binding.ratingBar.rating,  binding.etReview.text.toString()
                 )
             )
+
             navController.navigate(R.id.action_reviewFragment_to_myCarFragment)
         }
     }

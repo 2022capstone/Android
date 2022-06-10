@@ -4,11 +4,13 @@ import android.Manifest
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.os.HandlerCompat.postDelayed
 import com.android.r.R
 import com.android.r.base.BaseFragment
 import com.android.r.databinding.FragmentProfileCheckBinding
@@ -21,6 +23,8 @@ import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.threeten.bp.LocalDateTime
+import java.util.*
+import kotlin.concurrent.schedule
 
 class ProfileCheckFragment : BaseFragment<FragmentProfileCheckBinding>(R.layout.fragment_profile_check) {
 
@@ -85,8 +89,8 @@ class ProfileCheckFragment : BaseFragment<FragmentProfileCheckBinding>(R.layout.
 
         }
 
-
         binding.btnReserveApproval.setOnClickListener {
+
             val rentInfo = arguments?.getSerializable("rent") as Rent
 
             rentViewModel.updateRentInfo(
@@ -99,6 +103,7 @@ class ProfileCheckFragment : BaseFragment<FragmentProfileCheckBinding>(R.layout.
             )
 
             navController.navigate(R.id.action_profileCheckFragment_to_myCarFragment)
+
         }
         binding.btnReserveRefuse.setOnClickListener {
             navController.navigate(R.id.action_profileCheckFragment_to_myCarFragment)

@@ -40,6 +40,7 @@ import java.io.IOException
 import java.net.URLEncoder
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.concurrent.schedule
 
 class TakePicturesFragment : BaseFragment<FragmentTakePicturesBinding>(R.layout.fragment_take_pictures) {
 
@@ -120,8 +121,8 @@ class TakePicturesFragment : BaseFragment<FragmentTakePicturesBinding>(R.layout.
                 )
             }
 
-
             navController.navigate(R.id.action_takePicturesFragment_to_usageDetailFragment)
+
         }
 
 

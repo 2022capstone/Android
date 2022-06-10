@@ -41,6 +41,7 @@ class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_ca
     override fun onResume() {
         super.onResume()
 
+        Log.d("resumeee", "resume")
         initAfterBinding()
     }
 
@@ -55,6 +56,7 @@ class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_ca
     override fun initAfterBinding() {
         super.initAfterBinding()
 
+        Log.d("initafterbindingg", "initAfterBinding")
         //대여요청현황
         requestRentalAdapter = RequestRentalAdapter(ArrayList(), requireContext())
 
@@ -62,14 +64,20 @@ class MyCarFragment : BaseFragment<FragmentMyCarBinding>(R.layout.fragment_my_ca
 
         binding.rvRequestRental.adapter = requestRentalAdapter
 
-        rentViewModel.rentInfoLiveData.observe(this, { itemList ->
+        rentViewModel.rentInfoLiveData.observe(this) { itemList ->
             requestRentalAdapter.rentList = itemList
-            if (itemList.isEmpty()){
+            var isEmptyCheck: Boolean = true
+            for (item in itemList) {
+                if ((item.status.equals("1")) || (item.status.equals("3")) || (item.status.equals("6")))
+                    isEmptyCheck = false
+            }
+
+            if (isEmptyCheck) {
                 binding.ivEmpty1.visibility = View.VISIBLE
-            }else{
+            } else {
                 binding.ivEmpty1.visibility = View.GONE
             }
-        })
+        }
 
         binding.rvRequestRental.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)

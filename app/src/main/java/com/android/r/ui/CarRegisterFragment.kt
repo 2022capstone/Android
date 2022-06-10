@@ -25,6 +25,8 @@ import org.threeten.bp.LocalDateTime
 import org.threeten.bp.format.DateTimeFormatter
 import java.io.File
 import java.net.URLEncoder
+import java.util.*
+import kotlin.concurrent.schedule
 
 class CarRegisterFragment : BaseFragment<FragmentCarRegisterBinding>(R.layout.fragment_car_register) {
 
@@ -80,7 +82,10 @@ class CarRegisterFragment : BaseFragment<FragmentCarRegisterBinding>(R.layout.fr
                     "nyh710"
                 )
             )
+
             navController.navigate(R.id.action_carRegisterFragment_to_myCarFragment)
+
+            //Delay
         }
     }
 

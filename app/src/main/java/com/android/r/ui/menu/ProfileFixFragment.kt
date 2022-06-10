@@ -13,6 +13,8 @@ import com.android.r.databinding.FragmentProfileFixBinding
 import com.android.r.model.Customer
 import com.android.r.viewmodel.CustomerViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
+import java.util.*
+import kotlin.concurrent.schedule
 
 class ProfileFixFragment : BaseFragment<FragmentProfileFixBinding>(R.layout.fragment_profile_fix) {
 
@@ -64,7 +66,10 @@ class ProfileFixFragment : BaseFragment<FragmentProfileFixBinding>(R.layout.frag
                         binding.tvProfilefixGrade.text.toString().toFloat()
                     )
                 )
+
+
                 navController.navigate(R.id.action_profileFixFragment_to_profileFragment)
+
             }
         }
 
